@@ -1,2 +1,1 @@
-# ejemploKanbanBootstrap
-Ejemplo de clase de uso de Bootstrap para crear un kanban
+# Desafio 2 - Dioses Griegos
