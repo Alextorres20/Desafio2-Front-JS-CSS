@@ -1,0 +1,34 @@
+// Import all of Bootstrap's CSS
+@import "~bootstrap/scss/bootstrap";
+@import "animaciones";
+
+body.tema { 
+    &.claro {
+        header {
+            ul {
+                display: none; 
+            }
+        }
+        .tarjeta{
+            transition: all 1s;
+            @include zoom();
+        }
+        @include salirPorLaDerecha();
+    }
+
+    &.oscuro {
+        header {
+
+            nav {
+                display: none;
+            }
+        }
+        .tarjeta{
+            transition: all 1s;
+            @include zoom();
+        }
+        @include salirPorLaDerecha();
+    }
+
+
+}
