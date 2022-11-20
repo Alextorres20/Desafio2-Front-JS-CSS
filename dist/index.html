@@ -8,6 +8,61 @@
 </head>
 
 <body class="">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
+        Launch demo modal
+    </button>
+
+    <!------------ Modal Pruebas ------------>
+    <div class="modal fade" id="modalPruebas" tabindex="-1" aria-labelledby="modalCrearPrueba" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5"">Prueba nueva</h1>
+                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <label class="flex-fill" for="selectTipoPrueba">Tipo</label>
+                        <select class="flex-fill form-select select-tipo-prueba" name="selectTipoPrueba" aria-label="selectTipoPrueba">
+                            <option value="puntual" data-bs-toggle="collapse" data-bs-target=".prueba.puntual" selected>Prueba puntual</option>
+                        </select>
+                    </div>
+                    <div class="mt-4 opciones-prueba">
+                        <div class="prueba puntual collapse">
+                            <div class="card card-body">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" name="descripcion"></textarea>
+                                <div class="d-flex">
+                                    <label class="flex-fill" for="selectAtributo">Atributo evaluado</label>
+                                    <select class="flex-fill form-select select-atributo" name="selectAtributo" aria-label="selectAtributo">
+                                        <option>Audacia</option>
+                                        <option>Maldad</option>
+                                        <option>Nobleza</option>
+                                        <option>Sabiduría</option>
+                                        <option>Virtud</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex"> 
+                                    <label class="flex-fill">Porcentaje de dificultad</label>
+                                    <input class="flex-fill form-control" type="number">
+                                </div>
+                                <div class="d-flex">
+                                    <label class="flex-fill">Cantidad de destino</label>
+                                    <input class="flex-fill form-control" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="./main.js"></script>
 </body>
 

@@ -1,2 +1,22 @@
-// Import all of Bootstrap's CSS
-@import "~bootstrap/scss/bootstrap"; 
+@use "sass:map";
+
+@import "~bootstrap/scss/bootstrap";
+@import './pruebas/modal-crear-pruebas';
+
+
+$coloresGenerales: (
+    "fontColorDark": #111010,
+    "fontColorMedium": #3f3f3f,
+    "fontColorLight": #ffffff,
+    "background": #ffffff,
+    "backgroundDarker": #e7e4dd,
+    "green": #66e25f,
+    "yellow": #ffc423,
+    "red": #ea1b59,
+);
+
+
+
+body {
+    @include modal-crear-pruebas($coloresGenerales);
+} 
