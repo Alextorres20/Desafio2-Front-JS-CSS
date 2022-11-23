@@ -18,46 +18,57 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5"">Prueba nueva</h1>
+                    <h1 class="modal-title fs-5">Prueba nueva</h1>
                     <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
                     <div class="d-flex">
                         <label class="flex-fill" for="selectTipoPrueba">Tipo</label>
-                        <select class="flex-fill form-select select-tipo-prueba" name="selectTipoPrueba" aria-label="selectTipoPrueba">
-                            <option value="puntual" data-bs-toggle="collapse" data-bs-target=".prueba.puntual" selected>Prueba puntual</option>
+                        <select class="flex-fill form-select select-tipo-prueba" name="selectTipoPrueba"
+                            aria-label="selectTipoPrueba">
+                            <option value="puntual" selected>Prueba puntual</option>
+                            <option value="eleccion">Prueba elección</option>
+                            <!-- <option value="puntual" data-bs-toggle="collapse" data-bs-target=".prueba.eleccion">Prueba elección</option> -->
                         </select>
                     </div>
-                    <div class="mt-4 opciones-prueba">
-                        <div class="prueba puntual collapse">
-                            <div class="card card-body">
+                    <div class="opciones-prueba colapsar mostrar">
+                        <form class="needs-validation formulariosPruebas" novalidate>
+                            <div class="prueba puntual">
                                 <label for="descripcion">Descripción</label>
                                 <textarea class="form-control" name="descripcion"></textarea>
                                 <div class="d-flex">
                                     <label class="flex-fill" for="selectAtributo">Atributo evaluado</label>
                                     <select class="flex-fill form-select select-atributo" name="selectAtributo" aria-label="selectAtributo">
-                                        <option>Audacia</option>
+                                        <option selected>Audacia</option>
                                         <option>Maldad</option>
                                         <option>Nobleza</option>
                                         <option>Sabiduría</option>
                                         <option>Virtud</option>
                                     </select>
                                 </div>
-                                <div class="d-flex"> 
-                                    <label class="flex-fill">Porcentaje de dificultad</label>
-                                    <input class="flex-fill form-control" type="number">
+                                <div class="dificultad validar">
+                                    <div class="d-flex">
+                                        <label class="flex-fill" for="dificultad">Porcentaje de dificultad</label>
+                                        <input class="flex-fill form-control" type="number" name="dificultad" required max="100">
+                                    </div>
+                                    <div class="error"></div>
                                 </div>
-                                <div class="d-flex">
-                                    <label class="flex-fill">Cantidad de destino</label>
-                                    <input class="flex-fill form-control" type="number">
+            
+                                <div class="destino validar">
+                                    <div class="d-flex">
+                                        <label class="flex-fill" for="destino">Cantidad de destino</label>
+                                        <input class="flex-fill form-control" type="number" name="destino" required max="100">
+                                    </div>
+                                    <div class="error"></div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar cambios</button>
                 </div>
             </div>
         </div>

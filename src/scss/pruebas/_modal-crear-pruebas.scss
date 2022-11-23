@@ -1,24 +1,65 @@
-@mixin modal-crear-pruebas($coloresGenerales) { 
+@mixin modal-crear-pruebas($coloresGenerales) {
     .modal-body {
+        padding: 2rem;
+
         .d-flex {
             align-items: center;
+
             label {
-                padding: .5rem .7rem .5rem 0; 
                 white-space: nowrap;
-            }
-        }  
-        .opciones-prueba {
-            label {
-                width: 45%;
-                padding: .5rem 0;
-            }
-            select, input {
-                width: 55%;
+                padding: .5rem .7rem .5rem 0;
             }
 
-            .card-body > div {
-                margin-top: 1.5rem;
+            @include media-breakpoint-down(sm) {
+                label {
+                    white-space: unset;
+                }
             }
         }
-    }  
+
+        .opciones-prueba {
+            border-top: solid 1px var(--bs-border-color);
+            margin-top: 2rem;
+
+            &.colapsar {
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+
+                &.mostrar {
+                    height: auto;
+                    /* height: 400px; */
+                    label {
+                        width: 40%;
+                        padding: .5rem .7rem .5rem 0;
+                    }
+
+                    select,
+                    input {
+                        width: 60%;
+                    }
+
+                    div {
+                        margin-top: 1.5rem;
+                        padding: 0;
+                    }
+
+                    .error {
+                        color: map.get($coloresGenerales, "rojo");
+                        text-align: end;
+                        margin-top: .5rem;
+                        font-size: .9rem;
+                    }
+                }
+
+
+            }
+
+
+
+
+
+
+        }
+    }
 }

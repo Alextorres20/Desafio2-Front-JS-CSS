@@ -6,5 +6,8 @@ import * as bootstrap from 'bootstrap'
 
 // Imports JavaScript
 import { initModal } from './pruebas/modal-crear-pruebas';
+import { initValidacion } from './auxiliar/validacion';
+
 
 initModal();
+initValidacion();

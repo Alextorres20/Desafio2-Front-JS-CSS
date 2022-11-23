@@ -1,0 +1,12 @@
+@keyframes desplegarOpcionesPrueba {
+    from {height: 0;}
+    to {height: auto;}
+}
+
+@mixin desplegarOpcionesPrueba() {
+    &.show {
+        animation: desplegarOpcionesPrueba 2s;
+        z-index: 5;
+    }
+}
+
