@@ -1,18 +1,19 @@
 const modal = document.querySelector('.modal'),
     selectTipo = document.querySelector('.select-tipo-prueba'),
-    opcionesPruebas = document.querySelectorAll('.opciones-prueba .prueba'),
-    btnGuardar = document.querySelector('.guardar');
+    pruebas = document.querySelectorAll('.opciones-prueba .prueba'),
+    contenedoresError = document.querySelectorAll('.error'),
+    listaValidar = document.querySelectorAll('.validar'),
+    formulario = document.querySelector('.formulario-pruebas');
 
 
 export const initModal = () => {
-    modal.addEventListener('hidden.bs.modal', function () {
+    modal.addEventListener('show.bs.modal', function () {
         resetModal();
     });
 
     selectTipo.addEventListener('change', (e) => {
         resetModal();
         const tipoPrueba = e.target.value;
-        const formulario = document.querySelector('.formulariosPruebas');
         formulario.firstElementChild.remove();
         switch (tipoPrueba) {
             case 'puntual':
@@ -22,20 +23,7 @@ export const initModal = () => {
                 generarEleccionHTML();
                 break;
         }
-        /* const opcionesPrueba = document.querySelector(`.opciones-prueba .${[tipoPrueba]}`);
-        opcionesPrueba.classList.add('mostrar'); */
-        /* opcionesPrueba.style.height = "400px"; */
     });
-
-    /*  btnGuardar.addEventListener('click', (e) => { */
-    /* const descripcionTexto = descripcion.value, */
-    /* atributoValor = selectAtributos.options[selectAtributos.selectedIndex].text,
-    dificultadValor = dificultad.value,
-    destinoValor = destino.value;
-    destinoValor = destino.value;
-    // -----Validar
-    const prueba = new Prueba(descripcionTexto, atributoValor, dificultadValor, destinoValor); */
-    /*  }); */
 }
 
 
@@ -44,8 +32,8 @@ const generarPuntualHTML = () => {
                     <label for="descripcion">Descripción</label>
                     <textarea class="form-control" name="descripcion"></textarea>
                     <div class="d-flex">
-                        <label class="flex-fill" for="selectAtributo">Atributo evaluado</label>
-                        <select class="flex-fill form-select select-atributo" name="selectAtributo" aria-label="selectAtributo">
+                        <label class="flex-fill" for="atributo">Atributo evaluado</label>
+                        <select class="flex-fill form-select select-atributo" name="atributo" aria-label="atributo">
                             <option selected>Audacia</option>
                             <option>Maldad</option>
                             <option>Nobleza</option>
@@ -74,15 +62,26 @@ const generarPuntualHTML = () => {
     div.innerHTML = html;
    /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
     contenedorPruebas.classList.add('mostrar'); */
-    const formulario = document.querySelector('.formulariosPruebas');
+    formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
+}
+
+const generarEleccionHTML = () => {
+    const html = `<div class="prueba eleccion">
+                    
+                </div>`;
+
+    const div = document.createElement('div');
+    div.innerHTML = html;
+   /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
+    contenedorPruebas.classList.add('mostrar'); */
     formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
 }
 
 
 const resetModal = () => {
-    opcionesPruebas.forEach(p => p.classList.remove('mostrar'));
+    listaValidar.forEach(e => e.classList.remove('is-valid', 'is-invalid'));
+    contenedoresError.forEach(e => e.innerHTML = '');
+    pruebas.forEach(p => p.classList.remove('mostrar'));
     const elementos = document.querySelector('.opciones-prueba').querySelectorAll('textarea, input, select');
-    elementos.forEach(e => {
-        (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '';
-    });
+    elementos.forEach(e => (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '');
 }
