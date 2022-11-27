@@ -2,18 +2,11 @@
     .modal-body {
         padding: 2rem;
 
-        .d-flex {
-            align-items: center;
-
+        .row {
+            --bs-gutter-x: 0;
             label {
                 white-space: nowrap;
                 padding: .5rem .7rem .5rem 0;
-            }
-
-            @include media-breakpoint-down(sm) {
-                label {
-                    white-space: unset;
-                }
             }
         }
 
@@ -30,13 +23,11 @@
                     height: auto;
                     /* height: 400px; */
                     label {
-                        width: 40%;
                         padding: .5rem .7rem .5rem 0;
                     }
 
-                    select,
-                    input {
-                        width: 60%;
+                    textarea {
+                        width: 100%;
                     }
 
                     div {
@@ -51,15 +42,7 @@
                         font-size: .9rem;
                     }
                 }
-
-
             }
-
-
-
-
-
-
         }
     }
 }

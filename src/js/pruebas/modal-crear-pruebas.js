@@ -1,3 +1,6 @@
+import { generarPruebaHtml } from './crud_pruebas';
+
+
 const modal = document.querySelector('.modal'),
     selectTipo = document.querySelector('.select-tipo-prueba'),
     pruebas = document.querySelectorAll('.opciones-prueba .prueba'),
@@ -6,7 +9,7 @@ const modal = document.querySelector('.modal'),
     formulario = document.querySelector('.formulario-pruebas');
 
 
-export const initModal = () => {
+const initModal = () => {
     modal.addEventListener('show.bs.modal', function () {
         resetModal();
     });
@@ -60,8 +63,8 @@ const generarPuntualHTML = () => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-   /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
-    contenedorPruebas.classList.add('mostrar'); */
+    /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
+     contenedorPruebas.classList.add('mostrar'); */
     formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
 }
 
@@ -72,9 +75,18 @@ const generarEleccionHTML = () => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-   /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
-    contenedorPruebas.classList.add('mostrar'); */
+    /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
+     contenedorPruebas.classList.add('mostrar'); */
     formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
+}
+
+
+const cerrarModal = () => {
+    const elementos = [modal, document.querySelector('.modal-backdrop')];
+    elementos.forEach(e => {
+        e.classList.add('hide');
+        e.classList.remove('show');
+    });
 }
 
 
@@ -84,4 +96,9 @@ const resetModal = () => {
     pruebas.forEach(p => p.classList.remove('mostrar'));
     const elementos = document.querySelector('.opciones-prueba').querySelectorAll('textarea, input, select');
     elementos.forEach(e => (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '');
+}
+
+export {
+    initModal,
+    cerrarModal
 }

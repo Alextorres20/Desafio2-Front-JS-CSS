@@ -1,6 +1,6 @@
-import { crearPrueba } from '../pruebas/crud-pruebas';
-
-
+import { crearPrueba } from '../pruebas/peticiones-pruebas';
+import { cerrarModal } from '../pruebas/modal-crear-pruebas';
+import { generarPruebaHtml } from '../pruebas/crud_pruebas';
 
 export const initValidacion = () => {
     validarInputsPruebas();
@@ -21,7 +21,7 @@ const validarInputsPruebas = () => {
             }
         });
 
-        formularioPruebas.addEventListener('submit', (event) => {
+        formularioPruebas.addEventListener('submit', async (event) => {
             event.stopImmediatePropagation(); //Para que no salte 2 veces
             event.preventDefault();
 
@@ -42,12 +42,10 @@ const validarInputsPruebas = () => {
                 const datos = new FormData(formularioPruebas);
                 datos.append('tipo', tipo);
                 const prueba = Object.fromEntries(datos);
-                crearPrueba(prueba);
-                const modal = document.querySelectorAll('#modalPruebas, .modal-backdrop');
-                modal.forEach(element => {
-                    element.classList.add('hide');
-                    element.classList.remove('show');
-                });
+                const respuesta = await crearPrueba(prueba);
+                cerrarModal();
+               /*  mostrarRespuesta(repuesta); */
+                generarPruebaHtml(respuesta.respuesta, tipo);
             }
         });
     });

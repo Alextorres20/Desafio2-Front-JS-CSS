@@ -1,0 +1,17 @@
+@mixin crud-pruebas($coloresGenerales) {
+    .crud-pruebas {
+        padding: 2rem 5rem;
+        button {
+            float: right;
+        }
+
+        .tabla-pruebas{
+            margin-top: 6rem;
+
+            th {
+                padding: 1rem 3rem;
+            }
+        }
+        
+    }
+}

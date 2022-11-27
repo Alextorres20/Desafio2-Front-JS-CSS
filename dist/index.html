@@ -4,16 +4,85 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/html" href="path/to/font-awesome/css/font-awesome.min.css">
     <title></title>
 </head>
 
 <body class="">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
-        Launch demo modal
-    </button>
+    <!----------------------- Menú horizontal ---------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-    <!------------ Modal Pruebas ------------>
+    <div class="row">
+    <!------------------------ CRUD Pruebas ------------------------>
+        <div class="col-2 menu-vertical bg-white">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Collapsible</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                Home
+                </button>
+                <div class="collapse show" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>Filtro 1</li>
+                    <li>Filtro 2</li>
+                    <li>Filtro 3</li>
+                </ul>
+                </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                Account
+                </button>
+                <div class="collapse" id="account-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
+                </ul>
+                </div>
+            </li>
+            </ul>
+        </div>
+
+        <div class="col-10 crud-pruebas">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Crear prueba
+            </button>
+            <div class="contenedor-pruebas">
+                <table class="table tabla-pruebas">
+                    <thead>
+                      <tr>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Creación</th>
+                        <th scope="col">Editar<!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i> --></th>
+                        <th scope="col">Borrar<!-- <i class="fa fa-trash" aria-hidden="true"></i> --></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------- Modal Pruebas -------------------->
     <div class="modal fade" id="modalPruebas" tabindex="-1" aria-labelledby="modalCrearPrueba" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -23,9 +92,9 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="d-flex">
-                        <label class="flex-fill" for="selectTipoPrueba">Tipo</label>
-                        <select class="flex-fill form-select select-tipo-prueba" name="selectTipoPrueba" aria-label="selectTipoPrueba">
+                    <div class="row">
+                        <label class="col-12 col-sm-3" for="selectTipoPrueba">Tipo</label>
+                        <select class="col-12 col-sm-9 form-select select-tipo-prueba" name="selectTipoPrueba" aria-label="selectTipoPrueba">
                             <option value="puntual" selected>Prueba puntual</option>
                             <option value="eleccion">Prueba elección</option>
                             <!-- <option value="puntual" data-bs-toggle="collapse" data-bs-target=".prueba.eleccion">Prueba elección</option> -->
@@ -36,9 +105,9 @@
                             <div class="prueba puntual">
                                 <label for="descripcion">Descripción</label>
                                 <textarea class="form-control" name="descripcion"></textarea>
-                                <div class="d-flex">
-                                    <label class="flex-fill" for="atributo">Atributo evaluado</label>
-                                    <select class="flex-fill form-select select-atributo" name="atributo" aria-label="atributo">
+                                <div class="row">
+                                    <label class="col-12 col-sm-5" for="atributo">Atributo evaluado</label>
+                                    <select class="col-12 col-sm-7 form-select select-atributo" name="atributo" aria-label="atributo">
                                         <option selected>Audacia</option>
                                         <option>Maldad</option>
                                         <option>Nobleza</option>
@@ -47,17 +116,17 @@
                                     </select>
                                 </div>
                                 <div class="dificultad">
-                                    <div class="d-flex">
-                                        <label class="flex-fill" for="dificultad">Porcentaje de dificultad</label>
-                                        <input class="flex-fill validar form-control" type="number" name="dificultad" required min="1" max="100">
+                                    <div class="row">
+                                        <label class="col-12 col-sm-5" for="dificultad">Porcentaje de dificultad</label>
+                                        <input class="col-12 col-sm-7 validar form-control" type="number" name="dificultad" required min="1" max="100">
                                     </div>
                                     <div class="error"></div>
                                 </div>
             
                                 <div class="destino ">
-                                    <div class="d-flex">
-                                        <label class="flex-fill" for="destino">Cantidad de destino</label>
-                                        <input class="flex-fill validar form-control" type="number" name="destino" required min="1" max="100">
+                                    <div class="row">
+                                        <label class="col-12 col-sm-5" for="destino">Cantidad de destino</label>
+                                        <input class="col-12 col-sm-7 validar form-control" type="number" name="destino" required min="1" max="100">
                                     </div>
                                     <div class="error"></div>
                                 </div>
