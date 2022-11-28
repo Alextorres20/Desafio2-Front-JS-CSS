@@ -1,4 +1,17 @@
 @mixin crud-pruebas($coloresGenerales) {
+    & {
+        background-color: rgba(0, 0, 0, .1);
+    
+        .row {
+            --bs-gutter-x: 0;
+        }
+    
+        .menu-vertical {
+            box-shadow:  0px 0px 10px 2px rgb(0, 0, 0, .2);
+            height: 100vh;
+        }
+
+        
     .crud-pruebas {
         padding: 2rem 5rem;
         button {
@@ -30,5 +43,6 @@
                 }
             }
         }
+    }
     }
 }
