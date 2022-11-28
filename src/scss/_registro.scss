@@ -1,9 +1,10 @@
-  body{
-    background-color: red;
-  }
 
+
+  body.registro{
+    background-color: red;
+    
   .col.imagenFondo{
-    background-image: url(../imagenes/monte_olimpo.jpg);
+    /* background-image: url("../assets/imagenes/monte_olimpo.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -91,4 +92,6 @@
   .form button{
   
     margin-top: 20px;
+  }
+
   }

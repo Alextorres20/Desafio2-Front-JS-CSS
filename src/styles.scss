@@ -1,0 +1,28 @@
+@use "sass:map";
+
+@import "~bootstrap/scss/bootstrap";
+@import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
+        './scss/index', './scss/registro';
+
+$coloresGenerales: (
+    "verde": #66e25f,
+    "amarillo": #ffc423,
+    "rojo": #ea1b59,
+);
+
+html {
+    height: 100vh;
+}
+body {
+    @include modal-crear-pruebas($coloresGenerales);
+    @include crud-pruebas($coloresGenerales);
+    @include index($coloresGenerales);
+     
+    * {
+        box-sizing: border-box;
+    }
+
+    .row {
+        --bs-gutter-x: 0;
+    }
+}

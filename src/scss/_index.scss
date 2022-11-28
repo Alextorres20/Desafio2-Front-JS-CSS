@@ -1,0 +1,71 @@
+@mixin index($coloresGenerales) {
+    & {
+        height: 100%;
+    }
+
+    &.index {
+        background-color: var(--bs-gray-200);
+        /* background-image: url("../assets/imagenes/monte_olimpo.jpg"); */
+
+        nav {
+            padding: 0.4rem 2rem;
+
+            i.home {
+                font-size: 1.5rem;
+            }
+        }
+
+        .contenedor-principal {
+            height: 80%;
+            width: 90%;
+            padding: 6%;
+            margin: 0 5%;
+
+            &>div {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
+
+                .iconos {
+                    a {
+                        color: var(--bs-gray-700);
+                        transition: all .2s;
+                        text-decoration: none;
+                        &:hover {
+                            color: var(--bs-gray-900);
+                        }
+                    }
+
+                    i {
+                        font-size: 7rem;
+                    }
+
+                    .nombres-iconos {
+                        margin-top: 1rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        footer {
+            padding: .9rem 2rem;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            color: white;
+            font-size: .65rem;
+
+            .copyright::after {
+                content: "";
+                background: white;
+                position: absolute;
+                bottom: 20%;
+                left: 115px;
+                height: 60%;
+                width: 1.5px;
+            }
+        }
+    }
+}

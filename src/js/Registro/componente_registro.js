@@ -64,10 +64,8 @@ const validation = () => {
 
 
     botonRegistrar.addEventListener('click', (event) => {
-        console.log(name.value);
         if(!email.validity.valid || !password.validity.valid || !confirm_password.validity.valid || 
             password.value != confirm_password.value) {
-            console.log('patata');
             showError();
             event.preventDefault();
         } else {
@@ -75,7 +73,7 @@ const validation = () => {
                 name: name.value,
                 email: email.value,
                 password: password.value
-            }).then(console.log);
+            });
             event.preventDefault();
         }
     })
