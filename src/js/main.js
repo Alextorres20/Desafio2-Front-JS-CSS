@@ -4,6 +4,8 @@ import '../scss/styles.scss'
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
 
-import { init } from "./Registro/componente_registro";
+import { initRegistro } from "./Registro/componente_registro";
+import { initInicioSesion } from "./InicioSesion/componente_inicioSesion"
 
-init();
+initRegistro();
+initInicioSesion();
