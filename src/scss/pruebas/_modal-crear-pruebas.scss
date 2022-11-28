@@ -3,7 +3,6 @@
         padding: 2rem;
 
         .row {
-            --bs-gutter-x: 0;
             label {
                 white-space: nowrap;
                 padding: .5rem .7rem .5rem 0;
@@ -15,13 +14,10 @@
             margin-top: 2rem;
 
             &.colapsar {
-                height: 0;
                 overflow: hidden;
                 transition: height 0.3s ease;
 
                 &.mostrar {
-                    height: auto;
-                    /* height: 400px; */
                     label {
                         padding: .5rem .7rem .5rem 0;
                     }
@@ -33,6 +29,9 @@
                     div {
                         margin-top: 1.5rem;
                         padding: 0;
+                        .info {
+                            font-size: .8rem;
+                        }
                     }
 
                     .error {

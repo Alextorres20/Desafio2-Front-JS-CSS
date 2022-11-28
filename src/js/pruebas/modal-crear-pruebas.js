@@ -1,42 +1,53 @@
-import { generarPruebaHtml } from './crud_pruebas';
+import { initValidacion } from "../auxiliar/validacion";
+import { Modal } from 'bootstrap'
 
 
 const modal = document.querySelector('.modal'),
     selectTipo = document.querySelector('.select-tipo-prueba'),
-    pruebas = document.querySelectorAll('.opciones-prueba .prueba'),
+    contenedorFormulario = document.querySelector('.opciones-prueba'),
     contenedoresError = document.querySelectorAll('.error'),
-    listaValidar = document.querySelectorAll('.validar'),
-    formulario = document.querySelector('.formulario-pruebas');
+    listaValidar = document.querySelectorAll('.validar');
 
 
 const initModal = () => {
     modal.addEventListener('show.bs.modal', function () {
         resetModal();
+        selectTipo.selectedIndex = 0;
+        generarPuntualHTML(generarFormularioHTML());
+        initValidacion();
     });
 
     selectTipo.addEventListener('change', (e) => {
         resetModal();
+        const formulario = generarFormularioHTML();
         const tipoPrueba = e.target.value;
-        formulario.firstElementChild.remove();
+
         switch (tipoPrueba) {
             case 'puntual':
-                generarPuntualHTML();
+                generarPuntualHTML(formulario);
                 break;
-            case 'eleccion':
-                generarEleccionHTML();
+            case 'respuesta-libre':
+                generarRespuestaLibreHTML(formulario);
                 break;
         }
+        initValidacion();
     });
 }
 
 
-const generarPuntualHTML = () => {
+const generarPuntualHTML = (formulario) => {
     const html = `<div class="prueba puntual">
-                    <label for="descripcion">Descripción</label>
-                    <textarea class="form-control" name="descripcion"></textarea>
-                    <div class="d-flex">
-                        <label class="flex-fill" for="atributo">Atributo evaluado</label>
-                        <select class="flex-fill form-select select-atributo" name="atributo" aria-label="atributo">
+                    <div class="descripcion">
+                        <div class="row">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control validar" name="descripcion" required maxLength="255"></textarea>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                    <div class="row">
+                        <label class="col-12 col-sm-5" for="atributo">Atributo evaluado</label>
+                        <select class="col-12 col-sm-7 form-select select-atributo" name="atributo"
+                            aria-label="atributo">
                             <option selected>Audacia</option>
                             <option>Maldad</option>
                             <option>Nobleza</option>
@@ -44,18 +55,20 @@ const generarPuntualHTML = () => {
                             <option>Virtud</option>
                         </select>
                     </div>
-                    <div class="dificultad validar">
-                        <div class="d-flex">
-                            <label class="flex-fill" for="dificultad">Porcentaje de dificultad</label>
-                            <input class="flex-fill form-control" type="number" name="dificultad" required max="100">
+                    <div class="dificultad">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="dificultad">Porcentaje de dificultad</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number"
+                                name="dificultad" required min="1" max="100">
                         </div>
                         <div class="error"></div>
                     </div>
 
-                    <div class="destino validar">
-                        <div class="d-flex">
-                            <label class="flex-fill" for="destino">Cantidad de destino</label>
-                            <input class="flex-fill form-control" type="number" name="destino" required max="100">
+                    <div class="destino">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="destino">Cantidad de destino</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number" name="destino"
+                                required min="1" max="100">
                         </div>
                         <div class="error"></div>
                     </div>
@@ -63,27 +76,73 @@ const generarPuntualHTML = () => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
-     contenedorPruebas.classList.add('mostrar'); */
+    formulario.insertBefore(div.firstElementChild, formulario.lastElementChild);
+}
+
+const generarRespuestaLibreHTML = (formulario) => {
+    const html = `<div class="prueba respuesta-libre">
+                    <div class="pregunta">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="pregunta" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="palabras-clave">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="palabras_clave">Palabras clave</label>
+                            <textarea class="col-12 col-sm-7 validar form-control" name="palabras_clave" required></textarea>
+                        </div>
+                        <div class="error"></div>
+                        <span class="info">Introduce las palabras clave separadas por una coma</span>
+                    </div>
+
+                    <div class="destino">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="destino">Cantidad de destino</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number" name="destino" required min="1" max="100">
+                        </div>
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="porcentaje">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="porcentaje">Porcentaje necesario</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number" name="porcentaje" required min="1" max="100">
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                </div>`;
+
+    const div = document.createElement('div');
+    div.innerHTML = html;
     formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
 }
 
-const generarEleccionHTML = () => {
-    const html = `<div class="prueba eleccion">
-                    
-                </div>`;
+
+const generarFormularioHTML = () => {
+    const html = `<form class="needs-validation formulario-pruebas" novalidate>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
+                    </div>
+                </form>`;
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    /*  const contenedorPruebas = document.querySelector('.opciones-prueba');
-     contenedorPruebas.classList.add('mostrar'); */
-    formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
+    const formulario = div.firstElementChild;
+    contenedorFormulario.append(formulario);
+    return formulario;
 }
 
 
 const cerrarModal = () => {
+    /* let myModal = new Modal(modal);
+    myModal.hide(); */
     const elementos = [modal, document.querySelector('.modal-backdrop')];
     elementos.forEach(e => {
+        e.style.display = 'none'
         e.classList.add('hide');
         e.classList.remove('show');
     });
@@ -91,9 +150,10 @@ const cerrarModal = () => {
 
 
 const resetModal = () => {
+    contenedorFormulario.innerHTML = '';
     listaValidar.forEach(e => e.classList.remove('is-valid', 'is-invalid'));
     contenedoresError.forEach(e => e.innerHTML = '');
-    pruebas.forEach(p => p.classList.remove('mostrar'));
+    /* pruebas.forEach(p => p.classList.remove('mostrar')); */
     const elementos = document.querySelector('.opciones-prueba').querySelectorAll('textarea, input, select');
     elementos.forEach(e => (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '');
 }
