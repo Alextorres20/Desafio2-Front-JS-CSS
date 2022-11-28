@@ -1,8 +1,11 @@
 // Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap"; 
 
-body{
+  body{
+    background-color: red;
+  }
 
+  .col.imagenFondo{
     background-image: url(../imagenes/monte_olimpo.jpg);
     background-repeat: no-repeat;
     background-size: cover;

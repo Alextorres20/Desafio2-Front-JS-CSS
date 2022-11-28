@@ -6,6 +6,7 @@ const password = document.getElementsByName('password')[1];
 const confirm_password = document.getElementsByName('confirm_password')[0];
 const passwordError = document.querySelector('span.errorPassword');
 const revelarContraseña = document.getElementsByName('revelarContraseña')[0];
+const formularioRegistro = document.getElementById('formularioRegistro');
 const botonRegistrar = document.getElementsByTagName('button')[1];
 
 const init = () => {
@@ -47,6 +48,19 @@ const validation = () => {
             showError();
         }
     })
+
+    // formularioRegistro.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     if(!email.validity.valid || !password.validity.valid || !confirm_password.validity.valid || 
+    //         password.value != confirm_password.value) {
+    //         showError();
+
+    //     } else {
+    //         const datos = new FormData(formularioRegistro);
+    //         const usuario = Object.fromEntries(datos);
+    //         crearUsuario(usuario);
+    //     }
+    // })
 
 
     botonRegistrar.addEventListener('click', (event) => {
