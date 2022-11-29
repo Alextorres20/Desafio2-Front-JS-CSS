@@ -60,7 +60,6 @@ module.exports = {
         ]
     },
     plugins: [
-       
         new HtmlWebPackPlugin({
             title: 'Desafio 2 - Dioses Griegos',
             //filename: 'index.html',

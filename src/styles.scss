@@ -8,16 +8,27 @@ $coloresGenerales: (
     "verde": #66e25f,
     "amarillo": #ffc423,
     "rojo": #ea1b59,
+    "iconos": #4a403e,
+    "iconos-hover": #2d2727,
 );
 
 html {
     height: 100vh;
 }
+
 body {
     @include modal-crear-pruebas($coloresGenerales);
     @include crud-pruebas($coloresGenerales);
     @include index($coloresGenerales);
      
+    nav.menu-horizontal {
+        padding: 0.4rem 2rem;
+
+        i.home {
+            font-size: 2rem;
+        }
+    }
+
     * {
         box-sizing: border-box;
     }

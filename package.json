@@ -18,26 +18,31 @@
   "license": "ISC",
   "homepage": "https://github.com/ciclos/ejemploKanbanBootstrap#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.3",
     "babel-loader": "^8.2.5",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
     "css-minimizer-webpack-plugin": "^4.2.0",
     "file-loader": "^6.2.0",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "node-sass": "^7.0.3",
     "sass-loader": "^13.1.0",
-    "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.0"
+    "webpack-dev-server": "^4.11.0",
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.55.0"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap-icons": "^1.9.1",
     "bootstrap": "^5.2.3",
-    "postcss-loader": "^7.0.1"
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.56.1"
   }
 }
