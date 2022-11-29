@@ -11,7 +11,7 @@
             padding: 0.4rem 2rem;
 
             i.home {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
         }
 
@@ -55,14 +55,14 @@
             position: fixed;
             bottom: 0;
             color: white;
-            font-size: .65rem;
+            font-size: .8rem;
 
             .copyright::after {
                 content: "";
                 background: white;
                 position: absolute;
                 bottom: 20%;
-                left: 115px;
+                left: 130px;
                 height: 60%;
                 width: 1.5px;
             }
