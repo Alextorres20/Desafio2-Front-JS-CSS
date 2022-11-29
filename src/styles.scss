@@ -20,6 +20,7 @@ body {
     @include modal-crear-pruebas($coloresGenerales);
     @include crud-pruebas($coloresGenerales);
     @include index($coloresGenerales);
+    @include registro-inicio-sesion($coloresGenerales);
      
     nav.menu-horizontal {
         padding: 0.4rem 2rem;
