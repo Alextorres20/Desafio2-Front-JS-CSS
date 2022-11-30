@@ -1,18 +1,18 @@
 import { iniciarSesion } from "./crud-provider";
 const email = document.getElementsByName('email')[0];
-const emailError = document.querySelector('span.errorEmail.Inicio');
+const emailError = document.querySelector('span.errorEmail');
 const password = document.getElementsByName('password')[0];
-const passwordError = document.querySelector('span.errorPassword.Inicio');
+const passwordError = document.querySelector('span.errorPassword');
 const revelarContraseña = document.getElementsByName('revelarContraseña')[0];
 const botonIniciar = document.getElementsByTagName('button')[0];
 
 const initInicioSesion = () => {
     validation();
     revelarContraseña.addEventListener('click', (event) => {
-        if(password.type === "password") {
+        if (password.type === "password") {
             password.type = "text";
         }
-        else{
+        else {
             password.type = "password";
         }
     })
@@ -20,25 +20,25 @@ const initInicioSesion = () => {
 
 const validation = () => {
     email.addEventListener('input', (event) => {
-        if(email.validity.valid) {
-            emailError.innerHTML='';
-            emailError.className='error';
-        } else{
+        if (email.validity.valid) {
+            emailError.innerHTML = '';
+            emailError.className = 'error';
+        } else {
             showError();
         }
     });
     password.addEventListener('input', (event) => {
-        if(password.validity.valid){
-            passwordError.innerHTML='';
-            passwordError.className='error';
-        } else{
+        if (password.validity.valid) {
+            passwordError.innerHTML = '';
+            passwordError.className = 'error';
+        } else {
             showError();
         }
     })
 
 
     botonIniciar.addEventListener('click', (event) => {
-        if(!email.validity.valid || !password.validity.valid) {
+        if (!email.validity.valid || !password.validity.valid) {
             showError();
             event.preventDefault();
         } else {
@@ -47,16 +47,9 @@ const validation = () => {
                 password: password.value
             }).then(iniciado => {
                 console.log(iniciado)
-                // if(iniciado.success = "true"){
-
-                //     // if(eresDios({
-
-                //     // }))
-                //     location.href="./usuarios.html"
-                // }
-                // else{
-                //     console.log(iniciado)
-                // }
+                if (iniciado.success = "true") {
+                    location.href = "../../html/registro-inicio-sesion.html"
+                }
             });
             event.preventDefault();
         }
@@ -64,23 +57,23 @@ const validation = () => {
 }
 
 const showError = () => {
-    if(email.validity.valueMissing) {
-        emailError.textContent= "Debe introducir una dirección de correo electrónico."
-    } else if(email.validity.typeMismatch) {
-        emailError.textContent= "El valor introducido debe ser una dirección de correo electrónico."
-    } else if(email.validity.tooShort) {
+    if (email.validity.valueMissing) {
+        emailError.textContent = "Debe introducir una dirección de correo electrónico."
+    } else if (email.validity.typeMismatch) {
+        emailError.textContent = "El valor introducido debe ser una dirección de correo electrónico."
+    } else if (email.validity.tooShort) {
         emailError.textContent = `El correo electrónico debe tener al menos ${email.minLenght} caracteres.`
     }
-    emailError.className='error';
+    emailError.className = 'error';
 
-    if(password.validity.valueMissing) {
+    if (password.validity.valueMissing) {
         passwordError.innerHTML = "Debe introducir una contraseña.<br>"
     }
-    passwordError.className='error';
+    passwordError.className = 'error';
 }
 
 
 
-export{
+export {
     initInicioSesion
 }

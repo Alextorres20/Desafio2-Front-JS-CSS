@@ -1,10 +1,10 @@
 import { crearUsuario } from "./crud-provider";
 const name = document.getElementsByName('name')[0];
 const email = document.getElementsByName('email')[1];
-const emailError = document.querySelector('span.errorEmail.Registro');
+const emailError = document.querySelector('span.errorEmail');
 const password = document.getElementsByName('password')[1];
 const confirm_password = document.getElementsByName('confirm_password')[0];
-const passwordError = document.querySelector('span.errorPassword.Registro');
+const passwordError = document.querySelector('span.errorPassword');
 const revelarContraseña = document.getElementsByName('revelarContraseña')[1];
 const botonRegistrar = document.getElementsByTagName('button')[1];
 
@@ -47,8 +47,6 @@ const validation = () => {
             showError();
         }
     })
-
-
 
 
     botonRegistrar.addEventListener('click', (event) => {
