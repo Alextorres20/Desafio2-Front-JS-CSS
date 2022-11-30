@@ -1,6 +1,6 @@
 @mixin registro-inicio-sesion($coloresGenerales) { 
   
-  &.registro {
+  &.registro-inicio-sesion {
     .col.imagenFondo {
       /* background-image: url("../assets/imagenes/monte_olimpo.jpg"); */
       background-repeat: no-repeat;
@@ -91,5 +91,8 @@
       margin-top: 20px;
     }
   
+    .form.pt-5.inicio{
+      padding-top: 2rem !important;
+    }
   }
 }

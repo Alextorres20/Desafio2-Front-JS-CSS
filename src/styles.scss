@@ -2,7 +2,7 @@
 
 @import "~bootstrap/scss/bootstrap";
 @import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
-        './scss/index', './scss/principal', './scss/registro';
+        './scss/index', './scss/principal', './scss/registro-inicio-sesion';
 
 $coloresGenerales: (
     "verde": #66e25f,
@@ -20,6 +20,7 @@ body {
     @include modal-crear-pruebas($coloresGenerales);
     @include crud-pruebas($coloresGenerales);
     @include principal($coloresGenerales);
+    @include index($coloresGenerales);
     @include registro-inicio-sesion($coloresGenerales);
     @include index($coloresGenerales);
      
