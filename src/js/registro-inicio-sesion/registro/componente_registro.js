@@ -4,7 +4,7 @@ const email = document.getElementsByName('email')[1];
 const emailError = document.querySelector('span.errorEmail');
 const password = document.getElementsByName('password')[1];
 const confirm_password = document.getElementsByName('confirm_password')[0];
-const passwordError = document.querySelector('span.errorPassword');
+const passwordError = document.querySelector('span.errorPassword.Registro');
 const revelarContraseña = document.getElementsByName('revelarContraseña')[1];
 const botonRegistrar = document.getElementsByTagName('button')[1];
 

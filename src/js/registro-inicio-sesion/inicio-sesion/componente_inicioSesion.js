@@ -1,10 +1,11 @@
 import { iniciarSesion } from "./crud-provider";
 const email = document.getElementsByName('email')[0];
-const emailError = document.querySelector('span.errorEmail');
+const emailError = document.querySelector('span.errorEmail.Inicio');
 const password = document.getElementsByName('password')[0];
-const passwordError = document.querySelector('span.errorPassword');
+const passwordError = document.querySelector('span.errorPassword.Inicio');
 const revelarContraseña = document.getElementsByName('revelarContraseña')[0];
 const botonIniciar = document.getElementsByTagName('button')[0];
+const mensajeError = document.querySelector('.error.Inicio');
 
 const initInicioSesion = () => {
     validation();
@@ -38,7 +39,7 @@ const validation = () => {
 
 
     botonIniciar.addEventListener('click', (event) => {
-        if (!email.validity.valid || !password.validity.valid) {
+        if (!email.validity.valid || !password.validity.valid || email.value.length == 0 || password.value.length == 0) {
             showError();
             event.preventDefault();
         } else {
@@ -47,8 +48,19 @@ const validation = () => {
                 password: password.value
             }).then(iniciado => {
                 console.log(iniciado)
-                if (iniciado.success = "true") {
-                    location.href = "../../html/registro-inicio-sesion.html"
+                if (iniciado.success == true) {
+                    location.href = "../../html/principal.html"
+                }
+                else{
+                    mensajeError.classList.add("alert", "alert-danger");
+                    mensajeError.innerHTML = "El correo o la contraseña no están correctas";
+                    mensajeError.setAttribute("style", "margin-top: -35px");
+                    const simbolo = document.createElement('svg');
+                    simbolo.classList.add("bi", "flex-shrink-0", "me-2");
+                    simbolo.setAttribute("role", "img")
+                    simbolo.setAttribute("aria-label", "Danger:");
+                    const link = document.createElement('use');
+                    link.setAttribute("xlink:href", "#exclamation-triangle-fill");
                 }
             });
             event.preventDefault();
