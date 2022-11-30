@@ -1,15 +1,14 @@
 import { crearUsuario } from "./crud-provider";
 const name = document.getElementsByName('name')[0];
 const email = document.getElementsByName('email')[1];
-const emailError = document.querySelector('span.errorEmail');
+const emailError = document.querySelector('span.errorEmail.Registro');
 const password = document.getElementsByName('password')[1];
 const confirm_password = document.getElementsByName('confirm_password')[0];
-const passwordError = document.querySelector('span.errorPassword');
-const revelarContraseña = document.getElementsByName('revelarContraseña')[0];
-const formularioRegistro = document.getElementById('formularioRegistro');
+const passwordError = document.querySelector('span.errorPassword.Registro');
+const revelarContraseña = document.getElementsByName('revelarContraseña')[1];
 const botonRegistrar = document.getElementsByTagName('button')[1];
 
-const init = () => {
+const initRegistro = () => {
     validation();
     revelarContraseña.addEventListener('click', (event) => {
         if(password.type === "password") {
@@ -49,18 +48,7 @@ const validation = () => {
         }
     })
 
-    // formularioRegistro.addEventListener('submit', (event) => {
-    //     event.preventDefault();
-    //     if(!email.validity.valid || !password.validity.valid || !confirm_password.validity.valid || 
-    //         password.value != confirm_password.value) {
-    //         showError();
 
-    //     } else {
-    //         const datos = new FormData(formularioRegistro);
-    //         const usuario = Object.fromEntries(datos);
-    //         crearUsuario(usuario);
-    //     }
-    // })
 
 
     botonRegistrar.addEventListener('click', (event) => {
@@ -73,6 +61,14 @@ const validation = () => {
                 name: name.value,
                 email: email.value,
                 password: password.value
+            }).then(registrado => {
+                console.log(registrado);
+                // if(registrado.success = "true"){
+                //     location.href="./usuarios.html"
+                // }
+                // else{
+                //     console.log(registrado)
+                // }
             });
             event.preventDefault();
         }
@@ -101,5 +97,5 @@ const showError = () => {
 
 
 export{
-    init
+    initRegistro
 }
