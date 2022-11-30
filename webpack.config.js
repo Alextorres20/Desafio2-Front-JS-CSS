@@ -6,6 +6,10 @@ const filesHTML = [
     {
         filename: 'index.html',
         chunks: ['index']
+    },
+    {
+        filename: './html/principal.html',
+        chunks: ['index']
     }, 
     {   filename: './html/crud-pruebas.html',
         chunks: ['pruebas']
