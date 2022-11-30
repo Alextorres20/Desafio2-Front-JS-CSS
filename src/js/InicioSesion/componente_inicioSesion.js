@@ -8,12 +8,6 @@ const botonIniciar = document.getElementsByTagName('button')[0];
 
 const initInicioSesion = () => {
     validation();
-    console.log(email);
-    console.log(emailError);
-    console.log(password);
-    console.log(passwordError);
-    console.log(revelarContraseña);
-    console.log(botonIniciar);
     revelarContraseña.addEventListener('click', (event) => {
         if(password.type === "password") {
             password.type = "text";
@@ -51,7 +45,19 @@ const validation = () => {
             iniciarSesion({
                 email: email.value,
                 password: password.value
-            }).then(console.log);
+            }).then(iniciado => {
+                console.log(iniciado)
+                // if(iniciado.success = "true"){
+
+                //     // if(eresDios({
+
+                //     // }))
+                //     location.href="./usuarios.html"
+                // }
+                // else{
+                //     console.log(iniciado)
+                // }
+            });
             event.preventDefault();
         }
     })

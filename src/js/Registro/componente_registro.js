@@ -9,14 +9,6 @@ const revelarContraseña = document.getElementsByName('revelarContraseña')[1];
 const botonRegistrar = document.getElementsByTagName('button')[1];
 
 const initRegistro = () => {
-    console.log(name);
-    console.log(email);
-    console.log(emailError);
-    console.log(password);
-    console.log(confirm_password);
-    console.log(passwordError);
-    console.log(revelarContraseña);
-    console.log(botonRegistrar);
     validation();
     revelarContraseña.addEventListener('click', (event) => {
         if(password.type === "password") {
@@ -71,7 +63,15 @@ const validation = () => {
                 name: name.value,
                 email: email.value,
                 password: password.value
-            }).then(console.log);
+            }).then(registrado => {
+                console.log(registrado);
+                // if(registrado.success = "true"){
+                //     location.href="./usuarios.html"
+                // }
+                // else{
+                //     console.log(registrado)
+                // }
+            });
             event.preventDefault();
         }
     })
