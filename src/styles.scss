@@ -21,6 +21,7 @@ body {
     @include crud-pruebas($coloresGenerales);
     @include principal($coloresGenerales);
     @include registro-inicio-sesion($coloresGenerales);
+    @include index($coloresGenerales);
      
     nav.menu-horizontal {
         padding: 0.4rem 2rem;

@@ -1,0 +1,13 @@
+@mixin index($coloresGenerales) {
+    &.index {
+        background-repeat: no-repeat;
+        background-size: cover;
+        form{
+            background-color: rgb(255, 255, 255,.8);
+            border-style: dashed;
+            h1{
+                text-align: center;
+            }
+        }
+    }
+}
