@@ -1,4 +1,7 @@
 import { iniciarSesion } from "./crud-provider";
+import { guardarToken } from "../../auxiliar/local-storage";
+
+
 const email = document.getElementsByName('email')[0];
 const emailError = document.querySelector('span.errorEmail');
 const password = document.getElementsByName('password')[0];
@@ -38,20 +41,19 @@ const validation = () => {
 
 
     botonIniciar.addEventListener('click', (event) => {
+        event.preventDefault();
         if (!email.validity.valid || !password.validity.valid) {
             showError();
-            event.preventDefault();
         } else {
             iniciarSesion({
                 email: email.value,
                 password: password.value
             }).then(iniciado => {
-                console.log(iniciado)
                 if (iniciado.success = "true") {
-                    location.href = "../../html/registro-inicio-sesion.html"
+                    location.href = "../../html/principal.html"
+                    guardarToken(iniciado);
                 }
             });
-            event.preventDefault();
         }
     })
 }
