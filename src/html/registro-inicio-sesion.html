@@ -7,7 +7,7 @@
   <title></title>
 </head>
 
-<body class="registro" style="background-image: url('../assets/img/monte_olimpo.jpg')">
+<body class="registro-inicio-sesion" style="background-image: url('../assets/img/monte_olimpo.jpg')">
   <div class="container py-3">
     <div class="row">
       <div class="d-flex justify-content-center align-items-center mt-5">
@@ -28,6 +28,9 @@
                 <input type="text" name="email" class="form-control" placeholder="Email" required
                   pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
                 <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="checkbox" name="revelarContraseña">Revelar contraseñas
+                <br>
+                <span class="errorPassword col-1" aria-live="polite"></span>
                 <button class="btn btn-dark btn-block" type="submit">Iniciar Sesion</button>
               </div>
             </div>
