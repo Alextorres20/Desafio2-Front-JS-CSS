@@ -5,11 +5,33 @@
         './scss/index', './scss/principal', './scss/registro-inicio-sesion';
 
 $coloresGenerales: (
+    //Fondos Boostrap
+    "primary": #0d6efd,
+    "secundary": #6c757d,
+    "success": #198754,
+    "danger": #dc3545,
+    "warning": #ffc107,
+    "info": #0dcaf0,
+    "light": #f8f9fa,
+    "dark": #212529,
+
+    //Colores de Alicia
     "verde": #66e25f,
     "amarillo": #ffc423,
     "rojo": #ea1b59,
     "iconos": #4a403e,
     "iconos-hover": #2d2727,
+);
+
+$colorFondoBotones: (
+    "primary": #0d6efd,
+    "secundary": #6c757d,
+    "success": #198754,
+    "danger": #dc3545,
+    "warning": #ffc107,
+    "info": #0dcaf0,
+    "light": #f8f9fa,
+    "dark": "#212529"
 );
 
 html {
