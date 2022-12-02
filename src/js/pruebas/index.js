@@ -1,8 +1,8 @@
 // Import our custom CSS
-import '../../styles.scss'
+import '../../styles.scss';
 
 // Import all of Bootstrap's JS
-import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'bootstrap';
 
 // Imports JavaScript
 import { initModal } from './modal-crear-pruebas';

@@ -1,6 +1,6 @@
 @mixin modal-crear-pruebas($coloresGenerales) {
     .modal-body {
-        padding: 2rem;
+        padding: 1rem 2rem;
 
         .row {
             label {
@@ -19,7 +19,7 @@
 
                 &.mostrar {
                     label {
-                        padding: .5rem .7rem .5rem 0;
+                        padding: .3rem .7rem .3rem 0;
                     }
 
                     textarea {
@@ -27,7 +27,7 @@
                     }
 
                     div {
-                        margin-top: 1.5rem;
+                        margin-top: 1rem;
                         padding: 0;
                         .info {
                             font-size: .8rem;
