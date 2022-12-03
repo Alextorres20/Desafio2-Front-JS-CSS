@@ -1,7 +1,7 @@
 import { crearUsuario } from "./crud-provider";
 const name = document.getElementsByName('name')[0];
 const email = document.getElementsByName('email')[1];
-const emailError = document.querySelector('span.errorEmail');
+const emailError = document.querySelector('span.errorEmail.Registro');
 const password = document.getElementsByName('password')[1];
 const confirm_password = document.getElementsByName('confirm_password')[0];
 const passwordError = document.querySelector('span.errorPassword.Registro');
