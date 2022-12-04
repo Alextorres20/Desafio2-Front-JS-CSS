@@ -13,7 +13,8 @@
     <nav class="navbar navbar-dark bg-dark menu-horizontal">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./principal.html"><i class="home fa fa-university" aria-hidden="true"></i></a>
+                <a class="nav-link active" aria-current="page" href="./principal.html"><i class="home fa fa-university"
+                        aria-hidden="true"></i></a>
             </li>
         </ul>
     </nav>
@@ -58,7 +59,7 @@
                 </li>
             </ul>
         </nav> -->
-        
+
         <!------------------------ CRUD Pruebas ------------------------>
         <div class="col-10 crud-pruebas">
             <div class="respuesta-creacion"></div>
@@ -96,15 +97,21 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="row">
-                        <label class="col-12 col-sm-3" for="selectTipoPrueba">Tipo</label>
-                        <select class="col-12 col-sm-9 form-select select-tipo-prueba" name="selectTipoPrueba"
+                    <form class="needs-validation formulario-pruebas row" novalidate>
+                        <label class="col-12 col-sm-3" for="tipo">Tipo</label>
+                        <select class="col-12 col-sm-9 form-select select-tipo-prueba" name="tipo"
                             aria-label="selectTipoPrueba">
                             <option value="puntual" selected>Prueba puntual</option>
                             <option value="respuesta-libre">Prueba respuesta libre</option>
                         </select>
-                    </div>
-                    <div class="opciones-prueba colapsar mostrar"></div>
+
+                        <div class="opciones-prueba colapsar mostrar"></div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 
 const guardarToken = (usuario) => window.localStorage.setItem('token', usuario.data.token);
 
-const recuperarToken = (usuario) => {};
+const recuperarToken = () => localStorage.getItem('token');
 
 export {
     guardarToken,

@@ -1,12 +1,14 @@
-const generarPruebaHtml = (prueba, tipo) => {
-    const html = `<td class="${[tipo]}" scope="col">${[tipo]}</td>
-                <td scope="col">${[prueba.nombre_dios]}</td>
-                <td scope="col">${[prueba.pregunta_descripcion]}</td>
-                <td scope="col">${[prueba.cantidad_destino]}</td>
-                <td scope="col" colspan="2">${[prueba.fecha_creacion]}</td>
-                <td scope="col"><span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                </td>`;
+const generarPruebaHtml = (prueba) => {
+    const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
+    const html = `<td class="${[prueba.tipo]}" scope="col">${[tipo]}</td>
+                  <td scope="col">${[prueba.nombreDios]}</td>
+                  <td scope="col">${[prueba.preguntaDescripcion]}</td>
+                  <td scope="col">${[prueba.cantidadDestino]}</td>
+                  <td scope="col" colspan="2">${[prueba.fechaCreacion]}</td>
+                  <td scope="col">
+                    <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                    <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                  </td>`;
 
     const tr = document.createElement('tr');
     tr.innerHTML = html;

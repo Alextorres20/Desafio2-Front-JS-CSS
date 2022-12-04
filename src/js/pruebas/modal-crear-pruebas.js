@@ -1,4 +1,4 @@
-import { initValidacion } from "../auxiliar/validacion";
+import { initValidarInputs } from "../auxiliar/validacion";
 import { Modal } from 'bootstrap'
 
 
@@ -8,34 +8,32 @@ const modal = document.querySelector('.modal'),
     contenedoresError = document.querySelectorAll('.error'),
     listaValidar = document.querySelectorAll('.validar');
 
-
 const initModal = () => {
     modal.addEventListener('show.bs.modal', function () {
         resetModal();
         selectTipo.selectedIndex = 0;
-        generarPuntualHTML(generarFormularioHTML());
-        initValidacion();
+        generarPuntualHTML();
+        initValidarInputs();
     });
 
     selectTipo.addEventListener('change', (e) => {
         resetModal();
-        const formulario = generarFormularioHTML();
         const tipoPrueba = e.target.value;
 
         switch (tipoPrueba) {
             case 'puntual':
-                generarPuntualHTML(formulario);
+                generarPuntualHTML();
                 break;
             case 'respuesta-libre':
-                generarRespuestaLibreHTML(formulario);
+                generarRespuestaLibreHTML();
                 break;
         }
-        initValidacion();
+        initValidarInputs();
     });
 }
 
 
-const generarPuntualHTML = (formulario) => {
+const generarPuntualHTML = () => {
     const html = `<div class="prueba puntual">
                     <div class="descripcion">
                         <div class="row">
@@ -76,10 +74,11 @@ const generarPuntualHTML = (formulario) => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    formulario.insertBefore(div.firstElementChild, formulario.lastElementChild);
+    contenedorFormulario.append(div.firstElementChild);
 }
 
-const generarRespuestaLibreHTML = (formulario) => {
+
+const generarRespuestaLibreHTML = () => {
     const html = `<div class="prueba respuesta-libre">
                     <div class="pregunta">
                         <div class="row">
@@ -117,23 +116,7 @@ const generarRespuestaLibreHTML = (formulario) => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    formulario.insertBefore(div.firstElementChild, formulario.firstElementChild);
-}
-
-
-const generarFormularioHTML = () => {
-    const html = `<form class="needs-validation formulario-pruebas" novalidate>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
-                    </div>
-                </form>`;
-
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    const formulario = div.firstElementChild;
-    contenedorFormulario.append(formulario);
-    return formulario;
+    contenedorFormulario.append(div.firstElementChild);
 }
 
 
@@ -157,6 +140,7 @@ const resetModal = () => {
     const elementos = document.querySelector('.opciones-prueba').querySelectorAll('textarea, input, select');
     elementos.forEach(e => (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '');
 }
+
 
 export {
     initModal,

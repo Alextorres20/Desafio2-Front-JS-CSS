@@ -1,15 +1,33 @@
 import { crearPrueba } from '../pruebas/peticiones-pruebas';
 import { cerrarModal } from '../pruebas/modal-crear-pruebas';
 import { generarPruebaHtml, mostrarRespuestaCreacion } from '../pruebas/crud_pruebas';
+import { recuperarToken } from './local-storage';
+import { listaPruebas } from '../pruebas/index';
 
 
-const initValidacion = () => {
-    valdiarFormularioPruebas();
-}
-
-const valdiarFormularioPruebas = () => {
-    const listaInputs = document.querySelectorAll('.validar');
+const initvalidarFormularioPruebas = () => {
     const formularioPruebas = document.querySelector('.formulario-pruebas');
+
+    formularioPruebas.addEventListener('submit', async (event) => {
+        event.stopImmediatePropagation(); //Para que no salte 2 veces
+        event.preventDefault();
+
+        if (formularioPruebas.checkValidity()) {
+            const datos = new FormData(formularioPruebas);
+            const prueba = Object.fromEntries(datos);
+            const respuesta = await crearPrueba(prueba, recuperarToken());
+            if (respuesta.estado == 'ok') listaPruebas.nuevaPrueba(respuesta.respuesta);
+            cerrarModal();
+            mostrarRespuestaCreacion(respuesta);
+            generarPruebaHtml(respuesta.respuesta);
+        }
+        formularioPruebas.classList.add('was-validated');
+    })
+};
+
+
+const initValidarInputs = () => {
+    const listaInputs = document.querySelectorAll('.validar');
 
     listaInputs.forEach(input => {
         input.addEventListener('input', () => {
@@ -21,35 +39,7 @@ const valdiarFormularioPruebas = () => {
             }
         });
     });
-
-    formularioPruebas.addEventListener('submit', async (event) => {
-        event.stopImmediatePropagation(); //Para que no salte 2 veces
-        event.preventDefault();
-
-        listaInputs.forEach(input => {
-            if (!input.validity.valid) {
-                input.classList.add("is-invalid");
-                input.classList.remove('is-valid');
-                mostrarError(input, input.parentElement.nextElementSibling);
-            } else {
-                input.classList.add('is-valid');
-                input.classList.remove('is-invalid');
-            }
-        });
-
-        if (formularioPruebas.checkValidity()) {
-            const selectTipoPrueba = document.querySelector('.select-tipo-prueba');
-            const tipo = selectTipoPrueba.options[selectTipoPrueba.selectedIndex].value;
-            const datos = new FormData(formularioPruebas);
-            datos.append('tipo', tipo);
-            const prueba = Object.fromEntries(datos);
-            const respuesta = await crearPrueba(prueba);
-            cerrarModal();
-            mostrarRespuestaCreacion(respuesta);
-            generarPruebaHtml(respuesta.respuesta, tipo);
-        }
-    });
-}
+};
 
 
 const mostrarError = (input, contenedor) => {
@@ -65,5 +55,6 @@ const mostrarError = (input, contenedor) => {
 } 
 
 export {
-    initValidacion
+    initvalidarFormularioPruebas,
+    initValidarInputs
 }
