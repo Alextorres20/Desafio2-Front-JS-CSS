@@ -1,18 +1,28 @@
+import { getPruebas } from "./peticiones-pruebas";
+import { token } from "../..";
+
+const initListaPruebas = async() => {
+    const pruebas = await getPruebas(token);
+    pruebas.map(generarPruebaHtml);
+}
+
 const generarPruebaHtml = (prueba) => {
     const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
-    const html = `<td class="${[prueba.tipo]}" scope="col">${[tipo]}</td>
-                  <td scope="col">${[prueba.nombreDios]}</td>
-                  <td scope="col">${[prueba.preguntaDescripcion]}</td>
-                  <td scope="col">${[prueba.cantidadDestino]}</td>
-                  <td scope="col" colspan="2">${[prueba.fechaCreacion]}</td>
-                  <td scope="col">
-                    <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                    <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                  </td>`;
+    const html = `<div class="row">
+                    <div class="col-1 ${[prueba.tipo]}">${[tipo]}</div>
+                    <div class="col-1">${[prueba.nombreDios]}</div>
+                    <div class="col-6">${[prueba.preguntaDescripcion]}</div>
+                    <div class="col-1">${[prueba.cantidadDestino]}</div>
+                    <div class="col-2">${[prueba.fechaCreacion]}</div>
+                    <div class="col-1">
+                        <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                        <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                    </div>
+                </div>`;
 
-    const tr = document.createElement('tr');
-    tr.innerHTML = html;
-    document.querySelector('.tabla-pruebas tbody').append(tr);
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    document.querySelector('.tabla-pruebas .contenido').append(div.firstElementChild);
 }
 
 
@@ -29,6 +39,7 @@ const mostrarRespuestaCreacion = (respuesta) => {
 
 
 export {
+    initListaPruebas,
     generarPruebaHtml,
     mostrarRespuestaCreacion
 }

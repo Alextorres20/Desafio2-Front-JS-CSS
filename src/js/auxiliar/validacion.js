@@ -1,8 +1,8 @@
 import { crearPrueba } from '../pruebas/peticiones-pruebas';
 import { cerrarModal } from '../pruebas/modal-crear-pruebas';
 import { generarPruebaHtml, mostrarRespuestaCreacion } from '../pruebas/crud_pruebas';
-import { recuperarToken } from './local-storage';
-import { listaPruebas } from '../pruebas/index';
+import { token } from '../..';/* 
+import { listaPruebas } from '../pruebas/index'; */
 
 
 const initvalidarFormularioPruebas = () => {
@@ -15,8 +15,8 @@ const initvalidarFormularioPruebas = () => {
         if (formularioPruebas.checkValidity()) {
             const datos = new FormData(formularioPruebas);
             const prueba = Object.fromEntries(datos);
-            const respuesta = await crearPrueba(prueba, recuperarToken());
-            if (respuesta.estado == 'ok') listaPruebas.nuevaPrueba(respuesta.respuesta);
+            const respuesta = await crearPrueba(prueba, token);/* 
+            if (respuesta.estado == 'ok') listaPruebas.nuevaPrueba(respuesta.respuesta); */
             cerrarModal();
             mostrarRespuestaCreacion(respuesta);
             generarPruebaHtml(respuesta.respuesta);

@@ -61,27 +61,25 @@
         </nav> -->
 
         <!------------------------ CRUD Pruebas ------------------------>
-        <div class="col-10 crud-pruebas">
+        <div class="col-12 crud-pruebas">
             <div class="respuesta-creacion"></div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 Crear prueba
             </button>
             <div class="contenedor-pruebas">
-                <table class="table tabla-pruebas">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Creador</th>
-                            <th scope="col">Pregunta/Descripción</th>
-                            <th scope="col">Destino</th>
-                            <th scope="col" colspan="2">Fecha de creación</th>
-                            <th scope="col">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="tabla-pruebas ">
+                    <div class="cabecera row">
+                        <div class="col-1">Tipo</div>
+                        <div class="col-1">Creador</div>
+                        <div class="col-6">Pregunta/Descripción</div>
+                        <div class="col-1">Destino</div>
+                        <div class="col-2">Fecha de creación</div>
+                        <div class="col-1">Opciones</div>
+                    </div>
+                    <div class="contenido">
 
-                    </tbody>
+                    </div>
                 </table>
             </div>
         </div>

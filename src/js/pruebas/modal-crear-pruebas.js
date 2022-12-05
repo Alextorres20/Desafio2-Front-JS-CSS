@@ -6,7 +6,8 @@ const modal = document.querySelector('.modal'),
     selectTipo = document.querySelector('.select-tipo-prueba'),
     contenedorFormulario = document.querySelector('.opciones-prueba'),
     contenedoresError = document.querySelectorAll('.error'),
-    listaValidar = document.querySelectorAll('.validar');
+    listaValidar = document.querySelectorAll('.validar'),
+    formulario = document.querySelector('.formulario-pruebas');
 
 const initModal = () => {
     modal.addEventListener('show.bs.modal', function () {
@@ -121,8 +122,8 @@ const generarRespuestaLibreHTML = () => {
 
 
 const cerrarModal = () => {
-    /* let myModal = new Modal(modal);
-    myModal.hide(); */
+    let myModal = new Modal(modal);
+    myModal.hide();
     const elementos = [modal, document.querySelector('.modal-backdrop')];
     elementos.forEach(e => {
         e.style.display = 'none'
@@ -133,6 +134,7 @@ const cerrarModal = () => {
 
 
 const resetModal = () => {
+    formulario.classList.remove('was-validated');
     contenedorFormulario.innerHTML = '';
     listaValidar.forEach(e => e.classList.remove('is-valid', 'is-invalid'));
     contenedoresError.forEach(e => e.innerHTML = '');

@@ -6,17 +6,20 @@ import * as bootstrap from 'bootstrap';
 
 // Imports JavaScript
 import { initModal } from './modal-crear-pruebas';
-import { ListaPruebas } from './clases/lista-pruebas.class';
+/* import { ListaPruebas } from './clases/lista-pruebas.class'; */
 import { generarPruebaHtml } from './crud_pruebas';
 import { initvalidarFormularioPruebas } from '../auxiliar/validacion'; 
+import { initListaPruebas } from './crud_pruebas';
+
 /* 
 localStorage.clear();
 console.log(localStorage) */
 
-export const listaPruebas = new ListaPruebas();
-listaPruebas.pruebas.forEach(generarPruebaHtml);
+/* export const listaPruebas = new ListaPruebas();
+listaPruebas.pruebas.forEach(generarPruebaHtml); */
 
 initModal();
+initListaPruebas();
 initvalidarFormularioPruebas();
 
 
