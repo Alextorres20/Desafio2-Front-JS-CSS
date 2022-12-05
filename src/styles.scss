@@ -3,7 +3,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
         './scss/index', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
-        './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano';
+        './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/humanos/modal-caracteristicas-dios';
 
 $coloresGenerales: (
     "verde": #66e25f,
@@ -27,7 +27,7 @@ body {
     @include crud-humanos($coloresGenerales);
     @include modal-crear-humano($coloresGenerales);
     @include modal-matar-humano($coloresGenerales);
-     
+    @include modal-caracteristicas-dios($coloresGenerales);
     nav.menu-horizontal {
         padding: 0.4rem 2rem;
 
