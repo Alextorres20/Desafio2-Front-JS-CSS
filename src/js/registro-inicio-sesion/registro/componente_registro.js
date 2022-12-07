@@ -60,13 +60,11 @@ const validation = () => {
                 email: email.value,
                 password: password.value
             }).then(registrado => {
-                console.log(registrado);
-                // if(registrado.success = "true"){
-                //     location.href="./usuarios.html"
-                // }
-                // else{
-                //     console.log(registrado)
-                // }
+                if(registrado.mens.success == true){
+                    location.href = "../../html/principal.html"
+                    guardarToken(registrado);
+                }
+                
             });
             event.preventDefault();
         }

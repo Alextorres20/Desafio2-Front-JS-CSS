@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Humanos</title>
+</head>
+<body class="humanos">
+    
+    <!----------------------- Menú horizontal ---------------------->
+    <nav class="navbar navbar-dark bg-dark menu-horizontal">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./principal.html"><i class="home fa fa-university" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!------------------------ CRUD Humanos ------------------------>
+    <div class="col-10 crud-humanos">
+        <div class="respuesta-creacion"></div>
+        <div class="botones opcionales">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Crear Humanos
+            </button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalMatar">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Matar humanos
+            </button>
+        </div>
+        
+        <div class="contenedor-humanos">
+            <table class="table tabla-humanos">
+                <thead>
+                    <tr>
+                        <th scope="col">ID de usuario</th>
+                        <th scope="col">Caracteristicas</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Donde murio</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+     <!--------------- Modal Caracteristicas Humano ------------------------>
+    <div class="Caracteristicas_DiosesProtegidos">
+        <!-- <div class="modal fade" id="modalCaracteristicas" tabindex="-1" aria-labelledby="modalCaracteristicasHumano" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Caracteristicas y Dios que esta siendo protegido</h1>
+                        <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Caracteristicas</h5>
+                        
+                            </div>
+                            <div class="col-6">
+                                <h5>Dios protegido</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+   
+    
+
+    
+    <!--------------- Modal crear Humanos ------------------------>
+    <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearHumanos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Creacion de usuarios</h1>
+                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5>Inserta una cantidad de usuarios que desea crear</h5>
+                    
+                        </div>
+                    
+                        <div class="col-12">
+                            <input id="cantidadCrear" type="number" min="1" max="100" required
+                            pattern="^[0-9]+" title="Por favor inserta un numero">
+                            <button type="submit" class="btn btn-primary" id="crearHumanos">Crear Humanos</button>
+                        </div>
+                        <div class="col-12">
+                            <div class="mensajeCantidad tipo"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!--------------- Modal Matar Humanos ------------------------>
+    <div class="modal fade" id="modalMatar" tabindex="-1" aria-labelledby="modalMatarHumanos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Forma de matar a humanos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="col-12 col-sm-3" for="selectTipoMatar">Tipo</label>
+                        <select class="col-12 col-sm-9 form-select select-tipo-matar" name="selectTipoMatar"
+                            aria-label="selectTipoMatar">
+                            <option value="ninguno" selected>Selecciona una opción:</option>
+                            <option value="uno">Un solo humano</option>
+                            <option value="varios">Aleatorio</option>
+                        </select>
+                    </div>
+                    <div class="opciones-matar colapsar mostrar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

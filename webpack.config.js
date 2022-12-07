@@ -17,6 +17,10 @@ const filesHTML = [
     {   
         filename: './html/registro-inicio-sesion.html',
         chunks: ['registroInicio']
+    },
+    {   
+        filename: './html/humanos.html',
+        chunks: ['humanos']
     }
 ]
 
@@ -70,7 +74,8 @@ module.exports = {
     entry: {
         index: './src/index.js',
         pruebas: './src/js/pruebas/index.js',
-        registroInicio: './src/js/registro-inicio-sesion/index.js'
+        registroInicio: './src/js/registro-inicio-sesion/index.js',
+        humanos: './src/js/humanos/index.js'
     },
     plugins: [
         new MiniCssExtractPlugin({

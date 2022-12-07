@@ -50,7 +50,8 @@ const validation = () => {
                 email: email.value,
                 password: password.value
             }).then(iniciado => {
-                if (iniciado.success = "true") {
+                console.log(iniciado);
+                if (iniciado.success == true) {
                     location.href = "../../html/principal.html"
                     guardarToken(iniciado);
                 } else{

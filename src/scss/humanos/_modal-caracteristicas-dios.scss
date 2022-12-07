@@ -1,0 +1,23 @@
+@mixin modal-caracteristicas-dios($coloresGenerales) {
+    .modal-body {
+        padding: 2rem;
+
+        .row {
+            label {
+                white-space: nowrap;
+                padding: .5rem .7rem .5rem 0;
+            }
+        }
+
+        &.Caracteristicas_Dios {
+            border-top: solid 1px var(--bs-border-color);
+            margin-top: 2rem;
+
+            .Dios{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

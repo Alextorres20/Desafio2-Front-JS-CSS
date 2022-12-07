@@ -1,0 +1,47 @@
+@mixin modal-crear-humano($coloresGenerales) {
+    .modal-body {
+        padding: 2rem;
+
+        .row {
+            label {
+                white-space: nowrap;
+                padding: .5rem .7rem .5rem 0;
+            }
+        }
+
+        .opciones-crear {
+            border-top: solid 1px var(--bs-border-color);
+            margin-top: 2rem;
+
+            &.colapsar {
+                overflow: hidden;
+                transition: height 0.3s ease;
+
+                &.mostrar {
+                    label {
+                        padding: .5rem .7rem .5rem 0;
+                    }
+
+                    textarea {
+                        width: 100%;
+                    }
+
+                    div {
+                        margin-top: 1.5rem;
+                        padding: 0;
+                        .info {
+                            font-size: .8rem;
+                        }
+                    }
+
+                    .error {
+                        color: map.get($coloresGenerales, "rojo");
+                        text-align: end;
+                        margin-top: .5rem;
+                        font-size: .9rem;
+                    }
+                }
+            }
+        }
+    }
+}
