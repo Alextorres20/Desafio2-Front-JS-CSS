@@ -1,6 +1,8 @@
 const urlPruebas = 'http://127.0.0.1:8000/api/pruebas/';
 
-const crearPrueba = async(prueba, token) => {
+import { token } from "../..";
+
+const crearPrueba = async(prueba) => {
     const resp = await fetch(urlPruebas, {
         method: 'POST',
         body: JSON.stringify(prueba),
@@ -14,7 +16,7 @@ const crearPrueba = async(prueba, token) => {
 }
 
 
-const getPruebas = async(token) => {
+const getPruebas = async() => {
     try {
         const data = await fetch(urlPruebas, {
             headers: {
@@ -30,7 +32,21 @@ const getPruebas = async(token) => {
 }
 
 
+const eliminarPrueba = async(id) => {
+    const resp = await fetch(urlPruebas + id, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    });
+    
+    return await resp.json();
+}
+
+
 export {
+    eliminarPrueba,
     crearPrueba,
     getPruebas
 }

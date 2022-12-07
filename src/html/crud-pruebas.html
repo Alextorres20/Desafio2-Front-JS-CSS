@@ -8,7 +8,7 @@
     <title></title>
 </head>
 
-<body class="crud-pruebas" style="background-image: url('../assets/img/monte_olimpo.jpg')">
+<body class="pruebas" style="background-image: url('../assets/img/monte_olimpo.jpg')">
     <!----------------------- Menú horizontal ---------------------->
     <nav class="navbar navbar-dark bg-dark menu-horizontal">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -62,7 +62,7 @@
 
         <!------------------------ CRUD Pruebas ------------------------>
         <div class="col-12 crud-pruebas">
-            <div class="respuesta-creacion"></div>
+            <div class="mensaje-respuesta"></div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 Crear prueba
@@ -114,6 +114,27 @@
             </div>
         </div>
     </div>
+
+    <!-------------------- Modal confirmar borrar -------------------->
+    <div class="modal" id="modalConfirmarBorrar" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Eliminar prueba</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-4 pb-4">
+                <p class="mb-2">¿Seguro que quieres eliminar la prueba?</p>
+                <p class="mb-0 subtexto">¡Esta acción no se puede deshacer!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="cancelar btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="borrar btn btn-primary" data-bs-dismiss="modal">Eliminar prueba</button>
+              </div>
+          </div>
+        </div>
+      </div>
+      
 </body>
 
 </html>

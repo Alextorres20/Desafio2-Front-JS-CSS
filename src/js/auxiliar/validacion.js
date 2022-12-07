@@ -1,6 +1,6 @@
 import { crearPrueba } from '../pruebas/peticiones-pruebas';
 import { cerrarModal } from '../pruebas/modal-crear-pruebas';
-import { generarPruebaHtml, mostrarRespuestaCreacion } from '../pruebas/crud_pruebas';
+import { generarPruebaHtml, mostrarMensajesRespuesta } from '../pruebas/crud_pruebas';
 import { token } from '../..';/* 
 import { listaPruebas } from '../pruebas/index'; */
 
@@ -15,10 +15,9 @@ const initvalidarFormularioPruebas = () => {
         if (formularioPruebas.checkValidity()) {
             const datos = new FormData(formularioPruebas);
             const prueba = Object.fromEntries(datos);
-            const respuesta = await crearPrueba(prueba, token);/* 
-            if (respuesta.estado == 'ok') listaPruebas.nuevaPrueba(respuesta.respuesta); */
+            const respuesta = await crearPrueba(prueba, token);
             cerrarModal();
-            mostrarRespuestaCreacion(respuesta);
+            mostrarMensajesRespuesta(respuesta, 'creado');
             generarPruebaHtml(respuesta.respuesta);
         }
         formularioPruebas.classList.add('was-validated');

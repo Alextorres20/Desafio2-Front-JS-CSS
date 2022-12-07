@@ -2,7 +2,7 @@ import { initValidarInputs } from "../auxiliar/validacion";
 import { Modal } from 'bootstrap'
 
 
-const modal = document.querySelector('.modal'),
+const modal = document.querySelector('#modalPruebas'),
     selectTipo = document.querySelector('.select-tipo-prueba'),
     contenedorFormulario = document.querySelector('.opciones-prueba'),
     contenedoresError = document.querySelectorAll('.error'),

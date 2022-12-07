@@ -1,5 +1,5 @@
 @mixin crud-pruebas($coloresGenerales) {
-    &.crud-pruebas {
+    &.pruebas {
         background-color: rgba(0, 0, 0, .1);
 
         .row {
@@ -33,10 +33,11 @@
                 }
             }
 
-            .respuesta-creacion {
+            .mensaje-respuesta {
                 float: left;
                 padding: .5rem 1.5rem;
                 margin-bottom: 0;
+                transition: all .5s;
             }
 
 
@@ -97,6 +98,27 @@
                             }   
                         }                  
                     }
+                }
+            }
+        }
+
+        #modalConfirmarBorrar {
+            .subtexto {
+                font-size: .9rem;
+            }
+
+            .btn-light {
+                border: 1px solid map.get($coloresGenerales, "iconos");
+            }
+            .btn-primary {
+                background-color: map.get($coloresGenerales, "iconos");
+                border-color: map.get($coloresGenerales, "iconos");
+                color: map.get($coloresGenerales, "letra-clara");
+                transition: all .3s;
+
+                &:hover {
+                    background-color: map.get($coloresGenerales, "iconos-hover");
+                    border-color: map.get($coloresGenerales, "iconos-hover");
                 }
             }
         }
