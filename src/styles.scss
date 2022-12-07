@@ -3,7 +3,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
         './scss/index', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
-        './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/humanos/modal-caracteristicas-dios';
+        './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/asignar-pruebas',
+        './scss/humanos/modal-caracteristicas-dios';
 
 $coloresGenerales: (
     //Fondos Boostrap
@@ -17,7 +18,7 @@ $coloresGenerales: (
     "dark": #212529,
 
     //Colores de Alicia
-    "letra-clara" : #ffffff,
+    "letra-clara": #ffffff,
     "verde": #66e25f,
     "amarillo": #ffc423,
     "rojo": #ea1b59,
@@ -41,16 +42,17 @@ html {
 }
 
 body {
+    @include index($coloresGenerales);
     @include modal-crear-pruebas($coloresGenerales);
     @include crud-pruebas($coloresGenerales);
     @include principal($coloresGenerales);
-    @include index($coloresGenerales);
+    @include asignar-pruebas($coloresGenerales);
     @include registro-inicio-sesion($coloresGenerales);
-    @include index($coloresGenerales);
     @include crud-humanos($coloresGenerales);
     @include modal-crear-humano($coloresGenerales);
     @include modal-matar-humano($coloresGenerales);
     @include modal-caracteristicas-dios($coloresGenerales);
+
     nav.menu-horizontal {
         padding: 0.4rem 2rem;
 

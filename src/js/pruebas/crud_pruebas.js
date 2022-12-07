@@ -3,7 +3,8 @@ import { token } from "../..";
 
 const modal = document.querySelector('#modalConfirmarBorrar'),
     btnBorrarPrueba = document.querySelector('#modalConfirmarBorrar .borrar'),
-    btnCancelarBorrar = document.querySelector('#modalConfirmarBorrar .cancelar');
+    btnCancelarBorrar = document.querySelector('#modalConfirmarBorrar .cancelar'),
+    btnAsignarPrueba = document.querySelector('.btn.asignar');
 
 
 const initListaPruebas = async() => {
@@ -57,6 +58,11 @@ btnBorrarPrueba.addEventListener('click', async() => {
 
 btnCancelarBorrar.addEventListener('click', () => {
     document.querySelector('.objetivo').classList.remove('objetivo');
+});
+
+
+btnAsignarPrueba.addEventListener('click', () => {
+    location.href = "./asignar-pruebas.html";
 });
 
 
