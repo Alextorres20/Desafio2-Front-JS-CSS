@@ -20,15 +20,19 @@
 
     <!------------------------ CRUD Humanos ------------------------>
     <div class="col-10 crud-humanos">
-        <div class="respuesta-creacion"></div>
+        <div class="respuesta-mensaje"></div>
         <div class="botones opcionales">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 Crear Humanos
             </button>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalMatar">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                Matar humanos
+            <button type="button" class="btn btn-warning matarHumano" data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                Matar humanos Seleccionados
+            </button>
+            <button type="button" class="btn btn-warning matarAleatorio">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                Matar humanos Aleatorio
             </button>
         </div>
         
@@ -40,6 +44,7 @@
                         <th scope="col">Caracteristicas</th>
                         <th scope="col">Destino</th>
                         <th scope="col">Donde murio</th>
+                        <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +97,6 @@
                     <div class="row">
                         <div class="col-12">
                             <h5>Inserta una cantidad de usuarios que desea crear</h5>
-                    
                         </div>
                     
                         <div class="col-12">
@@ -111,25 +115,26 @@
     
 
     <!--------------- Modal Matar Humanos ------------------------>
-    <div class="modal fade" id="modalMatar" tabindex="-1" aria-labelledby="modalMatarHumanos" aria-hidden="true">
+    <div class="modal fade" id="modalMatarHumano" tabindex="-1" aria-labelledby="modalMatarHumanos" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Forma de matar a humanos</h1>
+                    <h1 class="modal-title fs-5">Matar humanos seleccionados</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
+                    
                     <div class="row">
-                        <label class="col-12 col-sm-3" for="selectTipoMatar">Tipo</label>
-                        <select class="col-12 col-sm-9 form-select select-tipo-matar" name="selectTipoMatar"
-                            aria-label="selectTipoMatar">
-                            <option value="ninguno" selected>Selecciona una opción:</option>
-                            <option value="uno">Un solo humano</option>
-                            <option value="varios">Aleatorio</option>
-                        </select>
+                        <div class="col-12">
+                            <p>¿Estas seguro que quieres hacerlo?</p>
+                            <button class="btn btn-danger" id="confirmarMatarHumanos">Estoy seguro</button>
+                        </div>
+
                     </div>
-                    <div class="opciones-matar colapsar mostrar"></div>
+                    <div class="col-12">
+                        <div class="mensajeMatar tipo"></div>
+                    </div>
                 </div>
             </div>
         </div>
