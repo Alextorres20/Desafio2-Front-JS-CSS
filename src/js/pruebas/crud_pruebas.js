@@ -1,4 +1,4 @@
-import { getPruebas, eliminarPrueba } from "./peticiones-pruebas";
+import { obtenerPruebas, eliminarPrueba } from "./peticiones-pruebas";
 import { token } from "../..";
 
 const modal = document.querySelector('#modalConfirmarBorrar'),
@@ -8,7 +8,7 @@ const modal = document.querySelector('#modalConfirmarBorrar'),
 
 
 const initListaPruebas = async() => {
-    const pruebas = await getPruebas(token);
+    const pruebas = await obtenerPruebas(token);
     pruebas.map(generarPruebaHtml);
 }
 

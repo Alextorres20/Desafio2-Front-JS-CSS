@@ -72,9 +72,7 @@ const obtenerHumanosDios = async() => {
             headers: {'Authorization': 'Bearer ' + token }
         });
         if (!data.ok) throw Error('Error');
-        const respuesta =  await data.json();
-        console.log(respuesta);
-        return respuesta;
+        return await data.json();
     } catch (err) {
         throw Error('No se han encontrado resultados');
     }

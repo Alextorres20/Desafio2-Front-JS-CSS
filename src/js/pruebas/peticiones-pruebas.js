@@ -16,7 +16,7 @@ const crearPrueba = async(prueba) => {
 }
 
 
-const getPruebas = async() => {
+const obtenerPruebas = async() => {
     try {
         const data = await fetch(urlPruebas, {
             headers: {
@@ -48,5 +48,5 @@ const eliminarPrueba = async(id) => {
 export {
     eliminarPrueba,
     crearPrueba,
-    getPruebas
+    obtenerPruebas
 }

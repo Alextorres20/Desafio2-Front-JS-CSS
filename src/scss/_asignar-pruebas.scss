@@ -39,7 +39,7 @@
 
                 .card-body {
                     color: map.get($coloresGenerales, "iconos");
-                    overflow: scroll;
+                    overflow-y: scroll;
                     height: 80vh;
                     
                     .humano {
