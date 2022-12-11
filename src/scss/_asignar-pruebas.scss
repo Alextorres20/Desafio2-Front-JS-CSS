@@ -108,6 +108,15 @@
                             padding-top: .5rem;
                             border-top: 2px solid map.get($coloresGenerales, "iconos");
                         }
+
+                        .tipo {
+                            border-radius: 6px;
+                            width: fit-content;
+                        }
+
+                        .tipo, .fecha {
+                            font-size: .85rem;
+                        }
                     }
                 }
             }
