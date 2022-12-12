@@ -1,28 +1,49 @@
 import * as server from './http-proveedores';
-
-import { matarHumano } from './modal-matar-humano';
+import { eliminarUnaColumna, mostrarMensajeMatar } from './matar-humanos';
 
 const botonCrearHumanos = document.getElementById('crearHumanos');
-const botonMatarHumanos = document.getElementById('matarHumanos');
 
 const contenedorMensajeCrear = document.querySelector('.mensajeCantidad.tipo'); 
 const cantidadCrear = document.getElementById('cantidadCrear');
 
-export const initModal = () => {
-    mostrarHumanos();
+const mensajeModal = document.querySelector('.mensajeMatar');
 
-    // console.log(botonMatarHumanos);
+const initModal = () => {
+    mostrarHumanos();
+    desaparecerMensaje();
 }
 
 const mostrarHumanos = () => {
     server.mostrarUsuariosVivos().then(humanos => {
-        console.log(humanos);
         humanos.forEach(humano => {
             generarHumanoHTML(humano);
             server.mostrarCaracteristicas_Dios(humano.id_usuario).then(caracteristicas_Dios => {
                 generarCaracteristicasHTML(humano.id_usuario, caracteristicas_Dios)
             });
         });
+        const iconos_basura = document.querySelectorAll('i.fa.fa-trash.eliminarHumano');
+        const matarUnHumano_basura = (iconos_basura) => {
+            iconos_basura.forEach( icono_basura => {
+                const humano_ID = icono_basura.parentNode.parentNode.getAttribute("data-id");
+                icono_basura.addEventListener("click", (event) => {
+                    server.matarUnHumano({
+                        id_usuario: humano_ID
+                    }).then( humanosMuertos => {
+                        
+                        eliminarUnaColumna(humano_ID);
+                        mensajeModal.classList.add('ok')
+                        const datos = humanosMuertos;
+                        mostrarMensajeMatar(datos, mensajeModal);
+                    });
+                });
+                
+            });
+        }
+        matarUnHumano_basura(iconos_basura);
+
+        
+
+        
     });
 }        
     botonCrearHumanos.addEventListener('click', (event) => {
@@ -31,7 +52,6 @@ const mostrarHumanos = () => {
             mostrarMensaje()
         }
         else{
-            console.log(cantidadCrear.value);
             server.crearHumanos({
                 cantidad: cantidadCrear.value
             }).then(humanosCreados => {
@@ -52,13 +72,16 @@ const mostrarHumanos = () => {
 
 
 const generarHumanoHTML = (humano) => {
-    const html = `<td class="${[humano.id_usuario]}" scope="col">${[humano.id_usuario]}</td>
-                <td scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" 
-                data-bs-target="#modalCaracteristicas_${[humano.id_usuario]}">Sus Caracteristicas</button></td>
-                <td scope="col">${[humano.destino]}</td>
-                <td scope="col">${[humano.donde_murio]}</td>`;
+                
+    const html = `<td class="Identificador ${[humano.id_usuario]}" scope="col">${[humano.id_usuario]}</td>
+                    <td scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" 
+                    data-bs-target="#modalCaracteristicas_${[humano.id_usuario]}">Sus Caracteristicas</button></td>
+                    <td scope="col">${[humano.destino]}</td>
+                    <td class="${[humano.donde_murio]}" scope="col">${[humano.donde_murio]}</td>
+                    <td scope="col"><i class="fa fa-trash eliminarHumano" aria-hidden="true"></i><input class="checkboxes" type="checkbox"></td>`;
 
     const tr = document.createElement('tr');
+    tr.setAttribute('data-id', humano.id_usuario)
     tr.innerHTML = html;
     document.querySelector('.tabla-humanos tbody').append(tr);
 }
@@ -108,4 +131,22 @@ const mostrarMensaje = () => {
         contenedorMensajeCrear.innerHTML = 'Has creado ' + cantidadCrear.value + ' humanos';
         contenedorMensajeCrear.classList.add('alert', 'alert-success');
     }
+}
+
+const desaparecerMensaje = () => {
+    const botonesCerrar = document.querySelectorAll('.btn-close');
+    botonesCerrar.forEach(botonCerrar => {
+        botonCerrar.addEventListener("click", (event) => {
+            if(mensajeModal.hasChildNodes|| contenedorMensajeCrear.hasChildNodes){
+                mensajeModal.className = 'mensajeMatar tipo';
+                mensajeModal.innerHTML = ""
+                contenedorMensajeCrear.className = 'mensajeCantidad tipo';
+                contenedorMensajeCrear.innerHTML = "";
+            }
+        })
+    });
+}
+
+export{
+    initModal
 }
