@@ -1,31 +1,38 @@
 import '../styles.scss';
-import { obtenerHumanosDios, mostrarCaracteristicasHumano } from './humanos/http-proveedores';
+import { obtenerHumanosDios, obtenerHumanosPrueba, mostrarCaracteristicasHumano } from './humanos/http-proveedores';
 import { obtenerPruebas, asignarPruebaHumano } from './pruebas/peticiones-pruebas';
 
 
-const initAsignarPruebas = async() => {
-    await Promise.all([cargarHumanos(), cargarPruebas()])
-    agregarDraggable();
-    agregarEventosDrop();
+const contenedorHumanos = document.querySelector('.contenedor.humanos .card-body'),
+    contenedorPruebas = document.querySelector('.contenedor.pruebas .card-body');
 
-    /* obtenerHumanosDios().then(humanos => humanos.map(generarHumanoHtml));
-    obtenerPruebas().then(pruebas => pruebas.map(generarPruebaHtml)) */  
+
+const initAsignarPruebas = async() => {
+    await Promise.all([cargarHumanos(), cargarPruebas()]);
+    agregarDraggable();
+    agregarEventosDrop(); 
 }
 
 
 const cargarHumanos = async() => {
     const humanos = await obtenerHumanosDios();
-    humanos.map(generarHumanoHtml);
+    humanos.map(h => generarHumanoHtml(h, contenedorHumanos));
 }
 
 
 const cargarPruebas = async() => {
     const pruebas = await obtenerPruebas();
-    pruebas.map(generarPruebaHtml);
+    pruebas.map(p => generarPruebaHtml(p, contenedorPruebas));
 }
 
 
-const generarPruebaHtml = (prueba) => {
+const cargarHumanosPrueba = async(idPrueba, contenedor) => {
+    const humanos = await obtenerHumanosPrueba(idPrueba);
+    humanos.map(h => generarHumanoHtml(h, contenedor));
+}
+
+
+const generarPruebaHtml = (prueba, contenedor) => {
     const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
     const html = `<div class="prueba mt-2" data-id="${[prueba.id]}">
                     <div class="d-flex align-items-center">
@@ -48,16 +55,18 @@ const generarPruebaHtml = (prueba) => {
                         <p class="fecha ms-auto">${[prueba.fechaCreacion]}</p>
                     </div>
 
-                    <div id="p${[prueba.id]}" class="accordion-collapse collapse humanos-contenedor"></div>
+                    <div id="p${[prueba.id]}" class="accordion-collapse collapse humanos-contenedor">
+                    </div>
                 </div>`;
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    document.querySelector('.contenedor.pruebas .card-body').append(div.firstElementChild);
+    contenedor.append(div.firstElementChild);
+    cargarHumanosPrueba(prueba.id, contenedor.lastChild.querySelector('.humanos-contenedor'));
 }
 
 
-const generarHumanoHtml = async (humano) => {
+const generarHumanoHtml = async (humano, contenedor) => {
     const atributos = await mostrarCaracteristicasHumano(humano.id_usuario);
     const html = `<div class="humano mt-2" draggable="true" data-id="${[humano.id_usuario]}">
                     <img class="imagen-perfil" src="../assets/img/Zeus.png" draggable="false">
@@ -71,7 +80,7 @@ const generarHumanoHtml = async (humano) => {
 
     const div = document.createElement('div');
     div.innerHTML = html;
-    document.querySelector('.contenedor.humanos .card-body').append(div.firstElementChild);
+    contenedor.append(div.firstElementChild);
 }
 
 
@@ -115,6 +124,7 @@ const drop = async(e) => {
     let mensaje = `Error al asignar el humano`;
     const id = e.dataTransfer.getData('text/plain');
     const draggable = document.querySelector(`[data-id="${[id]}"]`);
+
     if (comprobarDrop(id, e.currentTarget)) {
         const clon = draggable.cloneNode(true);
         clon.setAttribute('draggable', false);
@@ -130,7 +140,7 @@ const drop = async(e) => {
 
 
 const comprobarDrop = (idDraggable, destino) => {
-    const humanos = destino.querySelector('.humanos-contenedor').childNodes;
+    const humanos = destino.querySelector('.humanos-contenedor').children;
     const duplicado = Array.from(humanos).find(h => h.getAttribute('data-id') == idDraggable);
     if (duplicado) return false;
     else return true;

@@ -5,7 +5,8 @@ const urlMostrarUnHumanoVivo = 'http://127.0.0.1:8000/api/mostrarHumanoVivo',
     urlCrearHumanoscomoDios = 'http://127.0.0.1:8000/api/crearUsuarios',
     urlMostrarCaracteristicas_Dios = 'http://127.0.0.1:8000/api/mostrarCaracteristicas_Dios',
     urlMostrarCaracteristicasHumano = 'http://127.0.0.1:8000/api/mostrarCaracteristicasHumano',
-    urlObtenerHumanosDios = 'http://127.0.0.1:8000/api/obtenerHumanosDios'; 
+    urlObtenerHumanosDios = 'http://127.0.0.1:8000/api/obtenerHumanosDios',
+    urlObtenerHumanosPrueba = 'http://127.0.0.1:8000/api/obtenerHumanosPrueba'; 
 
 
 //Alejandro
@@ -97,11 +98,26 @@ const obtenerHumanosDios = async() => {
 }
 
 
+//Alicia
+const obtenerHumanosPrueba = async(idPrueba) => {
+    try {
+        const resp = await fetch(`${urlObtenerHumanosPrueba}/${idPrueba}`, {
+            method: 'GET',
+            headers: {'Authorization': 'Bearer ' + token }
+        });
+        if (!resp.ok) throw Error('Error');
+        return await resp.json();
+    } catch (err) {
+        throw Error('No se han encontrado resultados');
+    }
+}
+
 export {
     MostrarUnHumanoVivo,
     mostrarUsuariosVivos,
     crearHumanos,
     mostrarCaracteristicas_Dios,
     mostrarCaracteristicasHumano,
-    obtenerHumanosDios
+    obtenerHumanosDios,
+    obtenerHumanosPrueba
 }
