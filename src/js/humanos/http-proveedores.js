@@ -17,8 +17,7 @@ const MostrarUnHumanoVivo = async(id) => {
             'Authorization' : `Bearer ${token}`
         }
     });
-    const data = await resp.json();
-    return data;
+    return await resp.json();
 }
 
 //Alejandro
@@ -32,8 +31,7 @@ const mostrarUsuariosVivos = async() => {
             
         }
     });
-    const data = await resp.json();
-    return data;
+    return await resp.json();
 }
 
 //Alejandro
@@ -46,33 +44,53 @@ const crearHumanos = async(cantidad)=> {
             'Authorization' : `Bearer ${token}`
         }
     });
-    const data = await resp.json();
-    return data;
+    return await resp.json();
 }
 
 //Alejandro
 const mostrarCaracteristicas_Dios = async(id_usuario)=> {
-    const resp = await fetch(`${urlMostrarCaracteristicas_Dios}/${id_usuario}`);
-    const data = await resp.json();
-    return data;
+    try {
+        const resp = await fetch(`${urlMostrarCaracteristicas_Dios}/${id_usuario}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token 
+            }
+        });
+        if (!resp.ok) throw Error('Error');
+        return await resp.json();
+    } catch (err) {
+        throw Error('No se han encontrado resultados');
+    }
 }
 
 //Alicia
 const mostrarCaracteristicasHumano = async(id_usuario)=> {
-    const resp = await fetch(`${urlMostrarCaracteristicasHumano}/${id_usuario}`);
-    const { caracteristicas } = await resp.json();
-    return caracteristicas;
+    try {
+        const resp = await fetch(`${urlMostrarCaracteristicasHumano}/${id_usuario}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token 
+            }
+        });
+        if (!resp.ok) throw Error('Error');
+        const { caracteristicas } = await resp.json();
+        return caracteristicas;
+    } catch (err) {
+        throw Error('No se han encontrado resultados');
+    }
 }
 
 //Alicia
 const obtenerHumanosDios = async() => {
     try {
-        const data = await fetch(urlObtenerHumanosDios, {
+        const resp = await fetch(urlObtenerHumanosDios, {
             method: 'GET',
             headers: {'Authorization': 'Bearer ' + token }
         });
-        if (!data.ok) throw Error('Error');
-        return await data.json();
+        if (!resp.ok) throw Error('Error');
+        return await resp.json();
     } catch (err) {
         throw Error('No se han encontrado resultados');
     }
