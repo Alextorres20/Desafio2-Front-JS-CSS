@@ -17,7 +17,7 @@ const initvalidarFormularioPruebas = () => {
             const prueba = Object.fromEntries(datos);
             const respuesta = await insertarPrueba(prueba, token);
             cerrarModal();
-            mostrarMensajesRespuesta(respuesta, 'creado');
+            mostrarMensajesRespuesta(respuesta, 'Éxito al crear la prueba');
             generarPruebaHtml(respuesta.respuesta);
         }
         formularioPruebas.classList.add('was-validated');

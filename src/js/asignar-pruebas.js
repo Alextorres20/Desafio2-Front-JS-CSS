@@ -106,21 +106,26 @@ const agregarEventosDrop = () => {
     });
 }
 
-const drop = (e) => {
+const drop = async(e) => {
     e.stopPropagation();
     e.preventDefault();
     e.currentTarget.classList.remove('destino');
 
+    let estado = false;
+    let mensaje = `Error al asignar el humano`;
     const id = e.dataTransfer.getData('text/plain');
     const draggable = document.querySelector(`[data-id="${[id]}"]`);
     if (comprobarDrop(id, e.currentTarget)) {
         const clon = draggable.cloneNode(true);
         clon.setAttribute('draggable', false);
         e.currentTarget.querySelector('.humanos-contenedor').append(clon);
-        asignarPruebaHumano(e.currentTarget.getAttribute('data-id'), id).then(
-            respuesta => console.log(respuesta)
-        );
-    }
+        const respuesta = await asignarPruebaHumano(e.currentTarget.getAttribute('data-id'), id);
+        if (respuesta.estado == 'ok') {
+            estado = true;
+            mensaje = 'El humano se ha asignado con éxito';
+        }
+    } 
+    mostrarMensaje(estado, mensaje);
 }
 
 
@@ -147,5 +152,18 @@ const dragLeave = (e) => {
     e.target.closest('.prueba').classList.remove('destino');
 }
 
+
+const mostrarMensaje = (estado, mensaje) => {
+    const contenedor = document.querySelector('.mensaje');
+    contenedor.classList.remove('alert', 'alert-danger', 'alert-success');
+    
+    if (estado) {
+        contenedor.innerHTML = mensaje;
+        contenedor.classList.add('alert', 'alert-success');
+    } else {
+        contenedor.innerHTML = mensaje;
+        contenedor.classList.add('alert', 'alert-danger');
+    }
+}
 
 initAsignarPruebas();
