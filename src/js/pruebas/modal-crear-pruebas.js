@@ -28,6 +28,9 @@ const initModal = () => {
             case 'respuesta-libre':
                 generarRespuestaLibreHTML();
                 break;
+            case 'valoracion':
+                generarValoracionHTML();
+                break;
         }
         initValidarInputs();
     });
@@ -121,6 +124,39 @@ const generarRespuestaLibreHTML = () => {
 }
 
 
+const generarValoracionHTML = () => {
+    const html = `<div class="prueba valoracion">
+                    <div class="pregunta">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="pregunta" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="atributo">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="atributo">Característica asociada</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="atributo" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="destino">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="destino">Cantidad de destino</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number" name="destino" required min="1" max="100">
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                </div>`;
+
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    contenedorFormulario.append(div.firstElementChild);
+}
+
+
 const cerrarModal = () => {
     let myModal = new Modal(modal);//Si se elimina, no se puede pulsar el botón
     myModal.hide();//Si se elimina, no se puede pulsar el botón
@@ -136,7 +172,6 @@ const resetModal = () => {
     contenedorFormulario.innerHTML = '';
     listaValidar.forEach(e => e.classList.remove('is-valid', 'is-invalid'));
     contenedoresError.forEach(e => e.innerHTML = '');
-    /* pruebas.forEach(p => p.classList.remove('mostrar')); */
     const elementos = document.querySelector('.opciones-prueba').querySelectorAll('textarea, input, select');
     elementos.forEach(e => (e.tagName == 'SELECT') ? e.selectedIndex = 0 : e.value = '');
 }
