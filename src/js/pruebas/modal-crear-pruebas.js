@@ -122,14 +122,12 @@ const generarRespuestaLibreHTML = () => {
 
 
 const cerrarModal = () => {
-    let myModal = new Modal(modal);
-    myModal.hide();
-    const elementos = [modal, document.querySelector('.modal-backdrop')];
-    elementos.forEach(e => {
-        e.style.display = 'none'
-        e.classList.add('hide');
-        e.classList.remove('show');
-    });
+    let myModal = new Modal(modal);//Si se elimina, no se puede pulsar el botón
+    myModal.hide();//Si se elimina, no se puede pulsar el botón
+    modal.style.display = 'none';
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+    document.querySelector('.modal-backdrop').remove();
 }
 
 

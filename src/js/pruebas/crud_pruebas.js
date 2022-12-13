@@ -1,13 +1,14 @@
-import { getPruebas, eliminarPrueba } from "./peticiones-pruebas";
+import { obtenerPruebas, eliminarPrueba } from "./peticiones-pruebas";
 import { token } from "../..";
 
 const modal = document.querySelector('#modalConfirmarBorrar'),
     btnBorrarPrueba = document.querySelector('#modalConfirmarBorrar .borrar'),
-    btnCancelarBorrar = document.querySelector('#modalConfirmarBorrar .cancelar');
+    btnCancelarBorrar = document.querySelector('#modalConfirmarBorrar .cancelar'),
+    btnAsignarPrueba = document.querySelector('.btn.asignar');
 
 
 const initListaPruebas = async() => {
-    const pruebas = await getPruebas(token);
+    const pruebas = await obtenerPruebas(token);
     pruebas.map(generarPruebaHtml);
 }
 
@@ -32,15 +33,18 @@ const generarPruebaHtml = (prueba) => {
 
 
 const mostrarMensajesRespuesta = (respuesta, mensaje) => {
-    const contenedor = document.querySelector('.crud-pruebas .mensaje-respuesta');
+    const contenedor = document.querySelector('.crud-pruebas .mensaje-respuesta');    
+    contenedor.classList.remove('alert', 'alert-danger', 'alert-success');
+
     if (respuesta.estado == 'ok') {
-        contenedor.innerHTML = `La prueba se ha ${[mensaje]} con éxito`;
+        contenedor.innerHTML = mensaje;
         contenedor.classList.add('alert', 'alert-success');
     } else {
-        contenedor.innerHTML = `Error al ${[mensaje]} la prueba`;
+        contenedor.innerHTML = mensaje;
         contenedor.classList.add('alert', 'alert-danger');
     }
 }
+
 
 modal.addEventListener('show.bs.modal', (e) => {
     (e.relatedTarget.closest('.row')).classList.add('objetivo')
@@ -51,12 +55,17 @@ btnBorrarPrueba.addEventListener('click', async() => {
     const prueba = document.querySelector('.objetivo');
     prueba.remove();
     const respuesta = await eliminarPrueba(prueba.getAttribute('data-id'));
-    mostrarMensajesRespuesta(respuesta, 'eliminado');
+    mostrarMensajesRespuesta(respuesta, 'La prueba se ha eliminado con éxito');
 });
 
 
 btnCancelarBorrar.addEventListener('click', () => {
     document.querySelector('.objetivo').classList.remove('objetivo');
+});
+
+
+btnAsignarPrueba.addEventListener('click', () => {
+    location.href = "./asignar-pruebas.html";
 });
 
 

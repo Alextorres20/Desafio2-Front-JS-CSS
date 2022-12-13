@@ -1,0 +1,263 @@
+@mixin asignar-pruebas($coloresGenerales) {
+    &.asignar-pruebas {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 8fr 1fr;
+
+        nav {
+            background-color: map.get($coloresGenerales, "iconos-hover");
+            padding: 0 1rem;
+
+            i {
+                color: map.get($coloresGenerales, "letra-clara");
+            }
+        }
+
+        main {
+            padding: .5rem 1rem;
+            
+            .mensaje {
+                width: fit-content;
+            }
+            
+            .humanos-pruebas {
+                display: grid;
+                grid-template-columns: 1fr;
+                row-gap: .5rem;
+    
+                .contenedor {
+                    --bs-card-spacer-y: .5rem;
+                    --bs-card-spacer-x: .5rem;
+                    border-radius: unset;
+                    border: unset;
+                    background-color: rgba(255, 255, 255, 0.5);
+    
+                    * { border-radius: unset; }
+    
+                    .card-header {
+                        background-color: map.get($coloresGenerales, "iconos-hover");
+                        color: map.get($coloresGenerales, "letra-clara");
+                        font-size: 1.2rem;
+    
+                        i { margin-right: .5rem; }
+                    }
+    
+                    .card-body {
+                        color: map.get($coloresGenerales, "iconos");
+                        overflow-y: scroll;
+                        height: 70vh;
+                        
+                        .humano {
+                            display: grid;
+                            grid-template-columns: 1fr 6fr auto;
+                            grid-template-areas:
+                                "imagen datos borrar"
+                                "atributos atributos atributos";   
+                            align-items: center;
+                            row-gap: .5rem; 
+                            column-gap: 1rem;  
+    
+                            &.oculto {
+                                display: none;
+                            }
+                            
+                            &:hover {
+                                transform: scale(1.03);
+                                box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+                            }
+    
+                            .datos {
+                                grid-area: datos;
+                                border-right: none;
+                            }
+    
+                            .atributos {
+                                grid-area: atributos;
+                                display: grid;
+                                column-gap: 1rem;
+                                padding-top: .5rem;
+                                grid-template-columns: auto auto auto;
+                                border-top: 2px solid map.get($coloresGenerales, "iconos");
+    
+                                p { font-size: .9rem; }
+                            }
+    
+                            .borrar {
+                                grid-area: borrar;
+                                align-self: start;
+                                justify-self: end;
+                            }
+                        }
+    
+                        .humano, .prueba {
+                            padding: 1rem;
+                            border-radius: 2px;
+                            transition: transform .2s;
+                            box-shadow: 0px 0px 5px 0px rgb(0, 0, 0, .2);
+                            background-color: map.get($coloresGenerales, "letra-clara");
+                        
+                            p, h5 { margin: 0; }
+    
+                            img {
+                                grid-area: imagen;
+                                object-fit: cover;
+                                object-position: 50% 20%;
+                                border-radius: 50%;
+                                width: 50px;
+                                height: 50px;
+                            }
+    
+                            .borrar:hover {
+                                color: map.get($coloresGenerales, "rojo");
+                            }
+    
+                        }
+    
+                        .prueba {
+                            &.destino {
+                                box-shadow: 0px 0px 5px 0px var(--bs-blue);
+                            }
+    
+                            .pregunta-desc {
+                                margin-top: .5rem;
+                                padding-top: .5rem;
+                                border-top: 2px solid map.get($coloresGenerales, "iconos");
+                            }
+    
+                            .humanos {
+                                border-radius: 6px;
+                                width: fit-content;
+                            }
+    
+                            .tipo, .fecha, .humanos {
+                                font-size: .85rem;
+                            }
+                        }
+                    }
+                }
+
+            }
+            @media (min-width: 576px) and (max-width: 768px) {
+                & {
+                    padding: 1rem;
+
+                    .humanos-pruebas {
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 1rem;
+    
+                        .contenedor .card-body .humano .atributos {
+                            grid-template-columns: auto auto;
+                        }
+                    }
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1200px) {
+                & {
+                    padding: 1rem 2rem;
+
+                    .humanos-pruebas {
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 2rem;
+    
+                        .contenedor {
+                            --bs-card-spacer-y: 1rem;
+                            --bs-card-spacer-x: 1rem;
+    
+                            .card-body .humano {
+                                grid-template-columns: 1fr 6fr auto;
+                                grid-template-areas:
+                                    "imagen datos borrar"
+                                    "atributos  atributos atributos";
+                                gap: .5rem;
+    
+                                .atributos {
+                                    border-top: 2px solid map.get($coloresGenerales, "iconos");
+                                    padding-top: .5rem;
+                                    column-gap: 1rem;
+                                    grid-template-columns: 1fr 1fr 1fr;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media (min-width: 1200px) {
+                & {
+                    padding: 2rem 3rem;
+
+                    .humanos-pruebas {
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 3rem;
+    
+                        .contenedor {
+                            --bs-card-spacer-y: 1rem;
+                            --bs-card-spacer-x: 1rem;
+    
+                            .card-body .humano {
+                                grid-template-columns: 1fr 3fr 5fr auto;
+                                grid-template-areas: "imagen datos atributos borrar";
+                                gap: .5rem;
+    
+                                .datos {
+                                    padding-right: .8rem;
+                                    border-right: 2px solid map.get($coloresGenerales, "iconos");
+                                }
+    
+                                .atributos {
+                                    padding-top: 0;
+                                    padding-left: .8rem;
+                                    column-gap: .5rem;
+                                    grid-template-columns: 1fr 1fr 1fr;
+                                    border-top: unset;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }    
+
+        footer {
+            @media (min-width: 480px) {
+                column-gap: 1rem;
+                padding: 0 2rem;
+                font-size: .8rem;
+            }
+
+            display: grid;
+            grid-template-areas: 
+                'copyright separador n1 n1'
+                'copyright separador n2 n2';
+            justify-content: start;
+            column-gap: .5rem;
+            padding: 0 1rem;
+            font-size: .75rem;
+            color: white;
+            background-color: map.get($coloresGenerales, "iconos-hover");
+
+            .copyright {
+                grid-area: copyright;
+                align-self: center;
+            }
+
+            .n1 {
+                grid-area: n1;
+                align-self: end;
+            }
+
+            .n2 {
+                grid-area: n2;
+                align-self: start;
+            }
+
+            .separador {
+                grid-area: separador;
+                align-self: center;
+                height: 70%;
+                border-right: 1px solid white;
+            }
+        }
+    }
+}

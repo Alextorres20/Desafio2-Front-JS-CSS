@@ -2,6 +2,15 @@
     &.pruebas {
         background-color: rgba(0, 0, 0, .1);
 
+        nav {
+            background-color: map.get($coloresGenerales, "iconos-hover");
+            padding: 0 1rem;
+
+            i {
+                color: map.get($coloresGenerales, "letra-clara");
+            }
+        }
+
         .row {
             --bs-gutter-x: 0;
         }
@@ -18,24 +27,25 @@
             }
             padding: 2rem 5rem;
 
-            button {
-                float: right;
-                background-color: map.get($coloresGenerales, "letra-clara");
-                border-color: map.get($coloresGenerales, "letra-clara");
-                color: map.get($coloresGenerales, "iconos-hover");
-                box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
-                transition: all .3s;
-
-                &:hover {
-                    background-color: map.get($coloresGenerales, "iconos-hover");
-                    border-color: map.get($coloresGenerales, "iconos-hover");
-                    color: map.get($coloresGenerales, "letra-clara");
+            .botones {
+                button {
+                    float: right;
+                    background-color: map.get($coloresGenerales, "letra-clara");
+                    border-color: map.get($coloresGenerales, "letra-clara");
+                    color: map.get($coloresGenerales, "iconos-hover");
+                    box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
+                    transition: all .3s;
+    
+                    &:hover {
+                        background-color: map.get($coloresGenerales, "iconos-hover");
+                        border-color: map.get($coloresGenerales, "iconos-hover");
+                        color: map.get($coloresGenerales, "letra-clara");
+                    }
                 }
             }
-
+           
             .mensaje-respuesta {
                 float: left;
-                padding: .5rem 1.5rem;
                 margin-bottom: 0;
                 transition: all .5s;
             }
