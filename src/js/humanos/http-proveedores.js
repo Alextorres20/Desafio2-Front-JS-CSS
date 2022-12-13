@@ -8,7 +8,11 @@ const urlMostrarUnHumanoVivo = 'http://127.0.0.1:8000/api/mostrarHumanoVivo',
     urlMatarUnHumano = 'http://127.0.0.1:8000/api/matarUsuario',    
     urlMostrarCaracteristicasHumano = 'http://127.0.0.1:8000/api/mostrarCaracteristicasHumano',
     urlObtenerHumanosDios = 'http://127.0.0.1:8000/api/obtenerHumanosDios',
-    urlObtenerHumanosPrueba = 'http://127.0.0.1:8000/api/obtenerHumanosPrueba'; 
+    urlObtenerHumanosPrueba = 'http://127.0.0.1:8000/api/obtenerHumanosPrueba',
+    urlMostrarMuertosPredeterminado = 'http://127.0.0.1:8000/api/mostrarMuertos',
+    urlMostrarMuertosAscendiente = 'http://127.0.0.1:8000/api/mostrarMuertosAscendiente',
+    urlMostrarMuertosDescendiente = 'http://127.0.0.1:8000/api/mostrarMuertosDescendiente'; 
+
 
 
 //Alejandro
@@ -141,6 +145,42 @@ const matarUnHumano = async(id_usuario) => {
     return await resp.json();
 }
 
+const mostrarTablaMuertosPredeterminado = async() => {
+    const resp = await fetch(urlMostrarMuertosPredeterminado, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
+const mostrarTablaMuertosAscendiente = async() => {
+    const resp = await fetch(urlMostrarMuertosAscendiente, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
+const mostrarTablaMuertosDescendiente = async() => {
+    const resp = await fetch(urlMostrarMuertosDescendiente, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
 export {
     MostrarUnHumanoVivo,
     mostrarUsuariosVivos,
@@ -151,4 +191,8 @@ export {
     mostrarCaracteristicasHumano,
     obtenerHumanosDios,
     obtenerHumanosPrueba
+    mostrarTablaMuertosPredeterminado,
+    mostrarTablaMuertosAscendiente,
+    mostrarTablaMuertosDescendiente
+
 }

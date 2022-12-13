@@ -19,7 +19,7 @@
     </nav>
 
     <!------------------------ CRUD Humanos ------------------------>
-    <div class="col-10 crud-humanos">
+    <div class="col-12 crud-humanos">
         <div class="respuesta-mensaje"></div>
         <div class="botones opcionales">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
@@ -30,20 +30,24 @@
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Matar humanos Seleccionados
             </button>
-            <button type="button" class="btn btn-warning matarAleatorio">
+            <button type="button" class="btn btn-danger matarAleatorio">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Matar humanos Aleatorio
             </button>
+            <button type="button" class="btn btn-info mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Mostrar humanos Muertos
+            </button>
         </div>
         
-        <div class="contenedor-humanos">
+        <div class="h-50 contenedor-humanos">
             <table class="table tabla-humanos">
                 <thead>
                     <tr>
                         <th scope="col">ID de usuario</th>
                         <th scope="col">Caracteristicas</th>
                         <th scope="col">Destino</th>
-                        <th scope="col">Donde murio</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -134,6 +138,42 @@
                     </div>
                     <div class="col-12">
                         <div class="mensajeMatar tipo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------- Modal Mostrar Humanos que estan Muertos ------------------------>
+    <div class="modal fade" id="modalMostrarHumanoMuertos" tabindex="-1" aria-labelledby="modalMostrarHumanoMuertos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Humanos que han muerto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tabla-humanos-Muertos">
+                    <select class="col-12 col-sm-9 form-select select-tipo-humanosMuertos" name="tipoMuertos"
+                            aria-label="selectTipoHumanosMuertos">
+                            <option value="Predeterminado" selected>Predeterminado</option>
+                            <option value="Fecha_muerte_Ascendiente">Fecha de muerte Ascendiente</option>
+                            <option value="Fecha_muerte_Descendiente">Fecha de muerte Decendiente</option>
+                    </select>
+                    <div class="opciones-humanosMuertos colapsar mostrar">
+                        <div class="contenedor-humanos">
+                            <table class="table tabla-humanos-muertos">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID de usuario</th>
+                                        <!-- <th scope="col">Caracteristicas</th> -->
+                                        <th scope="col">Destino</th>
+                                        <th scope="col">Donde Murio</th>
+                                        <th scope="col">Fecha de su Muerte</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
