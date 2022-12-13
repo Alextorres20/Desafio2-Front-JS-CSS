@@ -5,7 +5,10 @@ const urlMostrarUnHumanoVivo = 'http://127.0.0.1:8000/api/mostrarHumanoVivo',
     urlCrearHumanoscomoDios = 'http://127.0.0.1:8000/api/crearUsuarios',
     urlMostrarCaracteristicas_Dios = 'http://127.0.0.1:8000/api/mostrarCaracteristicas_Dios',
     urlMatarHumanosAleatorio = 'http://127.0.0.1:8000/api/matarUsuariosAlAzar',
-    urlMatarUnHumano = 'http://127.0.0.1:8000/api/matarUsuario';
+    urlMatarUnHumano = 'http://127.0.0.1:8000/api/matarUsuario',
+    urlMostrarMuertosPredeterminado = 'http://127.0.0.1:8000/api/mostrarMuertos',
+    urlMostrarMuertosAscendiente = 'http://127.0.0.1:8000/api/mostrarMuertosAscendiente',
+    urlMostrarMuertosDescendiente = 'http://127.0.0.1:8000/api/mostrarMuertosDescendiente';
 
 const token = recuperarToken();
 const MostrarUnHumanoVivo = async(id) => {
@@ -79,11 +82,50 @@ const matarUnHumano = async(id_usuario) => {
     return data;
 }
 
+const mostrarTablaMuertosPredeterminado = async() => {
+    const resp = await fetch(urlMostrarMuertosPredeterminado, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
+const mostrarTablaMuertosAscendiente = async() => {
+    const resp = await fetch(urlMostrarMuertosAscendiente, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
+const mostrarTablaMuertosDescendiente = async() => {
+    const resp = await fetch(urlMostrarMuertosDescendiente, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+        }
+    });
+    const data = await resp.json();
+    return data;
+}
+
 export {
     MostrarUnHumanoVivo,
     mostrarUsuariosVivos,
     crearHumanos,
     mostrarCaracteristicas_Dios,
     matarUnHumano,
-    matarAleatorioHumanos
+    matarAleatorioHumanos,
+    mostrarTablaMuertosPredeterminado,
+    mostrarTablaMuertosAscendiente,
+    mostrarTablaMuertosDescendiente
 }
