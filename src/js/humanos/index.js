@@ -8,8 +8,13 @@ import * as bootstrap from 'bootstrap'
 
 import { initModal } from './menu-humanos';
 import { matarHumanos } from './matar-humanos';
+import { initModalHumanosMuertos } from './humanos-muertos';
+
 initModal();
 
 matarHumanos()
+
+initModalHumanosMuertos();
+
 
 
