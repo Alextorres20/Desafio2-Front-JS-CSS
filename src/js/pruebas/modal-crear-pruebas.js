@@ -134,12 +134,16 @@ const generarValoracionHTML = () => {
                         <div class="error"></div>
                     </div>
                     
-                    <div class="atributo">
-                        <div class="row">
-                            <label class="col-12 col-sm-5" for="atributo">Característica asociada</label>
-                            <input class="col-12 col-sm-7 validar form-control" type="text" name="atributo" required>
-                        </div>
-                        <div class="error"></div>
+                    <div class="row">
+                        <label class="col-12 col-sm-5" for="atributo">Atributo evaluado</label>
+                        <select class="col-12 col-sm-7 form-select select-atributo" name="atributo"
+                            aria-label="atributo">
+                            <option selected>Audacia</option>
+                            <option>Maldad</option>
+                            <option>Nobleza</option>
+                            <option>Sabiduría</option>
+                            <option>Virtud</option>
+                        </select>
                     </div>
 
                     <div class="destino">
