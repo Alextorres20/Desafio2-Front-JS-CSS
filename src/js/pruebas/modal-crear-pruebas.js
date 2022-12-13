@@ -31,6 +31,9 @@ const initModal = () => {
             case 'valoracion':
                 generarValoracionHTML();
                 break;
+            case 'eleccion':
+                generarEleccionHTML();
+                break;
         }
         initValidarInputs();
     });
@@ -57,6 +60,7 @@ const generarPuntualHTML = () => {
                             <option>Virtud</option>
                         </select>
                     </div>
+                    
                     <div class="dificultad">
                         <div class="row">
                             <label class="col-12 col-sm-5" for="dificultad">Porcentaje de dificultad</label>
@@ -160,6 +164,66 @@ const generarValoracionHTML = () => {
     contenedorFormulario.append(div.firstElementChild);
 }
 
+
+const generarEleccionHTML = () => {
+    const html = `<div class="prueba eleccion">
+                    <div class="pregunta">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="pregunta" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="respuesta-correcta">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="respuesta_correcta">Respuesta Correcta</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="respuesta_correcta" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="respuesta-incorrecta">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="respuesta_incorrecta">Respuesta Incorrecta</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="text" name="respuesta_incorrecta" required>
+                        </div>
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="atributo row">
+                        <div class="col-7 pe-3">
+                            <label for="atributo">Atributo evaluado</label>
+                            <select class="form-select select-atributo" name="atributo"
+                                aria-label="atributo">
+                                <option selected>Audacia</option>
+                                <option>Maldad</option>
+                                <option>Nobleza</option>
+                                <option>Sabiduría</option>
+                                <option>Virtud</option>
+                            </select>
+                        </div>
+
+                        <div class="col-5 atributo-valor">
+                            <label for="valor_atributo">Valor del atributo</label>
+                            <input class="validar form-control" type="number" name="valor_atributo" required min="1" max="5">
+                        </div>
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="destino">
+                        <div class="row">
+                            <label class="col-12 col-sm-5" for="destino">Cantidad de destino</label>
+                            <input class="col-12 col-sm-7 validar form-control" type="number" name="destino" required min="1" max="100">
+                        </div>
+                        <div class="error"></div>
+                    </div>
+                </div>`;
+
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    contenedorFormulario.append(div.firstElementChild);
+}
 
 const cerrarModal = () => {
     let myModal = new Modal(modal);//Si se elimina, no se puede pulsar el botón

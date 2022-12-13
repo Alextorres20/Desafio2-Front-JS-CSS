@@ -5,6 +5,7 @@ const urlAsignarPrueba = 'http://127.0.0.1:8000/api/pruebas/asignarPrueba';
 import { token } from "../..";
 
 const insertarPrueba = async(prueba) => {
+    console.log( JSON.stringify(prueba));
     const resp = await fetch(urlPruebas, {
         method: 'POST',
         body: JSON.stringify(prueba),
