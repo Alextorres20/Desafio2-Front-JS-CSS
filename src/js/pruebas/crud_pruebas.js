@@ -14,7 +14,7 @@ const initListaPruebas = async() => {
 
 const generarPruebaHtml = (prueba) => {
     const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
-    const html = `<div class="row" data-id="${[prueba.id]}">
+    const html = `<div class="row bg-white mb-2 tarjeta" data-id="${[prueba.id]}">
                     <div class="col-1 ${[prueba.tipo]}">${[tipo]}</div>
                     <div class="col-1">${[prueba.nombreDios]}</div>
                     <div class="col-6">${[prueba.preguntaDescripcion]}</div>

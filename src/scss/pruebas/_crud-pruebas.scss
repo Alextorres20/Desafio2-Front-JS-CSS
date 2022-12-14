@@ -1,60 +1,29 @@
 @mixin crud-pruebas($coloresGenerales) {
     &.pruebas {
-        background-color: rgba(0, 0, 0, .1);
-
-        nav {
-            background-color: map.get($coloresGenerales, "iconos-hover");
-            padding: 0 1rem;
-
-            i {
-                color: map.get($coloresGenerales, "letra-clara");
-            }
-        }
-
-        .row {
-            --bs-gutter-x: 0;
-        }
-
-        .menu-vertical {
-            box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
-            height: 100vh;
-        }
-
-
         .crud-pruebas {
-            @media (max-width: 992px) { 
-                padding: 2rem 1rem;
+            .mensaje-respuesta {
+                width: fit-content;
+                height: 35px;
+                transition: all .5s; //El mensaje aparece poco a poco
             }
-            padding: 2rem 5rem;
 
             .botones {
                 button {
-                    float: right;
-                    background-color: map.get($coloresGenerales, "letra-clara");
-                    border-color: map.get($coloresGenerales, "letra-clara");
-                    color: map.get($coloresGenerales, "iconos-hover");
+                    color: map.get($coloresGenerales, "letra-clara");
+                    background-color: map.get($coloresGenerales, "iconos");
+                    border-color: map.get($coloresGenerales, "iconos");
                     box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
-                    transition: all .3s;
+                    transition: all .3s; //Color, color borde, color fondo
     
                     &:hover {
-                        background-color: map.get($coloresGenerales, "iconos-hover");
-                        border-color: map.get($coloresGenerales, "iconos-hover");
+                        background-color: map.get($coloresGenerales, "azul");
+                        border-color: map.get($coloresGenerales, "azul");
                         color: map.get($coloresGenerales, "letra-clara");
                     }
                 }
             }
-           
-            .mensaje-respuesta {
-                float: left;
-                margin-bottom: 0;
-                transition: all .5s;
-            }
-
-
             .tabla-pruebas {
-                border-radius: 5px;
-                margin-top: 4rem;
-                background-color: white;
+
                 box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
 
                 .cabecera, .contenido {
@@ -64,24 +33,16 @@
                 }
 
                 .cabecera {
-                    border-radius: 5px 5px 0 0;
-                    padding-right: 1rem;
                     background-color: map.get($coloresGenerales, "iconos-hover");
                     color: map.get($coloresGenerales, "letra-clara");
-
-                    div {
-                        padding: 1rem;
-                    }
                 }
 
                 .contenido {
                     border-radius: 0 0 5px 5px;
-                    height: 65vh;
                     overflow-y: scroll;
                     
                     div.row {
                         align-items: center;
-                        border-bottom: 1px solid map.get($coloresGenerales, "iconos-hover");
                         
                         &:hover {
                             background-color: var(--bs-gray-200);
@@ -92,8 +53,6 @@
                         }
 
                         div {
-                            padding: 1rem 2rem;
-
                             span:first-of-type {
                                 margin-right: .5rem;
                             }
@@ -101,10 +60,6 @@
                             i {
                                 transition: all .3s;
                                 color: var(--bs-gray-600);
-        
-                                &:hover {
-                                    color: var(--bs-gray-900);
-                                }
                             }   
                         }                  
                     }

@@ -41,7 +41,7 @@ const initModal = () => {
 
 
 const generarPuntualHTML = () => {
-    const html = `<div class="prueba puntual">
+    const html = `<div class="prueba puntual mostrar">
                     <div class="descripcion">
                         <div class="row">
                             <label for="descripcion">Descripción</label>
@@ -87,7 +87,7 @@ const generarPuntualHTML = () => {
 
 
 const generarRespuestaLibreHTML = () => {
-    const html = `<div class="prueba respuesta-libre">
+    const html = `<div class="prueba respuesta-libre mostrar">
                     <div class="pregunta">
                         <div class="row">
                             <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
@@ -129,7 +129,7 @@ const generarRespuestaLibreHTML = () => {
 
 
 const generarValoracionHTML = () => {
-    const html = `<div class="prueba valoracion">
+    const html = `<div class="prueba valoracion mostrar">
                     <div class="pregunta">
                         <div class="row">
                             <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
@@ -166,7 +166,7 @@ const generarValoracionHTML = () => {
 
 
 const generarEleccionHTML = () => {
-    const html = `<div class="prueba eleccion">
+    const html = `<div class="prueba eleccion mostrar">
                     <div class="pregunta">
                         <div class="row">
                             <label class="col-12 col-sm-5" for="pregunta">Pregunta</label>
