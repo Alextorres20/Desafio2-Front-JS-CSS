@@ -1,7 +1,7 @@
 import { insertarPrueba } from '../pruebas/peticiones-pruebas';
 import { cerrarModal } from '../pruebas/modal-crear-pruebas';
 import { generarPruebaHtml, mostrarMensajesRespuesta } from '../pruebas/crud_pruebas';
-import { token } from '../..';/* 
+import { usuario } from '../..';/* 
 import { listaPruebas } from '../pruebas/index'; */
 
 
@@ -15,7 +15,7 @@ const initvalidarFormularioPruebas = () => {
         if (formularioPruebas.checkValidity()) {
             const datos = new FormData(formularioPruebas);
             const prueba = Object.fromEntries(datos);
-            const respuesta = await insertarPrueba(prueba, token);
+            const respuesta = await insertarPrueba(prueba, usuario.token);
             cerrarModal();
             mostrarMensajesRespuesta(respuesta, 'Éxito al crear la prueba');
             generarPruebaHtml(respuesta.respuesta);

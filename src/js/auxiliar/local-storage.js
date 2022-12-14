@@ -1,9 +1,12 @@
+import { Usuario } from "../humanos/clases/Usuario";
 
-const guardarToken = (usuario) => window.localStorage.setItem('token', usuario.data.token);
 
-const recuperarToken = () => localStorage.getItem('token');
+const guardarUsuario = (usuario) => window.localStorage.setItem('usuario', usuario);
+
+const recuperarUsuario = () => Usuario.fromJSON(JSON.parse(localStorage.getItem('usuario')));
+    
 
 export {
-    guardarToken,
-    recuperarToken
+    guardarUsuario,
+    recuperarUsuario
 }

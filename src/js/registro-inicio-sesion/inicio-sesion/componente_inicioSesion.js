@@ -1,6 +1,6 @@
 import { iniciarSesion } from "./crud-provider";
-import { guardarToken } from "../../auxiliar/local-storage";
-
+import { guardarUsuario } from "../../auxiliar/local-storage";
+import { Usuario } from "../../humanos/clases/Usuario";
 
 const email = document.getElementsByName('email')[0];
 const emailError = document.querySelector('span.errorEmail.Inicio');
@@ -50,10 +50,9 @@ const validation = () => {
                 email: email.value,
                 password: password.value
             }).then(iniciado => {
-                console.log(iniciado);
                 if (iniciado.success == true) {
-                    location.href = "../../html/principal.html"
-                    guardarToken(iniciado);
+                    location.href = "../../html/home.html";
+                    guardarUsuario(JSON.stringify(new Usuario(iniciado.data)));
                 } else{
                     mensajeError.classList.add("alert", "alert-danger");
                     mensajeError.innerHTML = "El correo o la contraseña no están correctas";

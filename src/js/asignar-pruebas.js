@@ -1,5 +1,5 @@
 import '../styles.scss';
-import { obtenerHumanosDios, obtenerHumanosPrueba, mostrarCaracteristicasHumano } from './humanos/http-proveedores';
+import { obtenerHumanosDios, obtenerHumanosPrueba, mostrarCaracteristicasUsuario } from './humanos/http-proveedores';
 import { obtenerPruebas, asignarPruebaHumano } from './pruebas/peticiones-pruebas';
 
 
@@ -67,7 +67,7 @@ const generarPruebaHtml = (prueba, contenedor) => {
 
 
 const generarHumanoHtml = async (humano, contenedor) => {
-    const atributos = await mostrarCaracteristicasHumano(humano.id_usuario);
+    const atributos = await mostrarCaracteristicasUsuario(humano.id_usuario);
     const html = `<div class="humano mt-2 bg-white tarjeta" draggable="true" data-id="${[humano.id_usuario]}">
                     <img class="imagen-perfil" src="../assets/img/Zeus.png" draggable="false">
                     <div class="datos">
@@ -87,8 +87,8 @@ const generarHumanoHtml = async (humano, contenedor) => {
 const generarAtributosHtml = (atributos) => {
     let html = '';
     atributos.forEach(a => {
-        let nombre = a.caracteristica.nombre;
-        html += `<p><span class="fw-bold">${[(nombre.charAt(0).toUpperCase() + nombre.slice(1)).replaceAll('-', ' ')]}:</span> ${[a.valor]}</p>`;
+        let nombre = (a.nombre.charAt(0).toUpperCase() + a.nombre.slice(1)).replaceAll('-', ' ');
+        html += `<p><span class="fw-bold">${[nombre]}:</span> ${[a.valor]}</p>`;
     });
 
     return html;

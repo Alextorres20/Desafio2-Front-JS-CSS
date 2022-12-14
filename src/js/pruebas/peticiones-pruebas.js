@@ -2,15 +2,14 @@ const urlPruebas = 'http://127.0.0.1:8000/api/pruebas/';
 const urlAsignarPrueba = 'http://127.0.0.1:8000/api/pruebas/asignarPrueba';
 
 
-import { token } from "../..";
+import { usuario } from "../..";
 
 const insertarPrueba = async(prueba) => {
-    console.log( JSON.stringify(prueba));
     const resp = await fetch(urlPruebas, {
         method: 'POST',
         body: JSON.stringify(prueba),
         headers: {
-            'Authorization': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + usuario.token,
             'Content-Type': 'application/json'
         }
     });
@@ -24,7 +23,7 @@ const asignarPruebaHumano = async(idPrueba, idHumano) => {
         method: 'POST',
         body: JSON.stringify({"idPrueba": idPrueba ,"idHumano":idHumano}),
         headers: {
-            'Authorization': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + usuario.token,
             'Content-Type': 'application/json'
         }
     });
@@ -37,7 +36,7 @@ const obtenerPruebas = async() => {
     try {
         const data = await fetch(urlPruebas, {
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + usuario.token
             }
         });
         if (!data.ok) throw Error('Error');
@@ -53,7 +52,7 @@ const eliminarPrueba = async(id) => {
     const resp = await fetch(urlPruebas + id, {
         method: 'DELETE',
         headers: {
-            'Authorization': 'Bearer ' + token,
+            'Authorization': 'Bearer ' + usuario.token,
             'Content-Type': 'application/json'
         }
     });

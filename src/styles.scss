@@ -1,17 +1,18 @@
 @use "sass:map";
 
 @import "~bootstrap/scss/bootstrap";
-@import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
-        './scss/index', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
+@import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/pruebas',
+        './scss/index', './scss/home', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
         './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/asignar-pruebas',
         './scss/humanos/modal-caracteristicas-dios';
 
 $coloresGenerales: (
     "letra-clara": #ffffff,
-    "verde": #66e25f,
-    "amarillo": #ffc423,
+    "verde": #5ddc9d,
+    "amarillo": #f5d01c,
     "azul": #11b5b5,
-    "rojo": #ea1b59,
+    "rojo": #df2069,
+    "morado": #c83fba,
     "iconos": #4a403e,
     "iconos-hover": #2b2325,
 );
@@ -24,14 +25,18 @@ html {
 body {
     @include index($coloresGenerales);
     @include modal-crear-pruebas($coloresGenerales);
-    @include crud-pruebas($coloresGenerales);
-    @include principal($coloresGenerales);
+    @include pruebas($coloresGenerales);
+    @include home($coloresGenerales);
     @include asignar-pruebas($coloresGenerales);
     @include registro-inicio-sesion($coloresGenerales);
     @include crud-humanos($coloresGenerales);
     @include modal-crear-humano($coloresGenerales);
     @include modal-matar-humano($coloresGenerales);
     @include modal-caracteristicas-dios($coloresGenerales);
+
+    p, h5, h4 {
+        margin: 0;
+    }
 
     * {
         box-sizing: border-box;
@@ -88,6 +93,14 @@ body {
                 transform: scale(1.015);
                 box-shadow: 0px 0px 5px 0px map.get($coloresGenerales, "azul");
             }
+        }
+
+        .imagen-perfil {
+            object-fit: cover;
+            object-position: 50% 20%;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
         }
     }
 }

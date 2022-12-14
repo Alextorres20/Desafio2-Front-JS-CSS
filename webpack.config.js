@@ -8,10 +8,10 @@ const filesHTML = [
         chunks: ['index']
     },
     {
-        filename: './html/principal.html',
-        chunks: ['index']
-    }, 
-    {   filename: './html/crud-pruebas.html',
+        filename: './html/home.html',
+        chunks: ['home']
+    },
+    {   filename: './html/pruebas.html',
         chunks: ['pruebas']
     }, 
     {   
@@ -80,7 +80,8 @@ module.exports = {
         pruebas: './src/js/pruebas/index.js',
         registroInicio: './src/js/registro-inicio-sesion/index.js',
         humanos: './src/js/humanos/index.js',
-        asignarPruebas: './src/js/asignar-pruebas.js'
+        asignarPruebas: './src/js/asignar-pruebas.js',
+        home: './src/js/home.js'
     },
     plugins: [
         new MiniCssExtractPlugin({

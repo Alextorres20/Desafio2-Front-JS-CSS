@@ -1,4 +1,4 @@
-import { token } from "../..";
+import { usuario } from "../..";
 
 const urlMostrarUnHumanoVivo = 'http://127.0.0.1:8000/api/mostrarHumanoVivo',
     urlMostrarHumanosVivos = 'http://127.0.0.1:8000/api/mostrarHumanosVivos',
@@ -6,7 +6,7 @@ const urlMostrarUnHumanoVivo = 'http://127.0.0.1:8000/api/mostrarHumanoVivo',
     urlMostrarCaracteristicas_Dios = 'http://127.0.0.1:8000/api/mostrarCaracteristicas_Dios',
     urlMatarHumanosAleatorio = 'http://127.0.0.1:8000/api/matarUsuariosAlAzar',
     urlMatarUnHumano = 'http://127.0.0.1:8000/api/matarUsuario',    
-    urlMostrarCaracteristicasHumano = 'http://127.0.0.1:8000/api/mostrarCaracteristicasHumano',
+    urlmostrarCaracteristicasUsuario = 'http://127.0.0.1:8000/api/mostrarCaracteristicasUsuario',
     urlObtenerHumanosDios = 'http://127.0.0.1:8000/api/obtenerHumanosDios',
     urlObtenerHumanosPrueba = 'http://127.0.0.1:8000/api/obtenerHumanosPrueba',
     urlMostrarMuertosPredeterminado = 'http://127.0.0.1:8000/api/mostrarMuertos',
@@ -34,7 +34,7 @@ const mostrarUsuariosVivos = async() => {
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + token
+            'Authorization' : 'Bearer ' + usuario.token
             
         }
     });
@@ -48,7 +48,7 @@ const crearHumanos = async(cantidad)=> {
         body: JSON.stringify(cantidad),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     return await resp.json();
@@ -61,7 +61,7 @@ const mostrarCaracteristicas_Dios = async(id_usuario)=> {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token 
+                'Authorization': 'Bearer ' + usuario.token 
             }
         });
         if (!resp.ok) throw Error('Error');
@@ -72,18 +72,17 @@ const mostrarCaracteristicas_Dios = async(id_usuario)=> {
 }
 
 //Alicia
-const mostrarCaracteristicasHumano = async(id_usuario)=> {
+const mostrarCaracteristicasUsuario = async(id_usuario)=> {
     try {
-        const resp = await fetch(`${urlMostrarCaracteristicasHumano}/${id_usuario}`, {
+        const resp = await fetch(`${urlmostrarCaracteristicasUsuario}/${id_usuario}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token 
+                'Authorization': 'Bearer ' + usuario.token 
             }
         });
         if (!resp.ok) throw Error('Error');
-        const { caracteristicas } = await resp.json();
-        return caracteristicas;
+        return await resp.json();
     } catch (err) {
         throw Error('No se han encontrado resultados');
     }
@@ -94,7 +93,7 @@ const obtenerHumanosDios = async() => {
     try {
         const resp = await fetch(urlObtenerHumanosDios, {
             method: 'GET',
-            headers: {'Authorization': 'Bearer ' + token }
+            headers: {'Authorization': 'Bearer ' + usuario.token }
         });
         if (!resp.ok) throw Error('Error');
         return await resp.json();
@@ -109,7 +108,7 @@ const obtenerHumanosPrueba = async(idPrueba) => {
     try {
         const resp = await fetch(`${urlObtenerHumanosPrueba}/${idPrueba}`, {
             method: 'GET',
-            headers: {'Authorization': 'Bearer ' + token }
+            headers: {'Authorization': 'Bearer ' + usuario.token }
         });
         if (!resp.ok) throw Error('Error');
         return await resp.json();
@@ -124,7 +123,7 @@ const matarAleatorioHumanos = async() => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     return await resp.json();
@@ -139,7 +138,7 @@ const matarUnHumano = async(id_usuario) => {
         body: JSON.stringify(id_usuario),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     return await resp.json();
@@ -150,7 +149,7 @@ const mostrarTablaMuertosPredeterminado = async() => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     const data = await resp.json();
@@ -162,7 +161,7 @@ const mostrarTablaMuertosAscendiente = async() => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     const data = await resp.json();
@@ -174,7 +173,7 @@ const mostrarTablaMuertosDescendiente = async() => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     const data = await resp.json();
@@ -188,7 +187,7 @@ export {
     mostrarCaracteristicas_Dios,
     matarUnHumano,
     matarAleatorioHumanos,
-    mostrarCaracteristicasHumano,
+    mostrarCaracteristicasUsuario,
     obtenerHumanosDios,
     obtenerHumanosPrueba,
     mostrarTablaMuertosPredeterminado,

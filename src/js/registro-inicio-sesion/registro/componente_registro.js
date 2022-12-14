@@ -61,8 +61,8 @@ const validation = () => {
                 password: password.value
             }).then(registrado => {
                 if(registrado.mens.success == true){
-                    location.href = "../../html/principal.html"
-                    guardarToken(registrado);
+                    location.href = "../../html/home.html"
+                    guardarUsuario(registrado);
                 }
                 
             });

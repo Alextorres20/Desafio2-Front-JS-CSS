@@ -1,0 +1,159 @@
+@mixin home($coloresGenerales) {
+    &.home {
+        height: 100%;
+
+        main .contenedor-principal {
+            padding: 2rem 3rem;
+            height: 100%;
+
+            @media (min-width: 992px) {
+                padding: 3.5rem 5rem;
+            }
+
+            @media (max-width: 576px) {
+                flex-direction: column;
+            }
+
+            .contenedor {
+                box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
+                height: 100%;
+
+                &.humanos,
+                &.pruebas {
+                    @media (max-width: 576px) {
+                        width: 100%;
+                    }
+
+                    width: 50%;
+
+                    a {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100%;
+                        color: map.get($coloresGenerales, "iconos");
+                        text-decoration: none;
+
+                        i {
+                            font-size: 7rem;
+                            color: map.get($coloresGenerales, "iconos");
+                            transition: color .2s;
+
+                            &:hover {
+                                color: map.get($coloresGenerales, "iconos-hover");
+                                @include rotar();
+                            }
+                        }
+                    }
+                }
+
+
+                &.pruebas-asignadas, &.perfil {
+                    .cabecera {
+                        background-color: map.get($coloresGenerales, "iconos-hover");
+                        color: map.get($coloresGenerales, "letra-clara");
+                        box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
+                    }
+                }
+
+                &.pruebas-asignadas {
+                    width: 65%;
+
+                    .cabecera { text-align: center;}
+                }
+
+                &.perfil {
+                    width: 25%;
+
+                    .cabecera {                        
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .imagen-perfil {
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+
+                    .info {
+                        border-radius: 2px;
+                    }
+
+                    .atributos {
+                        gap: 12px;
+                        border-bottom: 2px solid map.get($coloresGenerales, "iconos-hover-hover");
+
+                        * {
+                            border-radius: 6px;
+                            color: map.get($coloresGenerales, "letra-clara");
+                        }
+
+                        .sabiduria {
+                            background-color: map.get($coloresGenerales, "azul");
+                        }
+
+                        .nobleza {
+                            background-color: map.get($coloresGenerales, "amarillo");
+                        }
+
+                        .audacia {
+                            background-color: map.get($coloresGenerales, "verde");
+                        }
+
+                        .maldad {
+                            background-color: map.get($coloresGenerales, "rojo");
+                        }
+
+                        .virtud {
+                            background-color: map.get($coloresGenerales, "morado");
+                        }
+                    }
+                }
+
+            }
+        }
+
+        footer {
+            @media (min-width: 480px) {
+                column-gap: 1rem;
+                padding: 0 2rem;
+                font-size: .8rem;
+            }
+
+            display: grid;
+            grid-template-areas: 'copyright separador n1 n1'
+            'copyright separador n2 n2';
+            justify-content: start;
+            column-gap: .5rem;
+            padding: 0 1rem;
+            font-size: .75rem;
+            color: white;
+            background-color: map.get($coloresGenerales, "iconos-hover");
+
+            .copyright {
+                grid-area: copyright;
+                align-self: center;
+
+            }
+
+            .n1 {
+                grid-area: n1;
+                align-self: end;
+            }
+
+            .n2 {
+                grid-area: n2;
+                align-self: start;
+            }
+
+            .separador {
+                grid-area: separador;
+                align-self: center;
+                height: 70%;
+                border-right: 1px solid white;
+            }
+        }
+    }
+}
