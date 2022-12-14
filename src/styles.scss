@@ -4,37 +4,16 @@
 @import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
         './scss/index', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
         './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/asignar-pruebas',
-        './scss/humanos/modal-caracteristicas-dios';
+        './scss/humanos/modal-caracteristicas-dios', './scss/footer';
+
 
 $coloresGenerales: (
-    //Fondos Boostrap
-    "primary": #0d6efd,
-    "secundary": #6c757d,
-    "success": #198754,
-    "danger": #dc3545,
-    "warning": #ffc107,
-    "info": #0dcaf0,
-    "light": #f8f9fa,
-    "dark": #212529,
-
-    //Colores de Alicia
     "letra-clara": #ffffff,
     "verde": #66e25f,
     "amarillo": #ffc423,
     "rojo": #ea1b59,
     "iconos": #4a403e,
     "iconos-hover": #231f1f,
-);
-
-$colorFondoBotones: (
-    "primary": #0d6efd,
-    "secundary": #6c757d,
-    "success": #198754,
-    "danger": #dc3545,
-    "warning": #ffc107,
-    "info": #0dcaf0,
-    "light": #f8f9fa,
-    "dark": #212529
 );
 
 html {
@@ -67,5 +46,9 @@ body {
 
     .row {
         --bs-gutter-x: 0;
+    }
+
+    footer.principal, footer.asignar-pruebas {
+        @include footer($coloresGenerales);
     }
 }

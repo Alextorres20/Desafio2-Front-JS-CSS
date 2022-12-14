@@ -1,0 +1,39 @@
+@mixin footer($coloresGenerales) {
+    @media (min-width: 480px) {
+        column-gap: 1rem;
+        padding: 0 2rem;
+        font-size: .8rem;
+    }
+
+    display: grid;
+    grid-template-areas: 'copyright separador n1 n1'
+    'copyright separador n2 n2';
+    justify-content: start;
+    column-gap: .5rem;
+    padding: 0 1rem;
+    font-size: .75rem;
+    color: white;
+    background-color: map.get($coloresGenerales, "iconos-hover");
+
+    .copyright {
+        grid-area: copyright;
+        align-self: center;
+    }
+
+    .n1 {
+        grid-area: n1;
+        align-self: end;
+    }
+
+    .n2 {
+        grid-area: n2;
+        align-self: start;
+    }
+
+    .separador {
+        grid-area: separador;
+        align-self: center;
+        height: 70%;
+        border-right: 1px solid white;
+    }
+}
