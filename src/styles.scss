@@ -1,10 +1,10 @@
 @use "sass:map";
 
 @import "~bootstrap/scss/bootstrap";
-@import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
-        './scss/index', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
+@import './scss/pruebas/modal-crear-pruebas','./scss/animaciones/transformaciones' ,'./scss/animaciones/animaciones', './scss/pruebas/crud-pruebas',
+        './scss/index', './scss/footer', './scss/principal', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
         './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/asignar-pruebas',
-        './scss/humanos/modal-caracteristicas-dios';
+        './scss/humanos/modal-caracteristicas-dios', './scss/sobre-nosotros';
 
 $coloresGenerales: (
     "letra-clara": #ffffff,
@@ -32,7 +32,8 @@ body {
     @include modal-crear-humano($coloresGenerales);
     @include modal-matar-humano($coloresGenerales);
     @include modal-caracteristicas-dios($coloresGenerales);
-
+    @include sobre-nosotros($coloresGenerales);
+    
     * {
         box-sizing: border-box;
     }

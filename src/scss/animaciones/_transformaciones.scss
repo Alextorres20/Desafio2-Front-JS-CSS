@@ -1,0 +1,17 @@
+@mixin zoomEstrecho(){
+    
+    &:hover{
+        transition: 0.5s;
+        transform: scale(0.8,1);
+        z-index: 10; 
+    }
+}
+
+@mixin zoomAncho(){
+    
+    &:hover{
+        transition: 0.5s;
+        transform: scale(1.5, 1);
+        z-index: 10; 
+    }
+}

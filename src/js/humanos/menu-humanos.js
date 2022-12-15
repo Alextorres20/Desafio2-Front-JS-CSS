@@ -6,7 +6,7 @@ const botonCrearHumanos = document.getElementById('crearHumanos');
 const contenedorMensajeCrear = document.querySelector('.mensajeCantidad.tipo'); 
 const cantidadCrear = document.getElementById('cantidadCrear');
 
-const mensajeModal = document.querySelector('.mensajeMatar');
+const mensaje = document.querySelector('.respuesta-mensaje');
 
 const initModal = () => {
     mostrarHumanos();
@@ -21,29 +21,7 @@ const mostrarHumanos = () => {
                 generarCaracteristicasHTML(humano.id_usuario, caracteristicas_Dios)
             });
         });
-        const iconos_basura = document.querySelectorAll('i.fa.fa-trash.eliminarHumano');
-        const matarUnHumano_basura = (iconos_basura) => {
-            iconos_basura.forEach( icono_basura => {
-                const humano_ID = icono_basura.parentNode.parentNode.getAttribute("data-id");
-                icono_basura.addEventListener("click", (event) => {
-                    server.matarUnHumano({
-                        id_usuario: humano_ID
-                    }).then( humanosMuertos => {
-                        
-                        eliminarUnaColumna(humano_ID);
-                        mensajeModal.classList.add('ok')
-                        const datos = humanosMuertos;
-                        mostrarMensajeMatar(datos, mensajeModal);
-                    });
-                });
-                
-            });
-        }
-        matarUnHumano_basura(iconos_basura);
-
-        
-
-        
+        matarUnHumano_basura();
     });
 }        
     botonCrearHumanos.addEventListener('click', (event) => {
@@ -61,10 +39,10 @@ const mostrarHumanos = () => {
                         server.mostrarCaracteristicas_Dios(humanoVivo.id_usuario).then(caracteristicas_Dios => {
                             generarCaracteristicasHTML(humanoVivo.id_usuario, caracteristicas_Dios)
                         });
+                        matarUnHumano_basura();  
                     });
-                    
                 });
-            }) ;
+            });
             contenedorMensajeCrear.classList.add('ok');
             mostrarMensaje();
         }
@@ -73,12 +51,12 @@ const mostrarHumanos = () => {
 
 const generarHumanoHTML = (humano) => {
                 
-    const html = `<td class="Identificador ${[humano.id_usuario]}" scope="col">${[humano.id_usuario]}</td>
-                    <td scope="col"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" 
+    const html = `<td class="Identificador ${[humano.id_usuario]}" scope="col-2">${[humano.id_usuario]}</td>
+                    <td scope="col-4"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" 
                     data-bs-target="#modalCaracteristicas_${[humano.id_usuario]}">Sus Caracteristicas</button></td>
-                    <td scope="col">${[humano.destino]}</td>
-                    <td class="${[humano.donde_murio]}" scope="col">${[humano.donde_murio]}</td>
-                    <td scope="col"><i class="fa fa-trash eliminarHumano" aria-hidden="true"></i><input class="checkboxes" type="checkbox"></td>`;
+                    <td scope="col-2">${[humano.destino]}</td>
+                    <td class="col-2 ${[humano.donde_murio]}" scope="col">${[humano.donde_murio]}</td>
+                    <td scope="col-2"><i class="fa fa-trash eliminarHumano" aria-hidden="true"></i><input class="checkboxes" type="checkbox"></td>`;
 
     const tr = document.createElement('tr');
     tr.setAttribute('data-id', humano.id_usuario)
@@ -137,9 +115,9 @@ const desaparecerMensaje = () => {
     const botonesCerrar = document.querySelectorAll('.btn-close');
     botonesCerrar.forEach(botonCerrar => {
         botonCerrar.addEventListener("click", (event) => {
-            if(mensajeModal.hasChildNodes|| contenedorMensajeCrear.hasChildNodes){
-                mensajeModal.className = 'mensajeMatar tipo';
-                mensajeModal.innerHTML = ""
+            if(mensaje.hasChildNodes|| contenedorMensajeCrear.hasChildNodes){
+                mensaje.className = 'mensajeMatar tipo';
+                mensaje.innerHTML = ""
                 contenedorMensajeCrear.className = 'mensajeCantidad tipo';
                 contenedorMensajeCrear.innerHTML = "";
             }
@@ -147,6 +125,29 @@ const desaparecerMensaje = () => {
     });
 }
 
+const matarUnHumano_basura = async() => {
+    const iconos_basura = document.querySelectorAll('i.fa.fa-trash.eliminarHumano');
+    iconos_basura.forEach( icono_basura => {
+        const humano_ID = icono_basura.parentNode.parentNode.getAttribute("data-id");
+        icono_basura.addEventListener("click", (event) => {
+            server.matarUnHumano({
+                id_usuario: humano_ID
+            }).then( humanosMuertos => {
+                eliminarUnaColumna(humano_ID);
+                mensaje.classList.add('ok')
+                let datos = "";
+                if(humanosMuertos.mens.includes('Campo Eliseos')){
+                    datos += "El humano ha ido Campo de Eliseos, que descanse en Paz. <br>" 
+                }
+                else{
+                    datos += "El humano ha ido a Tartaros, no pasa nada, tienes a Cerberos de compañia. <br>"
+                }
+                mostrarMensajeMatar(datos, mensaje);
+            });
+        });
+        
+    });
+}
 export{
     initModal
 }
