@@ -1,16 +1,19 @@
 import { usuario } from '../index';
-
+import { generarPruebaHtml, agregarHtml } from './asignar-pruebas';
+import { obtenerPruebasHumano } from './pruebas/peticiones-pruebas';
 const contenendor = document.querySelector('main');
 
-
-const initHome = () => {
-    let html = '';
-    if (usuario.roles.includes('dios')) html = generarDiosHtml() ;
-    else html = generarHumanosHtml();
-
-    const div = document.createElement('div')
-    div.innerHTML = html;
-    contenendor.append(div.firstElementChild);
+const initHome = async() => {
+    if (usuario.roles.includes('dios')) {
+        agregarHtml(generarDiosHtml(), contenendor);
+    } else {
+        const pruebas = await obtenerPruebasHumano(usuario.id);
+        agregarHtml(generarHumanosHtml(), contenendor);
+        const contenedorPruebas = document.querySelector('.pruebas-asignadas .contenido');
+        pruebas.forEach(p => {
+            agregarHtml(generarPruebaHtml(p), contenedorPruebas);
+        });
+    }
 }
 
 const generarDiosHtml = () => {
@@ -38,7 +41,6 @@ const generarHumanosHtml = () => {
                     <div class="contenedor flex-fill pruebas-asignadas me-sm-5 mb-4 bg-opacity-50 bg-white">
                         <h5 class="cabecera p-2">Pruebas asignadas</h5>
                         <div class="contenido">
-                            
                         </div>
                     </div>
                     <div class="contenedor flex-fill perfil bg-opacity-50 bg-white" href="pruebas.html">

@@ -22,17 +22,30 @@ const cargarHumanos = async() => {
 
 const cargarPruebas = async() => {
     const pruebas = await obtenerPruebas();
-    pruebas.map(p => generarPruebaHtml(p, contenedorPruebas));
+    pruebas.map(p => {
+        agregarHtml(generarPruebaHtml(p), contenedorPruebas);
+        cargarHumanosPrueba(p.id, contenedorPruebas.lastChild);
+    });
 }
 
 
-const cargarHumanosPrueba = async(idPrueba, contenedor) => {
+const cargarHumanosPrueba = async(idPrueba, contenedorPadre) => {
     const humanos = await obtenerHumanosPrueba(idPrueba);
-    humanos.map(h => generarHumanoHtml(h, contenedor));
+    const html = `<div id="p${[idPrueba]}" class="accordion-collapse collapse humanos-contenedor"></div>`;
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    contenedorPadre.append(div.firstElementChild)
+    humanos.map(h => generarHumanoHtml(h, contenedorPadre.lastChild));
+}
+
+const agregarHtml = (html, contenedor) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    contenedor.append(div.firstElementChild);
 }
 
 
-const generarPruebaHtml = (prueba, contenedor) => {
+const generarPruebaHtml = (prueba) => {
     const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
     const html = `<div class="prueba mt-2 bg-white tarjeta" data-id="${[prueba.id]}">
                     <div class="d-flex align-items-center">
@@ -54,15 +67,8 @@ const generarPruebaHtml = (prueba, contenedor) => {
                         <p class="tipo">${[tipo]}</p>
                         <p class="fecha ms-auto">${[prueba.fechaCreacion]}</p>
                     </div>
-
-                    <div id="p${[prueba.id]}" class="accordion-collapse collapse humanos-contenedor">
-                    </div>
                 </div>`;
-
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    contenedor.append(div.firstElementChild);
-    cargarHumanosPrueba(prueba.id, contenedor.lastChild.querySelector('.humanos-contenedor'));
+    return html;
 }
 
 
@@ -175,5 +181,12 @@ const mostrarMensaje = (estado, mensaje) => {
         contenedor.classList.add('alert', 'alert-danger');
     }
 }
+
+
+export {
+    generarPruebaHtml,
+    agregarHtml
+}
+
 
 initAsignarPruebas();

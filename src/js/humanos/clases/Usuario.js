@@ -6,6 +6,7 @@ export class Usuario {
     }
 
     constructor( usuario ) {
+        this.id = usuario.id;
         this.name = usuario.name;
         this.token = usuario.token;
         this.roles = usuario.roles;
