@@ -1,24 +1,44 @@
-@mixin modal-crear-pruebas($coloresGenerales) { 
+@mixin modal-crear-pruebas($coloresGenerales) {
     .modal-body {
-        .d-flex {
-            align-items: center;
-            label {
-                padding: .5rem .7rem .5rem 0; 
-                white-space: nowrap;
-            }
-        }  
-        .opciones-prueba {
-            label {
-                width: 45%;
-                padding: .5rem 0;
-            }
-            select, input {
-                width: 55%;
-            }
+        padding: 1rem 2rem;
 
-            .card-body > div {
-                margin-top: 1.5rem;
+        .row {
+            label {
+                white-space: nowrap;
+                padding: .5rem .7rem .5rem 0;
             }
         }
-    }  
+  
+        .opciones-prueba {
+            border-top: solid 1px var(--bs-border-color);
+            margin-top: 2rem;
+
+            .mostrar { 
+                @include desplegar();
+            }
+
+            label {
+                padding: .3rem .7rem .3rem 0;
+            }
+
+            textarea {
+                width: 100%;
+            }
+
+            div {
+                margin-top: 1rem;
+                padding: 0;
+                .info {
+                    font-size: .8rem;
+                }
+            }
+
+            .error {
+                color: map.get($coloresGenerales, "rojo");
+                text-align: end;
+                margin-top: .5rem;
+                font-size: .9rem;
+            }
+        }
+    }
 }

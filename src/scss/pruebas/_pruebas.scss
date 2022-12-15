@@ -1,0 +1,92 @@
+@mixin pruebas($coloresGenerales) {
+    &.pruebas {
+        .crud-pruebas {
+            .mensaje-respuesta {
+                width: fit-content;
+                height: 35px;
+                transition: all .5s; //El mensaje aparece poco a poco
+            }
+
+            .botones {
+                button {
+                    color: map.get($coloresGenerales, "letra-clara");
+                    background-color: map.get($coloresGenerales, "iconos");
+                    border-color: map.get($coloresGenerales, "iconos");
+                    box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
+                    transition: all .3s; //Color, color borde, color fondo
+    
+                    &:hover {
+                        background-color: map.get($coloresGenerales, "azul");
+                        border-color: map.get($coloresGenerales, "azul");
+                        color: map.get($coloresGenerales, "letra-clara");
+                    }
+                }
+            }
+            .tabla-pruebas {
+                overflow-x: scroll;
+                box-shadow: 2px 2px 10px 2px rgb(0, 0, 0, .2);
+
+                .cabecera, .contenido {
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .cabecera {
+                    background-color: map.get($coloresGenerales, "iconos-hover");
+                    color: map.get($coloresGenerales, "letra-clara");
+                }
+
+                .contenido {
+                    border-radius: 0 0 5px 5px;
+                    overflow-y: scroll;
+                    height: 70vh;
+                    
+                    div.row {
+                        align-items: center;
+                        
+                        &:hover {
+                            background-color: var(--bs-gray-200);
+                        }
+
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+
+                        div {
+                            span:first-of-type {
+                                margin-right: .5rem;
+                            }
+    
+                            i {
+                                transition: all .3s;
+                                color: var(--bs-gray-600);
+                            }   
+                        }                  
+                    }
+                }
+            }
+        }
+
+        #modalConfirmarBorrar {
+            .subtexto {
+                font-size: .9rem;
+            }
+
+            .btn-light {
+                border: 1px solid map.get($coloresGenerales, "iconos");
+            }
+            .btn-primary {
+                background-color: map.get($coloresGenerales, "iconos");
+                border-color: map.get($coloresGenerales, "iconos");
+                color: map.get($coloresGenerales, "letra-clara");
+                transition: all .3s;
+
+                &:hover {
+                    background-color: map.get($coloresGenerales, "iconos-hover");
+                    border-color: map.get($coloresGenerales, "iconos-hover");
+                }
+            }
+        }
+    }
+}

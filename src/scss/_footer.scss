@@ -1,0 +1,50 @@
+@mixin footer($coloresGenerales){
+    & {
+        background-color: map.get($coloresGenerales, "iconos-hover");
+        color:white;
+        font-size: .75rem;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: auto;
+        margin-bottom: -2rem;
+        
+        @media (min-width: 480px) {
+            padding: 0 2rem;
+            font-size: .8rem;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        .separador{
+            width: 100%;
+            border-top: 1px solid white;
+        }
+        
+        a {
+            color: map.get($coloresGenerales, "letra-clara");
+
+            &:hover {
+                color: map.get($coloresGenerales, "azul") !important;
+            }
+        }
+        
+        h1,h2,h3,h4,h5,p{
+            text-align: center;
+        }
+        h1,h2,h3,h4,h5{
+            font-size: .9rem;
+        }
+
+        &.index, &.humanos {
+            bottom: 0;
+
+            @media (max-width: 912px) {
+                margin-bottom: -7rem;
+            }
+        }
+        
+    }
+}

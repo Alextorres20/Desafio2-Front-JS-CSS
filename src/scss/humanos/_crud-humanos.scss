@@ -1,0 +1,77 @@
+@mixin crud-humanos($coloresGenerales) {
+    &.humanos {
+        position: relative;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, .1);
+        
+        .row {
+            --bs-gutter-x: 0;
+        }
+    
+        
+
+        .botones.opcionales {
+
+            button{
+                margin-left: 5px;
+            }
+
+            .crearHumanos:hover{
+                background-color: map.get($coloresGenerales, "verde") !important;
+                border-color: map.get($coloresGenerales, "verde") !important;
+            }
+            .matarHumano:hover{
+                background-color: map.get($coloresGenerales, "amarillo") !important;
+                border-color: map.get($coloresGenerales, "amarillo") !important;
+            }
+            .matarAleatorio:hover{
+                background-color: map.get($coloresGenerales, "rojo") !important;
+                border-color: map.get($coloresGenerales, "rojo") !important;
+            }
+            .mostrarHumanosMuertos:hover{
+                background-color: map.get($coloresGenerales, "azul") !important;
+                border-color: map.get($coloresGenerales, "azul") !important;
+            }
+            
+        }
+
+        
+        .crud-humanos {
+            padding: 2rem 5rem;
+            
+            .contenedor-humanos{
+                max-height: 26rem;
+                overflow-y: scroll;
+                display: inline-block;
+                
+                @media (max-width: 890px) {
+                    max-height: 23rem;
+                }
+
+                @media (max-width: 750px) {
+                        max-height: 22rem;
+                }
+
+                @media (max-width: 680px) {
+                    max-height: 20rem;
+                }
+
+                
+                .tabla-humanos{
+                    background-color: white;
+                    box-shadow:  2px 2px 10px 2px rgb(0, 0, 0, .2);
+                    th, td {
+                        padding: 1rem;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            
+        }
+
+        footer {
+            @include footer($coloresGenerales)
+        }
+    }
+}

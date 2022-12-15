@@ -1,0 +1,71 @@
+@mixin index($coloresGenerales) {
+    &.index {
+        position: relative;
+        min-height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .contenedor-index{
+            opacity: 0;
+            height: fit-content;
+            position: relative;
+
+            @media (max-width: 440px){
+                margin: 0 5% 5% 5%;
+            }
+
+            @media (min-width: 440px){
+                margin: 0 20% 5% 20%;
+            
+            }
+
+            p, h5, h4 {
+                margin-bottom: 1rem;
+            }
+
+            background-color: rgb(255, 255, 255,.8);
+            border-style: dashed solid;
+            padding: 1rem;
+            @include aparecer1();
+            .header {
+                opacity: 0;
+                width: 100%;
+                @include aparecer2();
+                h1{
+                    text-align: center;
+                }
+            }
+
+            .main {
+                opacity: 0;
+                width: 100%;
+                @include aparecer3();
+                .formatoMovil{        
+                    @media (max-width: 576px) {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+            .boton {
+                opacity: 0;
+                @include aparecer4();
+                button{
+                    border: 2px solid;
+                    margin-bottom: 2px;
+                    transition: 0.4s;
+                    &:hover{
+                        color: white;
+                        background-color:  map.get($coloresGenerales, "dark");
+                        @include temblar();
+                    } 
+                }
+                
+            }
+            
+        }
+
+        footer {
+            @include footer($coloresGenerales);
+        }
+    }
+}

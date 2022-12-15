@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Humanos</title>
+</head>
+<body class="humanos" style="background-image: url('../assets/img/monte_olimpo.jpg')">
+    <!----------------------- Menú horizontal ---------------------->
+    <header>
+        <nav class="navbar menu-horizontal ps-5 pe-5 pt-3 pb-3">
+            <div>
+                <a class="nav-link active" aria-current="page" href="./home.html">
+                    <i class="home fa fa-university" aria-hidden="true"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!------------------------ CRUD Humanos ------------------------>
+    <div class="col-sm-12 crud-humanos">
+        <div class="row respuestas">
+            <div class="col-12 col-sm-12 d-flex p-2 botones opcionales">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 crearHumanos" data-bs-toggle="modal" data-bs-target="#modalCrear">
+                    Crear Humanos
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarHumano"  data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
+                    Matar humanos Seleccionados
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarAleatorio">
+                    Matar humanos Aleatorio
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
+                    Mostrar humanos Muertos
+                </button>
+            </div>
+            <div class="col-12 col-sm-12 respuesta-mensaje"></div>
+            
+        </div>
+        
+        <div class="row justify-content-md-center crud-Humanos">
+            <div class="col-sm-12 h-50 contenedor-humanos">
+                <table class="table tabla-humanos">
+                    <thead>
+                        <tr>
+                            <th scope="col-2">ID de usuario</th>
+                            <th scope="col-4">Caracteristicas</th>
+                            <th scope="col-2">Destino</th>
+                            <th scope="col-2">Estado</th>
+                            <th scope="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    
+
+
+     <!--------------- Modal Caracteristicas Humano ------------------------>
+    <div class="Caracteristicas_DiosesProtegidos">
+
+    </div>
+   
+    
+
+    
+    <!--------------- Modal crear Humanos ------------------------>
+    <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="modalCrearHumanos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Creacion de usuarios</h1>
+                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5>Inserta una cantidad de usuarios que desea crear</h5>
+                        </div>
+                    
+                        <div class="col-12">
+                            <input id="cantidadCrear" type="number" min="1" max="100" required
+                            pattern="^[0-9]+" title="Por favor inserta un numero">
+                            <button type="submit" class="btn btn-primary" id="crearHumanos">Crear Humanos</button>
+                        </div>
+                        <div class="col-12">
+                            <div class="mensajeCantidad tipo"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!--------------- Modal Matar Humanos ------------------------>
+    <div class="modal fade" id="modalMatarHumano" tabindex="-1" aria-labelledby="modalMatarHumanos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Matar humanos seleccionados</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <p>¿Estas seguro que quieres hacerlo?</p>
+                            <button class="btn btn-danger" id="confirmarMatarHumanos">Estoy seguro</button>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <div class="mensajeMatar tipo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------- Modal Mostrar Humanos que estan Muertos ------------------------>
+    <div class="modal fade" id="modalMostrarHumanoMuertos" tabindex="-1" aria-labelledby="modalMostrarHumanoMuertos" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Humanos que han muerto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tabla-humanos-Muertos">
+                    <select class="col-12 col-sm-9 form-select select-tipo-humanosMuertos" name="tipoMuertos"
+                            aria-label="selectTipoHumanosMuertos">
+                            <option value="Predeterminado" selected>Predeterminado</option>
+                            <option value="Fecha_muerte_Ascendiente">Fecha de muerte Ascendiente</option>
+                            <option value="Fecha_muerte_Descendiente">Fecha de muerte Decendiente</option>
+                    </select>
+                    <div class="opciones-humanosMuertos colapsar mostrar">
+                        <div class="contenedor-humanos">
+                            <table class="table tabla-humanos-muertos">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID de usuario</th>
+                                        <!-- <th scope="col">Caracteristicas</th> -->
+                                        <th scope="col">Destino</th>
+                                        <th scope="col">Donde Murio</th>
+                                        <th scope="col">Fecha de su Muerte</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="humanos pt-3 pb-3 ps-4 pe-4">
+        <div class="row align-items-center">
+            <div class="col-3">
+                    &copy;2022-2023 Copyright</p>
+            </div>
+            <div class="col-3">
+                <div class="separador"></div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="./sobre-nosotros.html"><h5><u>Sobre Nosotros:</u></h5></a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="">
+                            <p>Alejandro Torres Fernández</p>
+                        </div>
+                        <div class="">
+                            <p>Alicia Fernández Cambronero</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h5>Contenidos:</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a href="../index.html">Presentacion</a>
+                    </li>
+                    <li>
+                        <a href="./registro-inicio-sesion.html">Pagina Registro / Inicio Sesion</a>
+                    </li>
+                    <li>
+                        <a href="./home.html">Pagina principal</a>
+                    </li>
+                    <li>
+                        <a href="./pruebas.html">Pagina de Pruebas</a>
+                    </li>
+                    <li>
+                        <a href="./asignar-pruebas.html">Asignacion de Pruebas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

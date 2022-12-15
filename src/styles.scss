@@ -1,0 +1,111 @@
+@use "sass:map";
+
+@import "~bootstrap/scss/bootstrap";
+@import './scss/pruebas/modal-crear-pruebas', './scss/animaciones/transformaciones', './scss/animaciones/animaciones', './scss/pruebas/pruebas',
+        './scss/index', './scss/home', './scss/footer', './scss/registro-inicio-sesion' , './scss/humanos/crud-humanos', 
+        './scss/humanos/modal-crear-humano', './scss/humanos/modal-matar-humano', './scss/asignar-pruebas',
+        './scss/humanos/modal-caracteristicas-dios', './scss/sobre-nosotros';
+
+$coloresGenerales: (
+    "letra-clara": #ffffff,
+    "verde": #5ddc9d,
+    "amarillo": #f5d01c,
+    "azul": #11b5b5,
+    "rojo": #df2069,
+    "morado": #c83fba,
+    "iconos": #4a403e,
+    "iconos-hover": #2b2325,
+);
+
+
+html {
+    height: 100vh;
+}
+
+body {
+    @include index($coloresGenerales);
+    @include modal-crear-pruebas($coloresGenerales);
+    @include pruebas($coloresGenerales);
+    @include home($coloresGenerales);
+    @include asignar-pruebas($coloresGenerales);
+    @include registro-inicio-sesion($coloresGenerales);
+    @include crud-humanos($coloresGenerales);
+    @include modal-crear-humano($coloresGenerales);
+    @include modal-matar-humano($coloresGenerales);
+    @include modal-caracteristicas-dios($coloresGenerales);
+    @include sobre-nosotros($coloresGenerales);
+
+    p, h5, h4 {
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none; 
+    }
+    
+    * {
+        box-sizing: border-box;
+    }    
+
+    .row {
+        --bs-gutter-x: 0;
+    }
+
+    .bg-primary {
+        background-color: map.get($coloresGenerales, "azul") !important;
+        border-color: map.get($coloresGenerales, "azul") !important;
+    }
+
+    .btn-primary {
+        background-color: map.get($coloresGenerales, "iconos") !important;
+        border-color: map.get($coloresGenerales, "iconos") !important;
+        
+        &:hover {
+            background-color: map.get($coloresGenerales, "azul") !important;
+            border-color: map.get($coloresGenerales, "azul") !important;
+        }
+    }
+
+    nav, footer {
+        box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
+    }
+
+    nav.menu-horizontal {
+        background-color: map.get($coloresGenerales, "iconos-hover");
+
+        i.home {
+            font-size: 2rem;
+            color: map.get($coloresGenerales, "letra-clara");
+
+            &:hover {
+                color: map.get($coloresGenerales, "azul");
+            }
+        }
+    }
+
+    main {
+        .tarjeta {
+            padding: 1rem;
+            border-radius: 2px;
+            transition: transform .2s ease-out;
+            box-shadow: 0px 0px 5px 0px rgb(0, 0, 0, .2);
+
+            .borrar:hover {
+                color: map.get($coloresGenerales, "rojo") !important;
+            }
+
+            &.prueba.destino, &:hover {
+                transform: scale(1.015);
+                box-shadow: 0px 0px 5px 0px map.get($coloresGenerales, "azul");
+            }
+        }
+
+        .imagen-perfil {
+            object-fit: cover;
+            object-position: 50% 20%;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
