@@ -4,6 +4,7 @@
         min-height: 100vh;
         background-repeat: no-repeat;
         background-size: cover;
+
         .contenedor-index{
             opacity: 0;
             height: fit-content;
@@ -17,6 +18,11 @@
                 margin: 0 20% 5% 20%;
             
             }
+
+            p, h5, h4 {
+                margin-bottom: 1rem;
+            }
+
             background-color: rgb(255, 255, 255,.8);
             border-style: dashed solid;
             padding: 1rem;
