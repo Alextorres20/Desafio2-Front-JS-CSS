@@ -16,13 +16,16 @@
 ## Back
 1. Hacer una copia del fichero .env.example llamado .env
 2. En el fichero .env. modificar las siguientes lineas:
+      ```
       DB_DATABASE=desafio2
-      
+      ```
+      ```
       MAIL_HOST=smtp.gmail.com
       MAIL_PORT=587
       MAIL_USERNAME=auxiliardaw2@gmail.com
       MAIL_PASSWORD=yjiivqqdpwuiisev
       MAIL_ENCRYPTION=tls
+      ```
 
 3. Posicionarse en al carpeta Back
 4. Ejecutar el comando composer install
