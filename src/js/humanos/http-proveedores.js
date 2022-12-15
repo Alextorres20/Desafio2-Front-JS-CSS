@@ -190,7 +190,7 @@ export {
     matarAleatorioHumanos,
     mostrarCaracteristicasHumano,
     obtenerHumanosDios,
-    obtenerHumanosPrueba
+    obtenerHumanosPrueba,
     mostrarTablaMuertosPredeterminado,
     mostrarTablaMuertosAscendiente,
     mostrarTablaMuertosDescendiente

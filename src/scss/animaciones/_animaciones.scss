@@ -93,14 +93,26 @@
     animation-fill-mode: forwards;
 }
 
-@mixin aparecer2(){
-    animation: appear 1s;
+@mixin aparecer1-2(){
+    animation: UPtoDown 0.5s, appear 0.5s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
 }
 
+@mixin aparecer2(){
+    animation: UPtoDown 0.5s, appear 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+@mixin aparecer2-2(){
+    animation: UptoDown 0.5s, appear 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
 @mixin aparecer3(){
-    animation: appear 2s;
+    animation: appear 1s;
     animation-delay: 2s;
     animation-fill-mode: forwards;
 }

@@ -1,19 +1,32 @@
 @mixin crud-humanos($coloresGenerales) {
     &.humanos {
+        position: relative;
+        min-height: 100vh;
         background-color: rgba(0, 0, 0, .1);
-    
+        
         .row {
             --bs-gutter-x: 0;
         }
     
-        .menu-vertical {
-            box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
-            height: 100vh;
-        }
+        
 
         .botones.opcionales {
+
             button{
                 margin-left: 5px;
+            }
+
+            .crearHumanos:hover{
+                background-color: map.get($coloresGenerales, "primary");
+            }
+            .matarHumano:hover{
+                background-color: map.get($coloresGenerales, "warning");
+            }
+            .matarAleatorio:hover{
+                background-color: map.get($coloresGenerales, "danger");
+            }
+            .mostrarHumanosMuertos:hover{
+                background-color: map.get($coloresGenerales, "info");
             }
             
         }
@@ -21,35 +34,58 @@
         
         .crud-humanos {
             padding: 2rem 5rem;
-            button {
-                float: right;
-            }
-            .respuesta-creacion { 
-                float:left; 
-                padding: .5rem 1.5rem;
-                margin-bottom: 0;
-            }
+            
+            .contenedor-humanos{
+                max-height: 26rem;
+                overflow-y: scroll;
+                display: inline-block;
+                
+                @media (max-width: 890px) {
+                    max-height: 23rem;
+                }
 
-            .tabla-humanos{
-                margin-top: 6rem;
-                background-color: white;
-                box-shadow:  2px 2px 10px 2px rgb(0, 0, 0, .2);
-                th, td {
-                    padding: 1rem;
-                    text-align: center;
-                    vertical-align: middle;
-                    span:first-of-type {
-                        margin-right: .5rem; 
-                    }
-                    i {
-                        transition: all .3s;
-                        color: var(--bs-gray-600);
-                        &:hover {
-                            color: var(--bs-gray-900);
-                        }
+                @media (max-width: 750px) {
+                        max-height: 22rem;
+                }
+
+                @media (max-width: 680px) {
+                    max-height: 20rem;
+                }
+
+                
+                .tabla-humanos{
+                    background-color: white;
+                    box-shadow:  2px 2px 10px 2px rgb(0, 0, 0, .2);
+                    th, td {
+                        padding: 1rem;
+                        text-align: center;
+                        vertical-align: middle;
                     }
                 }
             }
+            
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            @media (min-width: 480px) {
+                padding: 0 2rem;
+                font-size: .8rem;
+            }
+            background-color: map.get($coloresGenerales, "iconos-hover");
+            color:white;
+            font-size: .75rem;
+            width: 100%;
+            height: auto;
+            .separador{
+                width: 100%;
+                border-top: 2px solid white;
+            }
+            h1,h2,h3,h4,h5,p{
+                text-align: center;
+            }
+            
         }
     }
 }

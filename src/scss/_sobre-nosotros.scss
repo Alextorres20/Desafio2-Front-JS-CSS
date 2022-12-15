@@ -1,0 +1,72 @@
+@mixin sobre-nosotros($coloresGenerales) { 
+    &.sobre-nosotros{
+        .main{
+            margin: 25px;
+            background-color: map.get($coloresGenerales, "secundary");
+            color: map.get($coloresGenerales, "letra-clara");
+            opacity: 0;
+            @include aparecer1();
+            h1,h2,h3,h4,h5,p{
+                text-align: center;
+            }
+            .nosotros{
+                opacity: 0;
+                @include aparecer1-2();
+            }
+
+            .zeus{
+                opacity: 0;
+                @include aparecer2();
+            }
+            .poseidon{
+                opacity: 0;
+                @include aparecer2-2();
+            }
+            
+            .hades{
+                opacity: 0;
+                @include aparecer3();
+            }
+
+            img{
+                max-height: 65vh;
+                min-width: 20vw;
+                @media (min-width: 768px){
+                    @include zoomEstrecho;
+                }
+
+                @media (max-width: 768px){
+                    @include zoomAncho;
+                }
+                
+            }
+
+            table{
+                box-shadow:  2px 2px 10px 2px rgb(0, 0, 0, .2);
+                thead{
+                    tr>th{
+                        color: map.get($coloresGenerales, "letra-clara");
+                        padding: 1rem;
+                        text-align: center;
+                        vertical-align: middle;
+
+                    }
+                }
+                tbody{
+                    tr>td{
+                        color: map.get($coloresGenerales, "letra-clara");
+                        padding: 1rem;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        
+        footer {
+            @include footer($coloresGenerales);
+            
+        }
+    }
+}
