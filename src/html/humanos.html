@@ -8,31 +8,30 @@
     <title>Humanos</title>
 </head>
 <body class="humanos" style="background-image: url('../assets/img/monte_olimpo.jpg');">
-    <div class="row header-humanos">
-        <nav class="navbar navbar-dark bg-dark menu-horizontal">
-            <ul class="navbar-nav col-1">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./principal.html"><i class="home fa fa-university" aria-hidden="true"></i></a>
-                </li>
-            </ul>
+    <header>
+        <nav class="navbar menu-horizontal ps-5 pe-5 pt-3 pb-3">
+            <div>
+                <a class="nav-link active" aria-current="page" href="./principal.html">
+                    <i class="home fa fa-university" aria-hidden="true"></i>
+                </a>
+            </div>
         </nav>
-    </div>
-    
+    </header>
 
     <!------------------------ CRUD Humanos ------------------------>
     <div class="col-sm-12 crud-humanos">
         <div class="row respuestas">
             <div class="col-12 col-sm-12 d-flex p-2 botones opcionales">
-                <button type="button" class="btn btn-dark btn-outline-light btn-sm col-3 col-sm-3 crearHumanos" data-bs-toggle="modal" data-bs-target="#modalCrear">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 crearHumanos" data-bs-toggle="modal" data-bs-target="#modalCrear">
                     Crear Humanos
                 </button>
-                <button type="button" class="btn btn-dark btn-outline-light btn-sm col-3 col-sm-3 matarHumano"  data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarHumano"  data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
                     Matar humanos Seleccionados
                 </button>
-                <button type="button" class="btn btn-dark btn-outline-light btn-sm col-3 col-sm-3 matarAleatorio">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarAleatorio">
                     Matar humanos Aleatorio
                 </button>
-                <button type="button" class="btn btn-dark btn-outline-light btn-sm col-3 col-sm-3 mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
                     Mostrar humanos Muertos
                 </button>
             </div>
@@ -185,7 +184,7 @@
             </div>
         </div>
     </div>
-    <footer>
+    <footer class="humanos">
         <div class="row justify-content-evenly">
             <div class="col-3 align-self-center align-items-center">
                     &copy;2022-2023 Copyright</p>

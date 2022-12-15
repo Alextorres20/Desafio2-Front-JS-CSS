@@ -17,16 +17,20 @@
             }
 
             .crearHumanos:hover{
-                background-color: map.get($coloresGenerales, "primary");
+                background-color: map.get($coloresGenerales, "verde") !important;
+                border-color: map.get($coloresGenerales, "verde") !important;
             }
             .matarHumano:hover{
-                background-color: map.get($coloresGenerales, "warning");
+                background-color: map.get($coloresGenerales, "amarillo") !important;
+                border-color: map.get($coloresGenerales, "amarillo") !important;
             }
             .matarAleatorio:hover{
-                background-color: map.get($coloresGenerales, "danger");
+                background-color: map.get($coloresGenerales, "rojo") !important;
+                border-color: map.get($coloresGenerales, "rojo") !important;
             }
             .mostrarHumanosMuertos:hover{
-                background-color: map.get($coloresGenerales, "info");
+                background-color: map.get($coloresGenerales, "azul") !important;
+                border-color: map.get($coloresGenerales, "azul") !important;
             }
             
         }
@@ -67,25 +71,7 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
-            @media (min-width: 480px) {
-                padding: 0 2rem;
-                font-size: .8rem;
-            }
-            background-color: map.get($coloresGenerales, "iconos-hover");
-            color:white;
-            font-size: .75rem;
-            width: 100%;
-            height: auto;
-            .separador{
-                width: 100%;
-                border-top: 2px solid white;
-            }
-            h1,h2,h3,h4,h5,p{
-                text-align: center;
-            }
-            
+            @include footer($coloresGenerales)
         }
     }
 }

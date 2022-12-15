@@ -59,30 +59,7 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
-            margin-bottom: -2rem;
-            @media (min-width: 480px) {
-                padding: 0 2rem;
-                font-size: .8rem;
-            }
-
-            @media (max-width: 912px) {
-                margin-bottom: -7rem;
-            }
-            background-color: map.get($coloresGenerales, "iconos-hover");
-            color:white;
-            font-size: .75rem;
-            width: 100%;
-            height: auto;
-            .separador{
-                width: 100%;
-                border-top: 2px solid white;
-            }
-            h1,h2,h3,h4,h5,p{
-                text-align: center;
-            }
-            
+            @include footer($coloresGenerales);
         }
     }
 }
