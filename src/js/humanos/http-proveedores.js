@@ -21,7 +21,7 @@ const MostrarUnHumanoVivo = async(id) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${usuario.token}`
         }
     });
     return await resp.json();

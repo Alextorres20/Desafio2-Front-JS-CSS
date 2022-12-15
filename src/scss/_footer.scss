@@ -1,5 +1,10 @@
 @mixin footer($coloresGenerales){
     & {
+        background-color: map.get($coloresGenerales, "iconos-hover");
+        color:white;
+        font-size: .75rem;
+        width: 100%;
+        height: auto;
         position: absolute;
         bottom: auto;
         margin-bottom: -2rem;
@@ -9,15 +14,13 @@
             font-size: .8rem;
         }
 
-        background-color: map.get($coloresGenerales, "iconos-hover");
-        color:white;
-        font-size: .75rem;
-        width: 100%;
-        height: auto;
+        * {
+            margin: 0;
+        }
 
         .separador{
             width: 100%;
-            border-top: 2px solid white;
+            border-top: 1px solid white;
         }
         
         a {
@@ -32,7 +35,7 @@
             text-align: center;
         }
         h1,h2,h3,h4,h5{
-            font-size: 1rem;
+            font-size: .9rem;
         }
 
         &.index, &.humanos {
