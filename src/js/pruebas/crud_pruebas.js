@@ -21,7 +21,6 @@ const generarPruebaHtml = (prueba) => {
                     <div class="col-1">${[prueba.cantidadDestino]}</div>
                     <div class="col-2">${[prueba.fechaCreacion]}</div>
                     <div class="col-1">
-                        <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
                         <span><i class="borrar fa fa-trash" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#modalConfirmarBorrar"></i></span>
                     </div>
                 </div>`;
