@@ -22,7 +22,7 @@
                 aria-controls="pills-profile" aria-selected="false">Registro</a>
             </li>
           </ul>
-          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-content pb-3" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="form px-4 pt-5 inicio">
                 <div class="error Inicio">
@@ -33,10 +33,10 @@
                   <span class="errorEmail Inicio col-1" aria-live="polite"></span>
                 <input type="password" name="password" class="form-control" placeholder="Password" required
                     pattern="[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s]+$">
-                <input type="checkbox" name="revelarContraseña">Revelar contraseñas
+                <input class="me-1" type="checkbox" name="revelarContraseña">Revelar contraseñas
                 <br>
                 <span class="errorPassword Inicio col-1" aria-live="polite"></span>
-                <button class="btn btn-dark btn-block" type="submit">Iniciar Sesion</button>
+                <button class="btn btn-primary btn-block" type="submit">Iniciar Sesion</button>
               </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -51,10 +51,10 @@
                     pattern="[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s]+$">
                   <input type="password" name="confirm_password" class="form-control" placeholder="Confirmar Password"
                     required pattern="[A-Za-z0-9ÑñÁáÉéÍíÓóÚúÜü\s]+$">
-                  <input type="checkbox" name="revelarContraseña">Revelar contraseñas
+                  <input class="me-1" type="checkbox" name="revelarContraseña">Revelar contraseñas
                   <br>
                   <span class="errorPassword Registro col-1" aria-live="polite"></span>
-                  <button class="btn btn-dark btn-block" type="submit">Registrar</button>
+                  <button class="btn btn-primary btn-block" type="submit">Registrar</button>
                 </div>
               </form>
             </div>

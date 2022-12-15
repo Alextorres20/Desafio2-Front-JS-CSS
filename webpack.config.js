@@ -25,6 +25,10 @@ const filesHTML = [
     {   
         filename: './html/asignar-pruebas.html',
         chunks: ['asignarPruebas']
+    },
+    {
+        filename: './html/sobre-nosotros.html',
+        chunks: ['sobreNosotros']
     }
 ]
 
@@ -80,6 +84,7 @@ module.exports = {
         pruebas: './src/js/pruebas/index.js',
         registroInicio: './src/js/registro-inicio-sesion/index.js',
         humanos: './src/js/humanos/index.js',
+        sobreNosotros: './src/index.js',
         asignarPruebas: './src/js/asignar-pruebas.js',
         home: './src/js/home.js'
     },

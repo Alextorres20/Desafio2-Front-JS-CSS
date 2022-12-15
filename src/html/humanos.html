@@ -10,53 +10,60 @@
 <body class="humanos">
     
     <!----------------------- Menú horizontal ---------------------->
-    <nav class="navbar navbar-dark bg-dark menu-horizontal">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./home.html"><i class="home fa fa-university" aria-hidden="true"></i></a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <nav class="navbar menu-horizontal ps-5 pe-5 pt-3 pb-3">
+            <div>
+                <a class="nav-link active" aria-current="page" href="./principal.html">
+                    <i class="home fa fa-university" aria-hidden="true"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
 
     <!------------------------ CRUD Humanos ------------------------>
-    <div class="col-12 crud-humanos">
-        <div class="respuesta-mensaje"></div>
-        <div class="botones opcionales">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrear">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                Crear Humanos
-            </button>
-            <button type="button" class="btn btn-warning matarHumano" data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                Matar humanos Seleccionados
-            </button>
-            <button type="button" class="btn btn-danger matarAleatorio">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                Matar humanos Aleatorio
-            </button>
-            <button type="button" class="btn btn-info mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                Mostrar humanos Muertos
-            </button>
+    <div class="col-sm-12 crud-humanos">
+        <div class="row respuestas">
+            <div class="col-12 col-sm-12 d-flex p-2 botones opcionales">
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 crearHumanos" data-bs-toggle="modal" data-bs-target="#modalCrear">
+                    Crear Humanos
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarHumano"  data-bs-toggle="modal" data-bs-target="#modalMatarHumano">
+                    Matar humanos Seleccionados
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 matarAleatorio">
+                    Matar humanos Aleatorio
+                </button>
+                <button type="button" class="btn btn-primary btn-sm col-3 col-sm-3 mostrarHumanosMuertos" data-bs-toggle="modal" data-bs-target="#modalMostrarHumanoMuertos">
+                    Mostrar humanos Muertos
+                </button>
+            </div>
+            <div class="col-12 col-sm-12 respuesta-mensaje"></div>
+            
         </div>
         
-        <div class="h-50 contenedor-humanos">
-            <table class="table tabla-humanos">
-                <thead>
-                    <tr>
-                        <th scope="col">ID de usuario</th>
-                        <th scope="col">Caracteristicas</th>
-                        <th scope="col">Destino</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+        <div class="row justify-content-md-center crud-Humanos">
+            <div class="col-sm-12 h-50 contenedor-humanos">
+                <table class="table tabla-humanos">
+                    <thead>
+                        <tr>
+                            <th scope="col-2">ID de usuario</th>
+                            <th scope="col-4">Caracteristicas</th>
+                            <th scope="col-2">Destino</th>
+                            <th scope="col-2">Estado</th>
+                            <th scope="col-2">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+
+    <br>
+    
 
 
      <!--------------- Modal Caracteristicas Humano ------------------------>
@@ -179,5 +186,50 @@
             </div>
         </div>
     </div>
+    <footer class="humanos">
+        <div class="row justify-content-evenly">
+            <div class="col-3 align-self-center align-items-center">
+                    &copy;2022-2023 Copyright</p>
+            </div>
+            <div class="col-3 align-self-center align-items-center">
+                <div class="separador"></div>
+            </div>
+            <div class="col-3 align-self-center align-items-center">
+                <div class="row">
+                    <div class="col-12 align-items-start align-self-center">
+                        <a href="./sobre-nosotros.html"><h5><u>Sobre Nosotros:</u></h5></a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="">
+                            <p>Alejandro Torres Fernández</p>
+                        </div>
+                        <div class="">
+                            <p>Alicia Fernández Cambronero</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 align-self-center align-items-center">
+                <h5>Contenidos:</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a href="../index.html">Presentacion</a>
+                    </li>
+                    <li>
+                        <a href="./registro-inicio-sesion.html">Pagina Registro / Inicio Sesion</a>
+                    </li>
+                    <li>
+                        <a href="./principal.html">Pagina principal</a>
+                    </li>
+                    <li>
+                        <a href="./crud-pruebas.html">Pagina de Pruebas</a>
+                    </li>
+                    <li>
+                        <a href="./asignar-pruebas.html">Asignacion de Pruebas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
