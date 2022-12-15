@@ -10,136 +10,97 @@
 
 <body class="pruebas" style="background-image: url('../assets/img/monte_olimpo.jpg')">
     <!----------------------- Menú horizontal ---------------------->
-    <nav class="navbar menu-horizontal">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./principal.html"><i class="home fa fa-university"
-                        aria-hidden="true"></i></a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="row">
-        <!------------------------ Menú vertical ------------------------>
-        <!-- <nav class="col-2 menu-vertical bg-white">
-            <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                <span class="fs-5 fw-semibold">Collapsible</span>
-            </a>
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                        Home
-                    </button>
-                    <div class="collapse show" id="home-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li>Filtro 1</li>
-                            <li>Filtro 2</li>
-                            <li>Filtro 3</li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                        data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                        Account
-                    </button>
-                    <div class="collapse" id="account-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a>
-                            </li>
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a>
-                            </li>
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav> -->
-
+    <header>
+        <nav class="navbar menu-horizontal ps-5 pe-5 pt-3 pb-3">
+            <div>
+                <a class="nav-link active" aria-current="page" href="./principal.html">
+                    <i class="home fa fa-university" aria-hidden="true"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="ps-3 pe-3 pt-3 pb-3 ps-md-5 pe-md-5">
         <!------------------------ CRUD Pruebas ------------------------>
-        <div class="col-12 crud-pruebas">
-            <div class="mensaje-respuesta pt-1 pb-1"></div>
-            <div class="botones">
-                <button type="button" class="crear btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPruebas">
-                    Crear prueba
-                </button>
-
-                <button type="button" class="asignar me-4 btn btn-primary">
-                    Asignar pruebas
-                </button>
-            </div>
-            <div class="contenedor-pruebas">
-                <div class="tabla-pruebas ">
-                    <div class="cabecera row">
-                        <div class="col-1">Tipo</div>
-                        <div class="col-1">Creador</div>
-                        <div class="col-6">Pregunta/Descripción</div>
-                        <div class="col-1">Destino</div>
-                        <div class="col-2">Fecha de creación</div>
-                        <div class="col-1">Opciones</div>
-                    </div>
-                    <div class="contenido">
-
-                    </div>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-------------------- Modal Pruebas -------------------->
-    <div class="modal fade" id="modalPruebas" tabindex="-1" aria-labelledby="modalCrearPrueba" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Prueba nueva</h1>
-                    <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form class="needs-validation formulario-pruebas row" novalidate>
-                        <label class="col-12 col-sm-3" for="tipo">Tipo</label>
-                        <select class="col-12 col-sm-9 form-select select-tipo-prueba" name="tipo"
-                            aria-label="selectTipoPrueba">
-                            <option value="puntual" selected>Prueba puntual</option>
-                            <option value="respuesta-libre">Prueba respuesta libre</option>
-                        </select>
-
-                        <div class="opciones-prueba colapsar mostrar"></div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
-                        </div>
-                    </form>
+        <div class="crud-pruebas">
+            <div class="mb-3 d-flex">
+                <div class="mensaje-respuesta pt-1 pb-1 mb-0"></div>
+                <div class="botones ms-auto">
+                    <button type="button" class="crear btn btn-sm me-3" data-bs-toggle="modal"
+                        data-bs-target="#modalPruebas">
+                        Crear prueba
+                    </button>
+                    <button type="button" class="asignar btn btn-sm">
+                        Asignar pruebas
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-------------------- Modal confirmar borrar -------------------->
-    <div class="modal" id="modalConfirmarBorrar" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Eliminar prueba</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="tabla-pruebas bg-opacity-75 bg-white">
+                <div class="cabecera row ps-4 pe-5 pt-3 pb-3">
+                    <div class="col-1">Tipo</div>
+                    <div class="col-1">Creador</div>
+                    <div class="col-6">Pregunta/Descripción</div>
+                    <div class="col-1">Destino</div>
+                    <div class="col-2">Fecha de creación</div>
+                    <div class="col-1">Opciones</div>
+                </div>
+                <div class="contenido p-md-3 p-2"></div>
             </div>
-            <div class="modal-body pt-4 pb-4">
-                <p class="mb-2">¿Seguro que quieres eliminar la prueba?</p>
-                <p class="mb-0 subtexto">¡Esta acción no se puede deshacer!</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="cancelar btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="borrar btn btn-primary" data-bs-dismiss="modal">Eliminar prueba</button>
-              </div>
-          </div>
         </div>
-      </div>
-      
+
+        <!-------------------- Modal Pruebas -------------------->
+        <div class="modal fade" id="modalPruebas" tabindex="-1" aria-labelledby="modalCrearPrueba" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Prueba nueva</h1>
+                        <button type=" button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form class="needs-validation formulario-pruebas row" novalidate>
+                            <label class="col-12 col-sm-3" for="tipo">Tipo</label>
+                            <select class="col-12 col-sm-9 form-select select-tipo-prueba" name="tipo"
+                                aria-label="selectTipoPrueba">
+                                <option value="puntual" selected>Prueba puntual</option>
+                                <option value="respuesta-libre">Prueba de respuesta libre</option>
+                                <option value="valoracion">Prueba de valoración</option>
+                                <option value="eleccion">Prueba de elección</option>
+                            </select>
+
+                            <div class="opciones-prueba colapsar"></div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="guardar btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-------------------- Modal confirmar borrar -------------------->
+        <div class="modal" id="modalConfirmarBorrar" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar prueba</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-4 pb-4">
+                        <p class="mb-2">¿Seguro que quieres eliminar la prueba?</p>
+                        <p class="mb-0 subtexto">¡Esta acción no se puede deshacer!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancelar btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="borrar btn btn-primary" data-bs-dismiss="modal">Eliminar
+                            prueba</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

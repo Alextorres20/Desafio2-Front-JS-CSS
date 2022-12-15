@@ -1,23 +1,9 @@
 @mixin principal($coloresGenerales) {
     &.principal {
-        /* background-image: url("../assets/img/monte_olimpo.jpg"); */
         height: 100%;
         background-repeat: no-repeat;
         display: grid;
         grid-template-rows: 1fr 8fr 1fr;
-
-        nav, footer, .contenedor-principal a {
-            box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
-        }
-
-        nav {
-            background-color: map.get($coloresGenerales, "iconos-hover");
-            padding: 0 1rem;
-
-            i {
-                color: white;
-            }
-        }
 
         .contenedor-principal {
             @media (min-width: 480px) {
@@ -33,7 +19,7 @@
             @media (min-width: 992px) {
                 padding: 5rem 7rem;
                 column-gap: 7rem;
-            }
+            } 
 
             padding: 2rem;
             display: grid;
@@ -52,16 +38,20 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                box-shadow: 0px 0px 10px 2px rgb(0, 0, 0, .2);
 
                 i {
                     font-size: 7rem;
                     color: map.get($coloresGenerales, "iconos");
-                    transition: all .2s;
+                    transition: color .2s;
 
                     &:hover {
                         color: map.get($coloresGenerales, "iconos-hover");
+                        @include rotar();
                     }
                 }
+
+                
             }
         }
 

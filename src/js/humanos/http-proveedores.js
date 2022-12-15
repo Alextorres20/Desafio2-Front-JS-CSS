@@ -194,5 +194,4 @@ export {
     mostrarTablaMuertosPredeterminado,
     mostrarTablaMuertosAscendiente,
     mostrarTablaMuertosDescendiente
-
 }

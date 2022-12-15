@@ -34,7 +34,7 @@ const cargarHumanosPrueba = async(idPrueba, contenedor) => {
 
 const generarPruebaHtml = (prueba, contenedor) => {
     const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
-    const html = `<div class="prueba mt-2" data-id="${[prueba.id]}">
+    const html = `<div class="prueba mt-2 bg-white tarjeta" data-id="${[prueba.id]}">
                     <div class="d-flex align-items-center">
                         <img class="imagen-perfil" src="../assets/img/Zeus.png" draggable="false">
                         <div class="ps-3 datos">
@@ -68,7 +68,7 @@ const generarPruebaHtml = (prueba, contenedor) => {
 
 const generarHumanoHtml = async (humano, contenedor) => {
     const atributos = await mostrarCaracteristicasHumano(humano.id_usuario);
-    const html = `<div class="humano mt-2" draggable="true" data-id="${[humano.id_usuario]}">
+    const html = `<div class="humano mt-2 bg-white tarjeta" draggable="true" data-id="${[humano.id_usuario]}">
                     <img class="imagen-perfil" src="../assets/img/Zeus.png" draggable="false">
                     <div class="datos">
                         <h5 class="nombre fw-bold">${[humano.user.name]}</h5>
