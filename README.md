@@ -15,7 +15,15 @@
 
 ## Back
 1. Posicionarse en al carpeta Back
-2. 
+2. Hacer una copia del fichero .env.example llamado .env
+3. En el fichero .env. modificar las siguientes lineas:
+      ``DB_DATABASE=desafio2``
+      
+      ´´MAIL_HOST=smtp.gmail.com
+      MAIL_PORT=587
+      MAIL_USERNAME=auxiliardaw2@gmail.com
+      MAIL_PASSWORD=yjiivqqdpwuiisev
+      MAIL_ENCRYPTION=tls
 
 ## Acceso a la web
 
