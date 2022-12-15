@@ -1,6 +1,7 @@
 import { usuario } from '../index';
-import { generarPruebaHtml, agregarHtml } from './asignar-pruebas';
 import { obtenerPruebasHumano } from './pruebas/peticiones-pruebas';
+
+
 const contenendor = document.querySelector('main');
 
 const initHome = async() => {
@@ -40,7 +41,7 @@ const generarHumanosHtml = () => {
     const html = `<div class="contenedor-principal d-flex">
                     <div class="contenedor flex-fill pruebas-asignadas me-sm-5 mb-4 bg-opacity-50 bg-white">
                         <h5 class="cabecera p-2">Pruebas asignadas</h5>
-                        <div class="contenido">
+                        <div class="contenido p-3">
                         </div>
                     </div>
                     <div class="contenedor flex-fill perfil bg-opacity-50 bg-white" href="pruebas.html">
@@ -60,6 +61,37 @@ const generarHumanosHtml = () => {
                 </div>`;
     return html;
 }
+
+
+const generarPruebaHtml = (prueba) => {
+    const tipo = (prueba.tipo.charAt(0).toUpperCase() + prueba.tipo.slice(1)).replaceAll('-', ' ');
+    const html = `<div class="prueba mt-2 bg-white tarjeta" data-id="${[prueba.id]}">
+                    <div class="d-flex align-items-center">
+                        <img class="imagen-perfil" src="../assets/img/Zeus.png" draggable="false">
+                        <div class="ps-3 datos">
+                            <h5 class="destino"><span class="fw-bold">Destino: </span>${[prueba.cantidadDestino]}</h5>
+                            <p class="nombre fw-bold">Creador: ${[prueba.nombreDios]}</p>
+                        </div>
+                        <div class="align-self-start ms-auto borrar"></div>
+                    </div>
+
+                    <p class="pregunta-desc">${[prueba.preguntaDescripcion]}</p>
+
+                    <div class="d-flex mt-2">
+                        <p class="tipo">${[tipo]}</p>
+                        <p class="fecha ms-auto">${[prueba.fechaCreacion]}</p>
+                    </div>
+                </div>`;
+    return html;
+}
+
+
+const agregarHtml = (html, contenedor) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    contenedor.append(div.firstElementChild);
+}
+
 
 
 const generarAtributosHtml = (atributos) => {

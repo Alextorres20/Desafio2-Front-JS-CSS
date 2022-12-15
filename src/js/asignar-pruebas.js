@@ -32,9 +32,7 @@ const cargarPruebas = async() => {
 const cargarHumanosPrueba = async(idPrueba, contenedorPadre) => {
     const humanos = await obtenerHumanosPrueba(idPrueba);
     const html = `<div id="p${[idPrueba]}" class="accordion-collapse collapse humanos-contenedor"></div>`;
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    contenedorPadre.append(div.firstElementChild)
+    agregarHtml(html, contenedorPadre);
     humanos.map(h => generarHumanoHtml(h, contenedorPadre.lastChild));
 }
 
@@ -180,12 +178,6 @@ const mostrarMensaje = (estado, mensaje) => {
         contenedor.innerHTML = mensaje;
         contenedor.classList.add('alert', 'alert-danger');
     }
-}
-
-
-export {
-    generarPruebaHtml,
-    agregarHtml
 }
 
 

@@ -17,7 +17,7 @@ const generarPruebaHtml = (prueba) => {
     const html = `<div class="row bg-white mb-2 tarjeta" data-id="${[prueba.id]}">
                     <div class="col-1 ${[prueba.tipo]}">${[tipo]}</div>
                     <div class="col-1">${[prueba.nombreDios]}</div>
-                    <div class="col-6">${[prueba.preguntaDescripcion]}</div>
+                    <div class="col-6 overflow-hidden">${[prueba.preguntaDescripcion]}</div>
                     <div class="col-1">${[prueba.cantidadDestino]}</div>
                     <div class="col-2">${[prueba.fechaCreacion]}</div>
                     <div class="col-1">
