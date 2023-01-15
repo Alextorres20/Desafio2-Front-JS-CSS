@@ -71,7 +71,7 @@
         }
 
         footer {
-            @include footer($coloresGenerales)
+            @include footer($coloresGenerales, $tipografias)
         }
     }
 }
